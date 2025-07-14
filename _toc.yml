@@ -1,0 +1,83 @@
+format: jb-book
+root: sections/0_introduction/0_1_role_of_data_in_cities
+parts:
+- caption:
+  chapters:
+    - file: sections/0_introduction/0_2_goals_and_audience
+    - file: sections/0_introduction/0_3_data_and_tooling
+- caption: 1. Statistical Foundations
+  chapters:
+    - file: sections/1_statistical_foundations/1_1_distributions
+    - file: sections/1_statistical_foundations/1_2_descriptive_stats
+    - file: sections/1_statistical_foundations/1_3_regression
+    - file: sections/1_statistical_foundations/1_4_hypothesis_testing
+    - file: sections/1_statistical_foundations/1_5_causality
+    - file: sections/1_statistical_foundations/1_6_case_study_nyc
+- caption: 2. Advanced Stats & Machine Learning
+  chapters:
+    - file: sections/2_adv_stats_ml/2_1_baysian_stats
+    - file: sections/2_adv_stats_ml/2_2_time_series
+    - file: sections/2_adv_stats_ml/2_3_prediction
+    - file: sections/2_adv_stats_ml/2_4_dimensionality_reduction
+    - file: sections/2_adv_stats_ml/2_5_clustering
+    - file: sections/2_adv_stats_ml/2_6_decision_trees
+    - file: sections/2_adv_stats_ml/2_7_anomoly_detection
+- caption: 3. Network Science
+  chapters:
+    - file: sections/3_network_science/3_1_urban_networks
+    - file: sections/3_network_science/3_2_measuring_networks
+    - file: sections/3_network_science/3_3_street_networks_and_grids
+    - file: sections/3_network_science/3_4_network_resiliance
+    - file: sections/3_network_science/3_5_multilayer_networks
+    - file: sections/3_network_science/3_6_network_route_algorithms
+    - file: sections/3_network_science/3_7_community_detection
+- caption: 4. Geospatial Analytics
+  chapters:
+    - file: sections/4_geospatial_analysis/4_1_spatial_autocorrelation
+    - file: sections/4_geospatial_analysis/4_2_point_pattern_analysis
+    - file: sections/4_geospatial_analysis/4_3_morans_i_and_spatial_clustering
+    - file: sections/4_geospatial_analysis/4_4_spatial_regression
+- caption: 5. Complexity & Urban Science
+  chapters:
+    - file: sections/5_complexity_and_urban_science/5_1_scaling_and_agglomeration
+    - file: sections/5_complexity_and_urban_science/5_2_fractal_networks
+- caption: 6. Urban Economics
+  chapters:
+    - file: sections/6_urban_economics/6_1_econ_in_the_city
+    - file: sections/6_urban_economics/6_2_economic_complexity
+    - file: sections/6_urban_economics/6_3_game_theory_on_networks
+    - file: sections/6_urban_economics/6_4_region_nation_global
+- caption: 7. Modeling
+  chapters:
+    - file: sections/7_modeling/7_1_intro_to_agent_based_modeling
+    - file: sections/7_modeling/7_2_simulating_urban_phenomena
+    - file: sections/7_modeling/7_3_land_use_and_transportation_modeling
+    - file: sections/7_modeling/7_4_epidemic_modeling
+- caption: 8. Gathering Good Data
+  chapters:
+    - file: sections/8_gathering_good_data/8_1_open_city_datasources
+    - file: sections/8_gathering_good_data/8_2_company_datasources
+    - file: sections/8_gathering_good_data/8_3_databases_and_sql
+    - file: sections/8_gathering_good_data/8_4_webscraping_and_apis
+    - file: sections/8_gathering_good_data/8_5_sensing_and_the_city
+    - file: sections/8_gathering_good_data/8_6_sattelite_imagery
+- caption: 9. Achitecture & Design
+  chapters:
+    - file: sections/9_architecture_and_design/9_1_architecture
+- caption: 10. Governance & Policy
+  chapters:
+    - file: sections/10_governance_and_policy/10_1_governance
+    - file: sections/10_governance_and_policy/10_2_voting_methods
+- caption: 11. Closing Thoughts
+  chapters:
+    - file: sections/11_conclusions/book_recs
+    - file: sections/11_conclusions/ethics
+    - file: sections/11_conclusions/better_world
+    - file: sections/11_conclusions/limits
+- caption: 12. Additional Resources
+  chapters:
+    - file: sections/12_resources/markdown-notebooks
+    - file: sections/12_resources/markdown
+    - file: sections/12_resources/notebooks
+    - file: sections/12_resources/resources
+    - file: sections/12_resources/data

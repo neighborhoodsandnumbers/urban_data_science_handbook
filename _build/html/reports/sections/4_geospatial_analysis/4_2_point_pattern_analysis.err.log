@@ -1,0 +1,223 @@
+Traceback (most recent call last):
+  File "/Users/alexshannon/anaconda3/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/alexshannon/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alexshannon/anaconda3/lib/python3.11/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alexshannon/anaconda3/lib/python3.11/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alexshannon/anaconda3/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/alexshannon/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/alexshannon/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/alexshannon/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+class IsochroneCoffeeMapper:
+    def __init__(self, ors_api_key: str):
+        """
+        Initialize the mapper with your OpenRouteService API key.
+        Get one from: https://openrouteservice.org/dev/#/signup
+        """
+        self.ors_api_key = ors_api_key
+        self.ors_endpoint = "https://api.openrouteservice.org/v2/isochrones/foot-walking"
+        self.overpass_api = overpy.Overpass()
+
+    def get_isochrone(self, lat: float, lng: float, range_in_seconds: int = 300) -> Dict:
+        """
+        Get isochrone (area reachable within specified time) from OpenRouteService.
+        
+        Args:
+            lat: Latitude of the starting point
+            lng: Longitude of the starting point
+            range_in_seconds: Time range in seconds (default 300 = 5 minutes)
+        
+        Returns:
+            Dictionary containing the isochrone GeoJSON
+        """
+        headers = {
+            'Accept': 'application/json, application/geo+json, application/gpx+xml',
+            'Authorization': self.ors_api_key,
+            'Content-Type': 'application/json; charset=utf-8'
+        }
+        
+        body = {
+            "locations": [[lng, lat]],
+            "range": [range_in_seconds],
+            "attributes": ["area"],
+            "location_type": "start"
+        }
+
+        response = requests.post(
+            self.ors_endpoint,
+            json=body,
+            headers=headers
+        )
+        
+        if response.status_code != 200:
+            raise Exception(f"API request failed with status {response.status_code}: {response.text}")
+            
+        return response.json()
+
+    def get_coffee_shops(self, isochrone_geojson: Dict) -> List[Tuple[float, float]]:
+        """
+        Find all coffee shops within the isochrone area using Overpass API.
+        
+        Args:
+            isochrone_geojson: GeoJSON of the isochrone area
+            
+        Returns:
+            List of (lat, lng) tuples for coffee shops
+        """
+        # Convert GeoJSON to Shapely polygon for containment checks
+        polygon = shape(isochrone_geojson['features'][0]['geometry'])
+        
+        # Create bounding box for the query
+        bounds = polygon.bounds
+        query = f"""
+        [out:json];
+        (
+          node["amenity"="cafe"]({bounds[1]},{bounds[0]},{bounds[3]},{bounds[2]});
+          way["amenity"="cafe"]({bounds[1]},{bounds[0]},{bounds[3]},{bounds[2]});
+        );
+        out center;
+        """
+        
+        result = self.overpass_api.query(query)
+        
+        coffee_shops = []
+        # Process nodes (point locations)
+        for node in result.nodes:
+            point = Point(float(node.lon), float(node.lat))
+            if polygon.contains(point):
+                coffee_shops.append((float(node.lat), float(node.lon)))
+                
+        # Process ways (buildings, areas)
+        for way in result.ways:
+            point = Point(float(way.center_lon), float(way.center_lat))
+            if polygon.contains(point):
+                coffee_shops.append((float(way.center_lat), float(way.center_lon)))
+                
+        return coffee_shops
+
+    def create_map(self, 
+                  start_lat: float, 
+                  start_lng: float, 
+                  isochrone_geojson: Dict, 
+                  coffee_shops: List[Tuple[float, float]]) -> folium.Map:
+        """
+        Create a Folium map with the isochrone and coffee shops.
+        
+        Args:
+            start_lat: Starting point latitude
+            start_lng: Starting point longitude
+            isochrone_geojson: GeoJSON of the isochrone area
+            coffee_shops: List of (lat, lng) tuples for coffee shops
+            
+        Returns:
+            Folium map object
+        """
+        # Create base map centered on the starting point
+        m = folium.Map(location=[start_lat, start_lng], zoom_start=15)
+        
+        # Add the isochrone area
+        folium.GeoJson(
+            isochrone_geojson,
+            style_function=lambda x: {
+                'fillColor': '#00ff00',
+                'color': '#00ff00',
+                'fillOpacity': 0.2,
+                'weight': 2
+            }
+        ).add_to(m)
+        
+        # Add marker for starting point
+        folium.Marker(
+            [start_lat, start_lng],
+            popup='Starting Point',
+            icon=folium.Icon(color='red', icon='info-sign')
+        ).add_to(m)
+        
+        # Add markers for coffee shops
+        for lat, lng in coffee_shops:
+            folium.Marker(
+                [lat, lng],
+                popup='Coffee Shop',
+                icon=folium.Icon(color='brown', icon='info-sign')
+            ).add_to(m)
+            
+        return m
+
+def main(lat: float, lng: float, api_key: str, output_file: str = "isochrone_map.html"):
+    """
+    Generate an isochrone map with coffee shops and save it to an HTML file.
+    
+    Args:
+        lat: Starting point latitude
+        lng: Starting point longitude
+        api_key: OpenRouteService API key
+        output_file: Name of the output HTML file
+    """
+    mapper = IsochroneCoffeeMapper(api_key)
+    
+    # Get 5-minute walking isochrone
+    isochrone = mapper.get_isochrone(lat, lng)
+    
+    # Find coffee shops within the isochrone
+    coffee_shops = mapper.get_coffee_shops(isochrone)
+    
+    # Create and save the map
+    m = mapper.create_map(lat, lng, isochrone, coffee_shops)
+    m.save(output_file)
+    
+    print(f"Found {len(coffee_shops)} coffee shops within 5 minutes walking distance")
+    print(f"Map saved to {output_file}")
+
+if __name__ == "__main__":
+    # Example usage
+    API_KEY = "your_openrouteservice_api_key_here"
+    LAT = 37.77156
+    LNG = -122.39408
+    
+    main(LAT, LNG, API_KEY)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mException[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[3], line 167[0m
+[1;32m    164[0m LAT [38;5;241m=[39m [38;5;241m37.77156[39m
+[1;32m    165[0m LNG [38;5;241m=[39m [38;5;241m-[39m[38;5;241m122.39408[39m
+[0;32m--> 167[0m main(LAT, LNG, API_KEY)
+
+Cell [0;32mIn[3], line 149[0m, in [0;36mmain[0;34m(lat, lng, api_key, output_file)[0m
+[1;32m    146[0m mapper [38;5;241m=[39m IsochroneCoffeeMapper(api_key)
+[1;32m    148[0m [38;5;66;03m# Get 5-minute walking isochrone[39;00m
+[0;32m--> 149[0m isochrone [38;5;241m=[39m mapper[38;5;241m.[39mget_isochrone(lat, lng)
+[1;32m    151[0m [38;5;66;03m# Find coffee shops within the isochrone[39;00m
+[1;32m    152[0m coffee_shops [38;5;241m=[39m mapper[38;5;241m.[39mget_coffee_shops(isochrone)
+
+Cell [0;32mIn[3], line 43[0m, in [0;36mIsochroneCoffeeMapper.get_isochrone[0;34m(self, lat, lng, range_in_seconds)[0m
+[1;32m     36[0m response [38;5;241m=[39m requests[38;5;241m.[39mpost(
+[1;32m     37[0m     [38;5;28mself[39m[38;5;241m.[39mors_endpoint,
+[1;32m     38[0m     json[38;5;241m=[39mbody,
+[1;32m     39[0m     headers[38;5;241m=[39mheaders
+[1;32m     40[0m )
+[1;32m     42[0m [38;5;28;01mif[39;00m response[38;5;241m.[39mstatus_code [38;5;241m!=[39m [38;5;241m200[39m:
+[0;32m---> 43[0m     [38;5;28;01mraise[39;00m [38;5;167;01mException[39;00m([38;5;124mf[39m[38;5;124m"[39m[38;5;124mAPI request failed with status [39m[38;5;132;01m{[39;00mresponse[38;5;241m.[39mstatus_code[38;5;132;01m}[39;00m[38;5;124m: [39m[38;5;132;01m{[39;00mresponse[38;5;241m.[39mtext[38;5;132;01m}[39;00m[38;5;124m"[39m)
+[1;32m     45[0m [38;5;28;01mreturn[39;00m response[38;5;241m.[39mjson()
+
+[0;31mException[0m: API request failed with status 403: {
+    "error": "Access to this API has been disallowed"
+}
+Exception: API request failed with status 403: {
+    "error": "Access to this API has been disallowed"
+}
+

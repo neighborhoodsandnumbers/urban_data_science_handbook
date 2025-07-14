@@ -1,0 +1,642 @@
+@charset "UTF-8";
+
+/* Tufte CSS styles */
+body {
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-size: 19px;
+  font-weight: 250;
+  background-color: #192738;
+  color: #ddd;
+}
+
+tbody {
+  font-family: monospace;
+  color: #ddd;
+}
+
+h1 {
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-weight: 700;
+  font-style: italic;
+  color: #d09937 !important;
+  padding-top: 10px;
+  font-size: 34px;
+}
+
+h2 {
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-weight: 700;
+  font-style: italic;
+  color: #d09937 !important;
+  font-size: 26px;
+}
+
+h3 {
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  color: #ddd !important;
+  font-size: 22px;
+}
+
+aside {
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-weight: 200 !important;
+  color: #d09937 !important;
+  font-size: 16px !important;
+}
+
+#bd-toc-nav {
+  background-color: #192738 !important;
+  color: #c0c6dc;
+}
+
+.bd-sidebar {
+  background-color: #192738 !important;
+  color: #c0c6dc;
+  max-width: 335px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: #c0c6dc #192738;
+}
+
+.bd-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.bd-sidebar::-webkit-scrollbar-track {
+  background: #192738;
+}
+
+.bd-sidebar::-webkit-scrollbar-thumb {
+  background-color: #c0c6dc;
+  border-radius: 2px;
+  border: 2px solid #192738;
+}
+
+/* Simple styling for sidebar captions */
+.bd-sidebar-primary .caption {
+  color: #c0c6dc;
+  font-weight: normal !important;
+  padding: 5px 0;
+}
+
+.bd-header-article {
+  background-color: #660000 !important;
+}
+
+#site-navigation {
+  background-color: #192738 !important;
+}
+
+.bd-main {
+  max-width: 2800px;
+  margin: 0 auto;    
+  padding: 10px;
+}
+
+.topbar {
+  background-color: #192738 !important;
+}
+
+.scrolled .topbar {
+  background-color: #192738 !important;
+}
+
+.bd-toc {
+  background-color: #192738 !important;
+  max-width: 220px;
+}
+
+.tocsection {
+  background-color: #192738 !important;
+}
+
+/* Code Cell Styling - with stronger selectors */
+div.highlight {
+  background-color: #16202d !important;
+  border-radius: 4px;
+  margin: 8px 0;
+}
+
+div.highlight pre {
+  background-color: #16202d !important;
+  margin: 0;
+  padding: 12px 0 12px 24px;  /* Increased left padding */
+}
+
+.highlight .k { color: #93C5FD; } /* Keyword */
+.highlight .s { color: #D1B675; } /* String */
+.highlight .n { color: #E5E7EB; } /* Name */
+.highlight .nb { color: #93C5FD; } /* Built-in */
+.highlight .c, .highlight .c1 { color: #6B7280; } /* Comment */
+.highlight .o { color: #9CA3AF; } /* Operator */
+.highlight .mi { color: #D1B675; } /* Number */
+.highlight .kc { color: #93C5FD; } /* Keyword.Constant */
+.highlight .nf { color: #D1B675; } /* Function name */
+
+div.highlight-python {
+  background-color: #192738 !important;
+  margin: 0;
+}
+
+.cell_input div {
+  background-color: #192738 !important;
+  margin: 0;
+}
+
+/* Override any white backgrounds */
+.highlight .hll, 
+.highlight .nn,
+.highlight-python {
+  background-color: #192738 !important;
+}
+
+/* Additional override for specific white backgrounds */
+.cell {
+  background-color: #192738 !important;
+  margin: 0;
+}
+
+.cell_input {
+  padding: 6px 6px;
+  margin: 0;
+  background-color: #192738 !important;
+  border-radius: 4px;
+  border-left: none !important;  
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: none !important;  
+}
+
+/* Fix output corners */
+.cell_output {
+  padding: 4px !important;
+  background-color: #192738 !important;
+  border-radius: 2px;
+  margin-top: 0px;
+  overflow: hidden;
+}
+
+.cell_output * {
+  background-color: #192738 !important;
+  border-radius: 0 !important;  /* Remove rounded corners from children */
+}
+
+/* Hide-input tag styling - targeting specific classes */
+.tag_hide-input.docutils.container details.hide.above-input {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 8px 0 !important;
+}
+
+.tag_hide-input.docutils.container details.hide.above-input summary {
+  background-color: #16202d !important;
+  color: #ffffff !important;
+  padding: 8px 16px !important;
+  border-left: 2px solid #d09937 !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  cursor: pointer !important;
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif !important;
+  font-size: 0.8em !important;
+  width: 100% !important;
+  text-align: left !important;
+  transition: all 0.2s ease !important;
+  list-style: none !important;
+}
+
+/* Hide the default marker */
+.tag_hide-input.docutils.container details.hide.above-input summary::-webkit-details-marker {
+  display: none !important;
+}
+
+/* Custom arrow and text styling */
+.tag_hide-input.docutils.container details.hide.above-input summary::before {
+  content: "▶" !important;
+  color: #d09937 !important;
+  margin-right: 8px !important;
+  display: inline-block !important;
+  transition: transform 0.2s ease !important;
+}
+
+.tag_hide-input.docutils.container details[open].hide.above-input summary::before {
+  content: "▼" !important;
+}
+
+/* Styling for the collapsed/expanded text spans */
+.tag_hide-input.docutils.container details.hide.above-input .collapsed,
+.tag_hide-input.docutils.container details.hide.above-input .expanded {
+  color: #FFFFFF !important;
+}
+
+/* Hover effects */
+.tag_hide-input.docutils.container details.hide.above-input summary:hover {
+  background-color: #243447 !important;
+  color: #d09937 !important;
+}
+
+/* Ensure proper spacing */
+.tag_hide-input.docutils.container details.hide.above-input + .cell_input {
+  margin-top: 0em !important;
+}
+/* Target the specific dropdown structure we see in the screenshot */
+.cell-output-toggle,
+.cell-input-toggle,
+.toggle-hidden-code,
+.toggle-input,
+summary.headerlink,
+summary.toggle-input-visibility {
+  background-color: #16202d !important;
+  color: #FFFFFF !important;
+  padding: 8px 16px !important;
+  border: none !important;
+  border-left: 2px solid #d09937 !important;
+  cursor: pointer !important;
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif !important;
+  font-size: 0.9em !important;
+  width: 100% !important;
+  text-align: left !important;
+  transition: all 0.2s ease !important;
+  display: block !important;
+  outline: none !important;
+  position: relative !important;
+  list-style: none !important;
+}
+
+/* Hover state */
+.cell-output-toggle:hover,
+.cell-input-toggle:hover,
+.toggle-hidden-code:hover,
+.toggle-input:hover,
+summary.headerlink:hover,
+summary.toggle-input-visibility:hover {
+  background-color: #243447 !important;
+  color: #d09937 !important;
+}
+
+/* Custom arrow indicator */
+.cell-output-toggle::before,
+.cell-input-toggle::before,
+.toggle-hidden-code::before,
+.toggle-input::before,
+summary.headerlink::before,
+summary.toggle-input-visibility::before {
+  content: "▶" !important;
+  color: #d09937 !important;
+  margin-right: 8px !important;
+  display: inline-block !important;
+  transition: transform 0.2s ease !important;
+}
+
+/* Remove default markers */
+.cell-output-toggle::-webkit-details-marker,
+.cell-input-toggle::-webkit-details-marker,
+.toggle-hidden-code::-webkit-details-marker,
+.toggle-input::-webkit-details-marker,
+summary.headerlink::-webkit-details-marker,
+summary.toggle-input-visibility::-webkit-details-marker {
+  display: none !important;
+}
+
+/* General dropdown container styling */
+details,
+.toggle-input-container {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Styling for when dropdown is open */
+details[open] .cell-output-toggle::before,
+details[open] .cell-input-toggle::before,
+details[open] .toggle-hidden-code::before,
+details[open] .toggle-input::before,
+details[open] summary.headerlink::before,
+details[open] summary.toggle-input-visibility::before {
+  content: "▼" !important;
+}
+
+/* Additional specific selectors for the white text we see */
+.toggle-input-visibility {
+  background-color: #16202d !important;
+  color: #FFFFFF !important;
+  font-weight: normal !important;
+  text-transform: none !important;
+  width: 100% !important;
+}
+.cell details.hide-input {
+  background-color: #192738 !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.cell details.hide-input > summary {
+  background-color: #1e2a3a !important;
+  color: #FFFFFF !important;
+  padding: 8px 16px !important;
+  border-left: 2px solid #d09937 !important;
+  cursor: pointer !important;
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif !important;
+  font-size: 0.9em !important;
+  list-style: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.cell details.hide-input > summary:hover {
+  background-color: #243447 !important;
+  color: #d09937 !important;
+}
+
+/* Custom arrow indicator */
+.cell details.hide-input > summary::before {
+  content: "▶" !important;
+  color: #d09937 !important;
+  margin-right: 8px !important;
+  display: inline-block !important;
+  transition: transform 0.2s ease !important;
+}
+
+.cell details.hide-input[open] > summary::before {
+  content: "▼" !important;
+}
+
+/* Remove default arrow */
+.cell details.hide-input > summary::-webkit-details-marker {
+  display: none !important;
+}
+
+/* Additional selectors for Jupyter hide-input button */
+button.hide-input {
+  background-color: #1e2a3a !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  padding: 8px 16px !important;
+  border-left: 2px solid #d09937 !important;
+  cursor: pointer !important;
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif !important;
+  font-size: 0.9em !important;
+  width: 100% !important;
+  text-align: left !important;
+  transition: all 0.2s ease !important;
+}
+
+button.hide-input:hover {
+  background-color: #243447 !important;
+  color: #d09937 !important;
+}
+
+button.hide-input::before {
+  content: "▶" !important;
+  color: #d09937 !important;
+  margin-right: 8px !important;
+  display: inline-block !important;
+}
+
+[data-input-collapsed="true"] button.hide-input::before {
+  content: "▼" !important;
+}
+
+.cell_output {
+  padding: 4px;
+  background-color: #192738 !important;
+  border-radius: 2px;
+  margin-top: 0px;
+}
+
+/* Remove borders from matplotlib outputs */
+.cell_output img {
+  background: none !important;
+  border: none !important;
+}
+
+/* Output frame adjustments */
+.output_png img {
+  background: none !important;
+  border: none !important;
+}
+
+/* Ensure matplotlib figures blend with background */
+.cell_output .output_png {
+  background: none !important;
+}
+
+/* Ensure background color consistency */
+.jp-RenderedText {
+  background-color: #192738 !important;
+}
+
+.jp-OutputArea-output {
+  background-color: #192738 !important;
+}
+
+/* Code text styling */
+.highlight pre {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #e6e6e6;
+}
+
+/* Input prompt styling */
+.prompt {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  color: #d09937;
+  margin-right: 10px;
+  user-select: none;
+}
+
+/* Output text styling */
+.cell_output pre {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  font-size: 14px;
+  color: #c0c6dc;
+  margin: 0;
+}
+
+/* Code cell copy button */
+.copybtn {
+  background-color: #192738;
+  border: none;
+  border-radius: 3px;
+  color: #c0c6dc;
+  padding: 4px 8px;
+  font-size: 12px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.copybtn:hover {
+  opacity: 1;
+  background-color: #192738;
+}
+
+/* Additional matplotlib output styling */
+.output_wrapper {
+  background: none !important;
+}
+
+/* Remove any residual borders or backgrounds */
+.cell_output * {
+  border: none !important;
+}
+
+.cell_output .output.stream {
+  margin-top: 0em;
+  margin-bottom: 0em;
+  box-shadow: none;
+}
+
+/* Target specifically matplotlib figure backgrounds */
+.output_html, .output_png::before {
+  background: none !important;
+}
+
+/* Ensure consistent spacing */
+.cell + .cell {
+  margin-top: 0em;
+}
+
+/* Hide-input button styling */
+.cell.tag_hide-input > .cell_input {
+  display: none;
+}
+
+details.toggle-hidden-code {
+  background-color: #192738;
+  border: none;
+  padding: 0;
+  margin: 8px 0;
+}
+
+details.toggle-hidden-code summary {
+  cursor: pointer;
+  padding: 8px 12px;
+  color: #FFFFFF;
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-size: 0.9em;
+  border-left: 2px solid #d09937;
+  background-color: #1e2a3a;
+  transition: background-color 0.2s ease;
+}
+
+details.toggle-hidden-code summary:hover {
+  background-color: #243447;
+  color: #d09937;
+}
+
+details.toggle-hidden-code[open] summary {
+  border-bottom: 1px solid #2a3b4d;
+  margin-bottom: 8px;
+}
+
+/* Remove the default disclosure triangle */
+details.toggle-hidden-code summary::-webkit-details-marker,
+details.toggle-hidden-code summary::marker {
+  display: none;
+}
+
+/* Add a custom indicator */
+details.toggle-hidden-code summary:before {
+  content: "▶";
+  color: #d09937;
+  margin-right: 8px;
+  font-size: 0.8em;
+  transition: transform 0.2s ease;
+}
+
+details.toggle-hidden-code[open] summary:before {
+  content: "▼";
+}
+
+/* div.highlight,
+div.highlight pre,
+.cell_input,
+.cell_output,
+.cell,
+.highlight .hll,
+.highlight .nn,
+.highlight-python,
+.jp-RenderedText,
+.jp-OutputArea-output {
+  background-color: #1E2430 !important;
+} */
+
+/* Update all code-related text colors */
+.highlight pre,
+.cell_output pre {
+  color: #E5E7EB !important;
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Clean up and standardize syntax highlighting */
+.highlight .k { color: #29A8AB !important; } 
+.highlight .s { color: #e1a53c !important; } 
+.highlight .si { color: #29A8AB !important; }
+.highlight .s1 { color: #e1a53c !important; }
+.highlight .s2 { color: #e1a53c !important; }
+.highlight .sd { color: #e1a53c !important; }
+.highlight .se { color: #e1a53c !important; }
+.highlight .vm { color: #e44949 !important; }
+.highlight .sa { color: #29A8AB !important; }
+.highlight .ni { color: #29A8AB !important; }
+.highlight .n { color: #E5E7EB !important; } 
+.highlight .nb { color: #29A8AB !important; }
+.highlight .ne { color: #29A8AB !important; }
+.highlight .ow { color: #29A8AB !important; }
+.highlight .c, .highlight .c1 { color: #b0b0b0 !important; }
+.highlight .o { color: #b0b0b0 !important; } 
+.highlight .mi { color: #93C5FD !important; }
+.highlight .kc { color: #93C5FD !important; }
+.highlight .bp { color: #93C5FD !important; }
+.highlight .kn { color: #29A8AB !important; }
+.highlight .nf { color: #e44949 !important; }
+.highlight .nc { color: #e44949 !important; }
+.highlight .fm { color: #e44949 !important; }
+.highlight .mf { color: #93C5FD !important; }
+
+
+/* Update prompt styling to match new scheme */
+.prompt {
+  color: #d09937 !important;
+}
+
+/* Update button and toggle styling */
+.toggle-input-visibility,
+.cell details.hide-input > summary,
+.cell-output-toggle,
+.cell-input-toggle,
+.toggle-hidden-code,
+.toggle-input,
+summary.headerlink,
+summary.toggle-input-visibility {
+  background-color: #1E2430 !important;
+  color: #E5E7EB !important;
+  border-left: 2px solid #d09937 !important;
+}
+
+/* Update hover states */
+.toggle-input-visibility:hover,
+.cell details.hide-input > summary:hover,
+.cell-output-toggle:hover,
+.cell-input-toggle:hover,
+.toggle-hidden-code:hover,
+.toggle-input:hover,
+summary.headerlink:hover,
+summary.toggle-input-visibility:hover {
+  background-color: #243447 !important;
+  color: #93C5FD !important;
+}

@@ -1,0 +1,51 @@
+Traceback (most recent call last):
+  File "/Users/alexshannon/anaconda3/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/alexshannon/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alexshannon/anaconda3/lib/python3.11/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alexshannon/anaconda3/lib/python3.11/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alexshannon/anaconda3/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/alexshannon/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/alexshannon/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/alexshannon/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+bk_tree_df = results_df[
+    (results_df.boroname=='Brooklyn')
+    & (results_df.tree_dbh.astype(int)<=41)
+    & (results_df.spc_common=='London planetree')
+    & (results_df.guards=='None')
+    # & (results_df.spc_common=='tree of heaven')
+    ].copy()
+
+f, ax = plt.subplots(figsize=(8, 5))
+sns.histplot(bk_tree_df.tree_dbh.astype(int), binwidth=1)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[9], line 1[0m
+[0;32m----> 1[0m bk_tree_df [38;5;241m=[39m results_df[
+[1;32m      2[0m     (results_df[38;5;241m.[39mboroname[38;5;241m==[39m[38;5;124m'[39m[38;5;124mBrooklyn[39m[38;5;124m'[39m)
+[1;32m      3[0m     [38;5;241m&[39m (results_df[38;5;241m.[39mtree_dbh[38;5;241m.[39mastype([38;5;28mint[39m)[38;5;241m<[39m[38;5;241m=[39m[38;5;241m41[39m)
+[1;32m      4[0m     [38;5;241m&[39m (results_df[38;5;241m.[39mspc_common[38;5;241m==[39m[38;5;124m'[39m[38;5;124mLondon planetree[39m[38;5;124m'[39m)
+[1;32m      5[0m     [38;5;241m&[39m (results_df[38;5;241m.[39mguards[38;5;241m==[39m[38;5;124m'[39m[38;5;124mNone[39m[38;5;124m'[39m)
+[1;32m      6[0m     [38;5;66;03m# & (results_df.spc_common=='tree of heaven')[39;00m
+[1;32m      7[0m     ][38;5;241m.[39mcopy()
+[1;32m      9[0m f, ax [38;5;241m=[39m plt[38;5;241m.[39msubplots(figsize[38;5;241m=[39m([38;5;241m8[39m, [38;5;241m5[39m))
+[1;32m     10[0m sns[38;5;241m.[39mhistplot(bk_tree_df[38;5;241m.[39mtree_dbh[38;5;241m.[39mastype([38;5;28mint[39m), binwidth[38;5;241m=[39m[38;5;241m1[39m)
+
+[0;31mNameError[0m: name 'results_df' is not defined
+NameError: name 'results_df' is not defined
+

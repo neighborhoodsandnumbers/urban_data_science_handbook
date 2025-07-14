@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Moran’s I & Spatial Clustering" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://goodresearch.dev/sections/4_geospatial_analysis/4_3_morans_i_and_spatial_clustering.html" />
+<meta property="og:site_name" content="Python" />
+<meta property="og:image" content="https://goodresearch.dev/_images/unicorn.png" />
+<meta property="og:image:alt" content="Python" />
+
+    <title>Moran’s I &amp; Spatial Clustering &#8212; Urban Data Science Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tufte.css?v=aa47c87b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tufte_old.css?v=6c0b83ca" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sections/4_geospatial_analysis/4_3_morans_i_and_spatial_clustering';</script>
+    <link rel="icon" href="../../_static/city2.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Spatial Regression" href="4_4_spatial_regression.html" />
+    <link rel="prev" title="Point Pattern Analysis" href="4_2_point_pattern_analysis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../0_introduction/0_1_role_of_data_in_cities.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nyc.png" class="logo__image only-light" alt="Urban Data Science Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/nyc.png" class="logo__image only-dark" alt="Urban Data Science Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../0_introduction/0_1_role_of_data_in_cities.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../0_introduction/0_2_goals_and_audience.html">Goals &amp; Audience</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../0_introduction/0_3_data_and_tooling.html">Data &amp; Tooling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1. Statistical Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1_statistical_foundations/1_1_distributions.html">Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_statistical_foundations/1_2_descriptive_stats.html">Descriptive Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_statistical_foundations/1_3_regression.html">Regression Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_statistical_foundations/1_4_hypothesis_testing.html">Hypothesis Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_statistical_foundations/1_5_causality.html">Causality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_statistical_foundations/1_6_case_study_nyc.html">Case Study [New York]: New Bike Lane Impact on Retail</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Advanced Stats &amp; Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2_adv_stats_ml/2_1_baysian_stats.html">Baysian Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_adv_stats_ml/2_2_time_series.html">Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_adv_stats_ml/2_3_prediction.html">Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_adv_stats_ml/2_4_dimensionality_reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_adv_stats_ml/2_5_clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_adv_stats_ml/2_6_decision_trees.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_adv_stats_ml/2_7_anomoly_detection.html">Anomoly Detection</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3. Network Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_network_science/3_1_urban_networks.html">Urban Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_network_science/3_2_measuring_networks.html">Measuring Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_network_science/3_3_street_networks_and_grids.html">Street Networks &amp; Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_network_science/3_4_network_resiliance.html">Network Resilience</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_network_science/3_5_multilayer_networks.html">Multilayer Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_network_science/3_6_network_route_algorithms.html">Network Route Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_network_science/3_7_community_detection.html">Community Detection</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4. Geospatial Analytics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="4_1_spatial_autocorrelation.html">Spatial Autocorrelation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_2_point_pattern_analysis.html">Point Pattern Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Moran’s I &amp; Spatial Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_4_spatial_regression.html">Spatial Regression</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">5. Complexity &amp; Urban Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5_complexity_and_urban_science/5_1_scaling_and_agglomeration.html">Scaling &amp; Agglomeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_complexity_and_urban_science/5_2_fractal_networks.html">Fractal Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">6. Urban Economics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6_urban_economics/6_1_econ_in_the_city.html">Urban Economics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_urban_economics/6_2_economic_complexity.html">Economic Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_urban_economics/6_3_game_theory_on_networks.html">Game Theory on Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_urban_economics/6_4_region_nation_global.html">Regions, Nations, Global</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">7. Modeling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../7_modeling/7_1_intro_to_agent_based_modeling.html">Intro to Agent-Based Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_modeling/7_2_simulating_urban_phenomena.html">Simulating Urban Phenomena</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_modeling/7_3_land_use_and_transportation_modeling.html">Land Use &amp; Transporation Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_modeling/7_4_epidemic_modeling.html">Epidemic Modeling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">8. Gathering Good Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../8_gathering_good_data/8_1_open_city_datasources.html">Open City Data Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8_gathering_good_data/8_2_company_datasources.html">Company Datasources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8_gathering_good_data/8_3_databases_and_sql.html">Databases &amp; SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8_gathering_good_data/8_4_webscraping_and_apis.html">Webscraping &amp; APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8_gathering_good_data/8_5_sensing_and_the_city.html">Sensing &amp; the City</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8_gathering_good_data/8_6_sattelite_imagery.html">Satellite Imagery</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">9. Achitecture &amp; Design</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../9_architecture_and_design/9_1_architecture.html">Architecture</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">10. Governance &amp; Policy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../10_governance_and_policy/10_1_governance.html">Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_governance_and_policy/10_2_voting_methods.html">Voting Methods</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">11. Closing Thoughts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_conclusions/book_recs.html">Recommended Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_conclusions/ethics.html">A note on ethics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_conclusions/better_world.html">A better world</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_conclusions/limits.html">Limits of Urban Data Science</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">12. Additional Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../12_resources/markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_resources/markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_resources/notebooks.html">Content with notebooks</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../12_resources/resources.html">resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_resources/data.html">Data</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/sections/4_geospatial_analysis/4_3_morans_i_and_spatial_clustering.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsections/4_geospatial_analysis/4_3_morans_i_and_spatial_clustering.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/sections/4_geospatial_analysis/4_3_morans_i_and_spatial_clustering.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Moran’s I & Spatial Clustering</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="moran-s-i-spatial-clustering">
+<h1>Moran’s I &amp; Spatial Clustering<a class="headerlink" href="#moran-s-i-spatial-clustering" title="Link to this heading">#</a></h1>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./sections/4_geospatial_analysis"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="4_2_point_pattern_analysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Point Pattern Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="4_4_spatial_regression.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Spatial Regression</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By A.C. Shannon-Ding
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

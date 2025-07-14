@@ -1,0 +1,2642 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Distributions" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://goodresearch.dev/sections/1_statistical_foundations/1_1_distributions.html" />
+<meta property="og:site_name" content="Python" />
+<meta property="og:description" content="Well, it’s up in the mornin’ tryin’ to find a job of work Stand in one place till your feet begin to hurt If you got a lot o’ money you can make yourself a’merry If you only got a nickel, it’s the ..." />
+<meta property="og:image" content="https://goodresearch.dev/_images/unicorn.png" />
+<meta property="og:image:alt" content="Python" />
+<meta name="description" content="Well, it’s up in the mornin’ tryin’ to find a job of work Stand in one place till your feet begin to hurt If you got a lot o’ money you can make yourself a’merry If you only got a nickel, it’s the ..." />
+
+    <title>Distributions &#8212; Urban Data Science Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tufte.css?v=aa47c87b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tufte_old.css?v=6c0b83ca" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sections/1_statistical_foundations/1_1_distributions';</script>
+    <link rel="icon" href="../../_static/city2.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Descriptive Statistics" href="1_2_descriptive_stats.html" />
+    <link rel="prev" title="Data &amp; Tooling" href="../0_introduction/0_3_data_and_tooling.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../0_introduction/0_1_role_of_data_in_cities.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nyc.png" class="logo__image only-light" alt="Urban Data Science Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/nyc.png" class="logo__image only-dark" alt="Urban Data Science Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../0_introduction/0_1_role_of_data_in_cities.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../0_introduction/0_2_goals_and_audience.html">Goals &amp; Audience</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../0_introduction/0_3_data_and_tooling.html">Data &amp; Tooling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1. Statistical Foundations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_2_descriptive_stats.html">Descriptive Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_3_regression.html">Regression Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_4_hypothesis_testing.html">Hypothesis Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_5_causality.html">Causality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_6_case_study_nyc.html">Case Study [New York]: New Bike Lane Impact on Retail</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Advanced Stats &amp; Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2_adv_stats_ml/2_1_baysian_stats.html">Baysian Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_adv_stats_ml/2_2_time_series.html">Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_adv_stats_ml/2_3_prediction.html">Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_adv_stats_ml/2_4_dimensionality_reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_adv_stats_ml/2_5_clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_adv_stats_ml/2_6_decision_trees.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_adv_stats_ml/2_7_anomoly_detection.html">Anomoly Detection</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3. Network Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_network_science/3_1_urban_networks.html">Urban Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_network_science/3_2_measuring_networks.html">Measuring Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_network_science/3_3_street_networks_and_grids.html">Street Networks &amp; Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_network_science/3_4_network_resiliance.html">Network Resilience</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_network_science/3_5_multilayer_networks.html">Multilayer Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_network_science/3_6_network_route_algorithms.html">Network Route Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_network_science/3_7_community_detection.html">Community Detection</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4. Geospatial Analytics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4_geospatial_analysis/4_1_spatial_autocorrelation.html">Spatial Autocorrelation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_geospatial_analysis/4_2_point_pattern_analysis.html">Point Pattern Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_geospatial_analysis/4_3_morans_i_and_spatial_clustering.html">Moran’s I &amp; Spatial Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_geospatial_analysis/4_4_spatial_regression.html">Spatial Regression</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">5. Complexity &amp; Urban Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5_complexity_and_urban_science/5_1_scaling_and_agglomeration.html">Scaling &amp; Agglomeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_complexity_and_urban_science/5_2_fractal_networks.html">Fractal Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">6. Urban Economics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6_urban_economics/6_1_econ_in_the_city.html">Urban Economics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_urban_economics/6_2_economic_complexity.html">Economic Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_urban_economics/6_3_game_theory_on_networks.html">Game Theory on Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_urban_economics/6_4_region_nation_global.html">Regions, Nations, Global</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">7. Modeling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../7_modeling/7_1_intro_to_agent_based_modeling.html">Intro to Agent-Based Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_modeling/7_2_simulating_urban_phenomena.html">Simulating Urban Phenomena</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_modeling/7_3_land_use_and_transportation_modeling.html">Land Use &amp; Transporation Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_modeling/7_4_epidemic_modeling.html">Epidemic Modeling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">8. Gathering Good Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../8_gathering_good_data/8_1_open_city_datasources.html">Open City Data Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8_gathering_good_data/8_2_company_datasources.html">Company Datasources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8_gathering_good_data/8_3_databases_and_sql.html">Databases &amp; SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8_gathering_good_data/8_4_webscraping_and_apis.html">Webscraping &amp; APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8_gathering_good_data/8_5_sensing_and_the_city.html">Sensing &amp; the City</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8_gathering_good_data/8_6_sattelite_imagery.html">Satellite Imagery</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">9. Achitecture &amp; Design</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../9_architecture_and_design/9_1_architecture.html">Architecture</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">10. Governance &amp; Policy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../10_governance_and_policy/10_1_governance.html">Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_governance_and_policy/10_2_voting_methods.html">Voting Methods</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">11. Closing Thoughts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11_conclusions/book_recs.html">Recommended Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_conclusions/ethics.html">A note on ethics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_conclusions/better_world.html">A better world</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_conclusions/limits.html">Limits of Urban Data Science</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">12. Additional Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../12_resources/markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_resources/markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_resources/notebooks.html">Content with notebooks</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../12_resources/resources.html">resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_resources/data.html">Data</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/sections/1_statistical_foundations/1_1_distributions.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsections/1_statistical_foundations/1_1_distributions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/sections/1_statistical_foundations/1_1_distributions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Distributions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-distributions-tell-us-about-cities">What Do Distributions Tell Us About Cities?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tour-of-common-distributions">A Tour of Common Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distributions">Uniform Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-foundations-assumptions">Mathematical Foundations &amp; Assumptions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#in-urban-systems">In Urban Systems</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-distributions">Normal Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-foundations-and-assumptions">Mathematical Foundations and Assumptions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#emergence-in-urban-systems">Emergence in Urban Systems</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-1-distributions-in-the-city">Chapter 1: Distributions in the City</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-statistical-distributions">1.1 Understanding Statistical Distributions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Chapter 1: Distributions in the City</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1 Understanding Statistical Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-statistical-distribution">1.1.1 What Is a Statistical Distribution?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-moments-the-building-blocks">1.1.2 Distribution Moments: The Building Blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">Mean</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#skewness">Skewness</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kurtosis">Kurtosis</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-distributions-in-urban-data">1.1.3 Common Distributions in Urban Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#poisson-distribution">Poisson Distribution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#binomial-distribution">Binomial Distribution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="distributions">
+<h1>Distributions<a class="headerlink" href="#distributions" title="Link to this heading">#</a></h1>
+<p><em>Well, it’s up in the mornin’ tryin’ to find a job of work<br>
+Stand in one place till your feet begin to hurt<br>
+If you got a lot o’ money you can make yourself a’merry<br>
+If you only got a nickel, it’s the Staten Island Ferry</em><br>
+- Bob Dylan, <em><a href="https://www.youtube.com/watch?v=QbmWcHW8xR4" target="_blank">Hard Times in New York Town</a></em></p>
+<p>Welcome to New York! We’ll begin our journey by getting to know one of the world’s great global cities through the lens of statistics, starting with a survey of statistical distributions.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This cell helps define the plot style for the rest of the notebook.</span>
+<span class="c1"># I&#39;ve taken some of my own liberties with regards, to style, but am</span>
+<span class="c1"># heavily indebted to the the tufte.css style guide for much of the</span>
+<span class="c1"># plotting &amp; general layout of this JupyterBook.</span>
+
+<span class="c1"># Check them out at: https://edwardtufte.github.io/tufte-css/</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span><span class="p">,</span> <span class="n">cycler</span>
+<span class="kn">from</span> <span class="nn">matplotlib.font_manager</span> <span class="kn">import</span> <span class="n">findfont</span><span class="p">,</span> <span class="n">FontProperties</span>
+
+<span class="n">font_stack</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;et-book&#39;</span><span class="p">,</span> <span class="s1">&#39;Palatino&#39;</span><span class="p">,</span> <span class="s1">&#39;Palatino Linotype&#39;</span><span class="p">,</span> <span class="s1">&#39;Palatino LT STD&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;Book Antiqua&#39;</span><span class="p">,</span> <span class="s1">&#39;Georgia&#39;</span><span class="p">,</span> <span class="s1">&#39;DejaVu Serif&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_available_font</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">font</span> <span class="ow">in</span> <span class="n">font_stack</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">findfont</span><span class="p">(</span><span class="n">FontProperties</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="n">font</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">font</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">continue</span>
+    <span class="k">return</span> <span class="s1">&#39;DejaVu Serif&#39;</span>
+
+<span class="n">selected_font</span> <span class="o">=</span> <span class="n">get_available_font</span><span class="p">()</span>
+
+<span class="c1"># Create a custom style dictionary with transparent elements</span>
+<span class="n">dark_theme</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Figure and background</span>
+    <span class="s1">&#39;figure.facecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;axes.facecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
+    
+    <span class="c1"># Save with transparent background</span>
+    <span class="s1">&#39;savefig.transparent&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    
+    <span class="c1"># Font settings</span>
+    <span class="s1">&#39;font.family&#39;</span><span class="p">:</span> <span class="s1">&#39;serif&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;font.serif&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">selected_font</span><span class="p">],</span>
+    <span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s1">&#39;font.weight&#39;</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+    
+    <span class="c1"># Grid settings</span>
+    <span class="s1">&#39;grid.color&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;grid.alpha&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+    
+    <span class="c1"># Text colors</span>
+    <span class="s1">&#39;text.color&#39;</span><span class="p">:</span> <span class="s1">&#39;#ddd&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;axes.labelcolor&#39;</span><span class="p">:</span> <span class="s1">&#39;#ddd&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;xtick.color&#39;</span><span class="p">:</span> <span class="s1">&#39;#ddd&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ytick.color&#39;</span><span class="p">:</span> <span class="s1">&#39;#ddd&#39;</span><span class="p">,</span>
+    
+    <span class="c1"># Edge colors</span>
+    <span class="s1">&#39;axes.edgecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;#ddd&#39;</span><span class="p">,</span>
+    
+    <span class="c1"># Line colors</span>
+    <span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">:</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span>
+        <span class="s1">&#39;#D1B675&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#93C5FD&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#B91C1C&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#d1d1d1&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#C3FF5B&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#FF88FF&#39;</span><span class="p">,</span>  
+        <span class="s1">&#39;#FFD700&#39;</span><span class="p">,</span>  
+        <span class="s1">&#39;#8BE9FD&#39;</span>   
+    <span class="p">])</span>
+<span class="p">}</span>
+
+<span class="c1"># Apply the custom style</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dark_theme</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="what-do-distributions-tell-us-about-cities">
+<h2>What Do Distributions Tell Us About Cities?<a class="headerlink" href="#what-do-distributions-tell-us-about-cities" title="Link to this heading">#</a></h2>
+<p>Cities are symphonies of interaction - people stride through streets, businesses open and close, neighbors gossip, strangers meet on a first date, delivery vehicles weave through alleys, and somewhere, always, a toilet flushes. At first glance, these urban phenomena might appear to be chaotic, defying systemic analysis. Yet beneath the apparent cacophony often lies remarkable regularity that we can attempt to understand through the mathematical framework of statistics.<br></p>
+<p>At its core, a statistical distribution represents our understanding of how values vary across a population. They allow us to describe and understand our data in a systematic way, and form the basis of a many of the predictive methods we’ll tackle later.</p>
+<p><em>What fraction of buildings in Manhattan exceed 20 stories? How long do people wait for buses in Queens? How much can I hope to earn next year if I open a coffee shop in Bed Stuy?</em> Questions like these are fundemental to the understanding of urban life, and find their answers in the shapes and patterns of statistical distributions.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><em><sup>*</sup>”All models are wrong, but some are useful” - George Box, British Statistician</em></p>
+</aside>
+<p>Alas, data rarely come pre-packaged with labels stating “<em>I am a Gamma Distribution.</em>” In the real world, data are often messy, raw and discordant. Indeed, it can be convincingly argued that probability distributions <a href="https://www.nature.com/articles/d41586-024-04096-5" target="_blank">don’t even exist</a>! (Although it can’t be convincingly argued that they aren’t useful!<sup>*</sup>)</p>
+<p>The act of matching data with a distribution tells us something fundemental about how the data originate. When we discover that wait times at intersection crossings follow an exponential distribution, we’re uncovering more than a pattern - we’re revealing the underlying mechanics of urban movement, helping build a framework that help us understand why these patterns emerge and how they might change under different conditions. This knowledge becomes invaluable for urban planning, policy-making, and the design of more livable cities.</p>
+<p>The distribution of new building heights, for example, likely reflect a dialog between engineering constraints, economic forces, and government regulation. Changes to any of these dimensions - say the development of reliable <a href="https://www.dezeen.com/2021/07/30/henn-tu-dresden-carbon-fibre-concrete-building/" target="_blank">carbon fibre reinforced concrete<a> or <a href="https://www.treehugger.com/single-stair-buildings-united-states-5197036" target="_blank">to building fire codes</a> - could have a notable impact on the distribution of new building heights.</p>
+<p>Normal distributions often emerge from the cumulative effect of many independent, small influences, while power law distributions typically arise in systems shaped by preferential attachment or disproportionate reinforcement of advantage (aka “winner take all” scenarios).</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><em><sup>*</sup> Seemingly unrelated systems, such as vascular &amp; transport networks display remarkable similarities, as we’ll explore in Chapter 5.</em></p>
+</aside>
+<p>What makes distributions particularly powerful is their universality. Similar patterns often emerge across different cities and cultures<sup>*</sup>, suggesting fundamental principles underlying urban organization. A distribution of retail store sizes in New York might mirror one in Tokyo, hinting at common economic principles at work. Yet the parameters of these distributions – their precise shapes and values – can reveal crucial differences between cities, neighborhoods, or time periods.</p>
+</section>
+<section id="a-tour-of-common-distributions">
+<h2>A Tour of Common Distributions<a class="headerlink" href="#a-tour-of-common-distributions" title="Link to this heading">#</a></h2>
+<p>Many statistics texts start with descriptive statistics (mean, standard deviation, etc.) before working up to distributions. While this may suit some introductory courses, I find it unintuitive. Descriptive statistics are imporant simplifications, but understanding when they’re appropriate and what they’re simplifying is critical, and something that I see this mistaken all too often in practice. Given most readers will know what a “mean” is, I feel strongly that starting with distributions is a more appropriate approach here.</p>
+<p>Most statistics books also clearly divide “discrete” &amp; “continuous” distributions. While we’ll address these differences in various contexts, given the generally large-scale of data used in modern data science, this is not a fundemental distinction for most practical purposes.</p>
+<p>The best way to build intuition is to see examples and practice. Below, I’ve outlined a handful of statistical distributions that I believe an Urban Data Scientist should have some working familiarty with. I particularly focus on <em>why</em> these distributions emerge – they are not simply formulae to memorize, but clues that point us towards a deeper understanding of the underlying process. If we’re a little clever, this can help us not only predict future values, but allow us to imagine, foster, and engineer better urban systems.</p>
+<p>We’ll start with an overview of the distributions themselves, looking at an example or two for each. We’ll then dive into how to evaluate whether our data match a given distribution. Loosely speaking, when we’re dealing with known, idealized distributions, we call this “Probability”; when we’re evaluating how to fit messy, real-world data to an idealized pattern and understanding the uncertainty involved in this fitting, this is called “Statistics.”</p>
+<p>What follows can, admittedly, be a bit dense. It’s not meant to be fully digested in one sitting; rather, try to pull away the key points and develop a brief intuition about each distribution - look for the <em>why</em>. Then go out in the world, observe various phenomena, and try to see if you can identify the associated distribution.</p>
+<section id="uniform-distributions">
+<h3>Uniform Distributions<a class="headerlink" href="#uniform-distributions" title="Link to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><em><sup>*</sup> If you want to annoy your friends, next time you’re asked to pick a random number between 1 and 100, ask them which distribution they’d like you to sample from.</em></p>
+</aside>
+<p>The Uniform Distribution is the most basic of distributions; it is often what is colloquially meant when someone says “random<sup>*</sup>.” It assumes that all values between two end points are equally likely.</p>
+<p>Despite this colloquial association with ‘randomness,’ uniform distributions are remarkably uncommon in the real world. Uniformity typically appears only when humans deliberately impose it through design or regulation.</p>
+<p>When we encounter uniform distributions in cities, they often tell us something about human intervention - about our attempts to impose order on urban chaos, whether through zoning laws, transit scheduling, or urban planning guidelines.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">uniform</span>
+
+<span class="c1"># Define the parameters</span>
+<span class="n">loc</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Create a uniform distribution instance</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
+
+<span class="c1"># Generate x values that span a bit beyond the interval to see the boundaries clearly</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+
+<span class="c1"># Compute the PDF values for these x values</span>
+<span class="n">pdf_values</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Create the plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Uniform PDF&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf_values</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.07</span><span class="p">,</span> <span class="mf">1.15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Uniform Distribution Over [0, 1]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/1e7686b3292d3b66e6f5ef43868d3140e572334d97828a65be1d77c82cbb8cb9.png" src="../../_images/1e7686b3292d3b66e6f5ef43868d3140e572334d97828a65be1d77c82cbb8cb9.png" />
+</div>
+</div>
+<section id="mathematical-foundations-assumptions">
+<h4>Mathematical Foundations &amp; Assumptions<a class="headerlink" href="#mathematical-foundations-assumptions" title="Link to this heading">#</a></h4>
+<p>The Uniform distribution describes a variable equally likely to take any value within an interval <span class="math notranslate nohighlight">\([a,b]\)</span>. It’s defined by just two parameters:</p>
+<p><span class="math notranslate nohighlight">\(a\)</span>: minimum value<br>
+<span class="math notranslate nohighlight">\(b\)</span>: maximum value</p>
+<p>And has a probability density function (PDF) of:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+f(x) =
+\begin{cases} 
+\frac{1}{b-a} &amp; \text{if } x \in [a,b], \\
+0 &amp; \text{otherwise}.
+\end{cases}
+\end{split}\]</div>
+<p>Key assumptions:</p>
+<ul class="simple">
+<li><p>Constant probability density throughout the interval</p></li>
+<li><p>Zero probability outside the interval</p></li>
+<li><p>All intervals of equal length have equal probability</p></li>
+</ul>
+</section>
+<section id="in-urban-systems">
+<h4>In Urban Systems<a class="headerlink" href="#in-urban-systems" title="Link to this heading">#</a></h4>
+<p>Uniform distributions do not occur often in the natural world (which prefers normal &amp; long-tail distributions), but we’ll see them come up in some urban contexts. Examples could include things like evenly spaced blocks in a city grid, the spatial distribution of trees or lampposts in a park, or temporal events like the likelyhood of a bus arriving at any minute in an interval.</p>
+</section>
+</section>
+<section id="normal-distributions">
+<h3>Normal Distributions<a class="headerlink" href="#normal-distributions" title="Link to this heading">#</a></h3>
+<section id="mathematical-foundations-and-assumptions">
+<h4>Mathematical Foundations and Assumptions<a class="headerlink" href="#mathematical-foundations-and-assumptions" title="Link to this heading">#</a></h4>
+<p>The normal distribution arises from the Central Limit Theorem, which tells us that when many small, independent factors contribute additively to a phenomenon, their sum tends toward a normal distribution. Mathematically, it’s defined by two parameters: the mean (μ) and standard deviation (σ). The distribution is symmetric, with about 68% of observations falling within one standard deviation of the mean.
+The key assumptions include:</p>
+<ul class="simple">
+<li><p>The variable can take any real value (positive or negative)</p></li>
+<li><p>The distribution is symmetric around its mean</p></li>
+<li><p>Small deviations from the mean are more common than large ones</p></li>
+<li><p>The mean, median, and mode are identical</p></li>
+</ul>
+</section>
+<section id="emergence-in-urban-systems">
+<h4>Emergence in Urban Systems<a class="headerlink" href="#emergence-in-urban-systems" title="Link to this heading">#</a></h4>
+<p>The normal distribution appears in urban systems when multiple independent factors contribute to a measurement. Consider pedestrian walking speeds: numerous factors affect an individual’s pace – age, fitness, purpose of trip, weather conditions, sidewalk conditions, etc. None of these factors dominates the others, and they combine additively to produce the final walking speed.<br>
+Similarly, building floor areas within a specific category (like single-family homes built in the same decade) often follow a normal distribution because multiple independent decisions about room sizes, layouts, and configurations combine to determine the final area.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://data.cityofnewyork.us/resource/uvpi-gqnh.csv</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sodapy</span> <span class="kn">import</span> <span class="n">Socrata</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Socrata</span><span class="p">(</span><span class="s2">&quot;data.cityofnewyork.us&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s1">&#39;uvpi-gqnh&#39;</span><span class="p">,</span> 
+    <span class="n">where</span><span class="o">=</span><span class="s2">&quot;boroname = &#39;Brooklyn&#39; AND health==&#39;Good&#39; AND curb_loc==&#39;OnCurb&#39; AND spc_common==&#39;London planetree&#39;&quot;</span><span class="p">,</span>
+    <span class="n">limit</span><span class="o">=</span><span class="mi">50000</span><span class="p">)</span>
+<span class="n">census_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Requests made without an app_token will be subject to strict throttling limits.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">census_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tree_id</th>
+      <th>block_id</th>
+      <th>created_at</th>
+      <th>tree_dbh</th>
+      <th>stump_diam</th>
+      <th>curb_loc</th>
+      <th>status</th>
+      <th>health</th>
+      <th>spc_latin</th>
+      <th>spc_common</th>
+      <th>...</th>
+      <th>boro_ct</th>
+      <th>state</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>x_sp</th>
+      <th>y_sp</th>
+      <th>council_district</th>
+      <th>census_tract</th>
+      <th>bin</th>
+      <th>bbl</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>189465</td>
+      <td>219493</td>
+      <td>2015-08-30T00:00:00.000</td>
+      <td>22</td>
+      <td>0</td>
+      <td>OnCurb</td>
+      <td>Alive</td>
+      <td>Good</td>
+      <td>Platanus x acerifolia</td>
+      <td>London planetree</td>
+      <td>...</td>
+      <td>3019100</td>
+      <td>New York</td>
+      <td>40.69473314</td>
+      <td>-73.96821054</td>
+      <td>993065.3039</td>
+      <td>192388.0651</td>
+      <td>35</td>
+      <td>191</td>
+      <td>3054331</td>
+      <td>3018880073</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>195265</td>
+      <td>227489</td>
+      <td>2015-09-01T00:00:00.000</td>
+      <td>19</td>
+      <td>0</td>
+      <td>OnCurb</td>
+      <td>Alive</td>
+      <td>Good</td>
+      <td>Platanus x acerifolia</td>
+      <td>London planetree</td>
+      <td>...</td>
+      <td>3044000</td>
+      <td>New York</td>
+      <td>40.61190461</td>
+      <td>-73.97042748</td>
+      <td>992460.7283</td>
+      <td>162211.1235</td>
+      <td>44</td>
+      <td>440</td>
+      <td>3173737</td>
+      <td>3065860055</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>193690</td>
+      <td>227528</td>
+      <td>2015-09-01T00:00:00.000</td>
+      <td>36</td>
+      <td>0</td>
+      <td>OnCurb</td>
+      <td>Alive</td>
+      <td>Good</td>
+      <td>Platanus x acerifolia</td>
+      <td>London planetree</td>
+      <td>...</td>
+      <td>3044000</td>
+      <td>New York</td>
+      <td>40.61366258</td>
+      <td>-73.97453014</td>
+      <td>991321.4501</td>
+      <td>162851.2413</td>
+      <td>44</td>
+      <td>440</td>
+      <td>3173500</td>
+      <td>3065820101</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>196132</td>
+      <td>206122</td>
+      <td>2015-09-02T00:00:00.000</td>
+      <td>19</td>
+      <td>0</td>
+      <td>OnCurb</td>
+      <td>Alive</td>
+      <td>Good</td>
+      <td>Platanus x acerifolia</td>
+      <td>London planetree</td>
+      <td>...</td>
+      <td>3043600</td>
+      <td>New York</td>
+      <td>40.61293798</td>
+      <td>-73.97671635</td>
+      <td>990714.5412</td>
+      <td>162587.0807</td>
+      <td>44</td>
+      <td>436</td>
+      <td>3172416</td>
+      <td>3065570055</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>192890</td>
+      <td>210568</td>
+      <td>2015-08-31T00:00:00.000</td>
+      <td>28</td>
+      <td>0</td>
+      <td>OnCurb</td>
+      <td>Alive</td>
+      <td>Good</td>
+      <td>Platanus x acerifolia</td>
+      <td>London planetree</td>
+      <td>...</td>
+      <td>3054800</td>
+      <td>New York</td>
+      <td>40.60991608</td>
+      <td>-73.94861133</td>
+      <td>998518.3471</td>
+      <td>161489.4477</td>
+      <td>48</td>
+      <td>548</td>
+      <td>3182701</td>
+      <td>3067870032</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 45 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s1">&#39;hn5i-inap&#39;</span><span class="p">,</span> 
+    <span class="n">where</span><span class="o">=</span><span class="s2">&quot;genusspecies = &#39;Platanus x acerifolia - London planetree&#39;&quot;</span><span class="p">,</span>
+    <span class="n">limit</span><span class="o">=</span><span class="mi">50000</span><span class="p">)</span>
+<span class="n">tree_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="n">tree_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>objectid</th>
+      <th>dbh</th>
+      <th>tpstructure</th>
+      <th>tpcondition</th>
+      <th>stumpdiameter</th>
+      <th>plantingspaceglobalid</th>
+      <th>geometry</th>
+      <th>globalid</th>
+      <th>genusspecies</th>
+      <th>createddate</th>
+      <th>location</th>
+      <th>updateddate</th>
+      <th>riskrating</th>
+      <th>riskratingdate</th>
+      <th>planteddate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4622808</td>
+      <td>19</td>
+      <td>Full</td>
+      <td>Good</td>
+      <td>0</td>
+      <td>05AA703F-7FF7-46FB-A0A9-9A99A92D3D67</td>
+      <td>POINT (-73.9437676541679707 40.8170751138685191)</td>
+      <td>6B685F11-F310-461C-85BD-ABF76D3F5950</td>
+      <td>Platanus x acerifolia - London planetree</td>
+      <td>2016-11-02 16:59:52.0000000</td>
+      <td>{'type': 'Point', 'coordinates': [-73.94376765...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>427506</td>
+      <td>29</td>
+      <td>Full</td>
+      <td>Good</td>
+      <td>NaN</td>
+      <td>3ACC265D-748B-49E1-ACE9-BA5ED6F6E900</td>
+      <td>POINT (-73.9284515899928039 40.6660572253467052)</td>
+      <td>0DE4BB3B-1581-49F9-A743-18D58D247319</td>
+      <td>Platanus x acerifolia - London planetree</td>
+      <td>2015-08-15 15:27:00.0000000</td>
+      <td>{'type': 'Point', 'coordinates': [-73.92845158...</td>
+      <td>2018-04-24 15:37:29.0000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>120433</td>
+      <td>34</td>
+      <td>Retired</td>
+      <td>Fair</td>
+      <td>NaN</td>
+      <td>73CD42CD-D49F-4583-BBA6-2A28F870C049</td>
+      <td>POINT (-73.8372481324947785 40.6594708670303930)</td>
+      <td>7DE5BA6A-5FEA-43B0-A3DF-4EE3D41A3EC7</td>
+      <td>Platanus x acerifolia - London planetree</td>
+      <td>2015-03-27 04:00:00.0000000</td>
+      <td>{'type': 'Point', 'coordinates': [-73.83724813...</td>
+      <td>2021-12-22 14:26:30.0000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>116427</td>
+      <td>8</td>
+      <td>Full</td>
+      <td>Good</td>
+      <td>NaN</td>
+      <td>6F27A313-DA61-4C01-8CD5-12F7E60B64D5</td>
+      <td>POINT (-73.9532771493112477 40.8022028774204202)</td>
+      <td>5C4064E7-6EE9-4794-B2BB-48C72717B0AD</td>
+      <td>Platanus x acerifolia - London planetree</td>
+      <td>2015-03-25 04:00:00.0000000</td>
+      <td>{'type': 'Point', 'coordinates': [-73.95327714...</td>
+      <td>2023-06-13 13:30:04.0000000</td>
+      <td>5</td>
+      <td>2023-06-13 13:30:04.0000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>369460</td>
+      <td>4</td>
+      <td>Retired</td>
+      <td>Dead</td>
+      <td>NaN</td>
+      <td>2F175476-3591-4EB5-9EA8-EE4EAFCA0D2B</td>
+      <td>POINT (-73.9325318448603923 40.6822429006121524)</td>
+      <td>94C9CF8E-A01A-4AFA-9E4E-CA93E05B88C8</td>
+      <td>Platanus x acerifolia - London planetree</td>
+      <td>2015-08-09 15:01:00.0000000</td>
+      <td>{'type': 'Point', 'coordinates': [-73.93253184...</td>
+      <td>2021-09-09 18:31:41.0000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>49995</th>
+      <td>3346332</td>
+      <td>13</td>
+      <td>Full</td>
+      <td>Fair</td>
+      <td>0</td>
+      <td>61FA6251-522E-4024-B579-5B6272E7AB99</td>
+      <td>POINT (-73.9769183131975439 40.6726105010123433)</td>
+      <td>EBF1A69D-A4B6-4C4B-8AC0-9F5F82A714A9</td>
+      <td>Platanus x acerifolia - London planetree</td>
+      <td>2016-05-11 19:48:48.0000000</td>
+      <td>{'type': 'Point', 'coordinates': [-73.97691831...</td>
+      <td>2024-04-03 15:42:24.0000000</td>
+      <td>8</td>
+      <td>2024-04-03 15:42:25.0000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>49996</th>
+      <td>3346673</td>
+      <td>NaN</td>
+      <td>Stump</td>
+      <td>Dead</td>
+      <td>23</td>
+      <td>95ECE1DD-249E-4DE2-9D34-85E6F0F2C1DA</td>
+      <td>POINT (-73.8990301513581045 40.6970877876470780)</td>
+      <td>55D13461-6EE1-49F5-AC8B-0C05F8BABCEB</td>
+      <td>Platanus x acerifolia - London planetree</td>
+      <td>2016-05-11 20:26:00.0000000</td>
+      <td>{'type': 'Point', 'coordinates': [-73.89903015...</td>
+      <td>2024-02-26 13:16:11.0000000</td>
+      <td>8</td>
+      <td>2020-12-03 14:38:00.0000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>49997</th>
+      <td>3345632</td>
+      <td>19</td>
+      <td>Full</td>
+      <td>Fair</td>
+      <td>NaN</td>
+      <td>9159B35F-648A-4A1C-8046-E9954CB2613F</td>
+      <td>POINT (-73.9743315497501470 40.6731547177459021)</td>
+      <td>709DDD48-D13A-4686-BF59-84837CB4A78F</td>
+      <td>Platanus x acerifolia - London planetree</td>
+      <td>2016-05-11 19:43:20.0000000</td>
+      <td>{'type': 'Point', 'coordinates': [-73.97433154...</td>
+      <td>2024-03-27 18:57:45.0000000</td>
+      <td>8</td>
+      <td>2024-03-27 18:57:45.0000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>49998</th>
+      <td>3024440</td>
+      <td>29</td>
+      <td>Full</td>
+      <td>Fair</td>
+      <td>NaN</td>
+      <td>8F48E833-BB5F-4E4E-BFE0-3166446C0B8F</td>
+      <td>POINT (-73.9960987550073810 40.6864813763342354)</td>
+      <td>3F0E53EE-B6F2-4BC6-8A50-9F7BE6257871</td>
+      <td>Platanus x acerifolia - London planetree</td>
+      <td>2016-04-04 11:16:35.0000000</td>
+      <td>{'type': 'Point', 'coordinates': [-73.99609875...</td>
+      <td>2022-02-28 19:14:09.0000000</td>
+      <td>6</td>
+      <td>2022-02-28 19:14:09.0000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>49999</th>
+      <td>2966803</td>
+      <td>24</td>
+      <td>Full</td>
+      <td>Fair</td>
+      <td>NaN</td>
+      <td>4C44A4D4-C2D8-495A-9D94-AC918596E9B2</td>
+      <td>POINT (-74.0046291777526761 40.6167757595809888)</td>
+      <td>6500FBF2-7CB2-4189-A0DC-044E2A82B388</td>
+      <td>Platanus x acerifolia - London planetree</td>
+      <td>2016-03-29 12:22:00.0000000</td>
+      <td>{'type': 'Point', 'coordinates': [-74.00462917...</td>
+      <td>2022-07-14 19:19:45.0000000</td>
+      <td>8</td>
+      <td>2022-07-14 19:19:45.0000000</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>50000 rows × 15 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m_df</span> <span class="o">=</span> <span class="n">tree_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">census_df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;tree_id&#39;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;objectid&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m_df</span><span class="o">.</span><span class="n">tpcondition</span><span class="o">.</span><span class="n">value_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;bound method IndexOpsMixin.value_counts of 0           Good
+1           Fair
+2           Dead
+3           Fair
+4           Good
+         ...    
+238         Fair
+239         Fair
+240    Excellent
+241         Good
+242         Good
+Name: tpcondition, Length: 243, dtype: object&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bk_tree_df</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">results_df</span><span class="o">.</span><span class="n">boroname</span><span class="o">==</span><span class="s1">&#39;Brooklyn&#39;</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">results_df</span><span class="o">.</span><span class="n">tree_dbh</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">41</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">results_df</span><span class="o">.</span><span class="n">spc_common</span><span class="o">==</span><span class="s1">&#39;London planetree&#39;</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">results_df</span><span class="o">.</span><span class="n">guards</span><span class="o">==</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+    <span class="c1"># &amp; (results_df.spc_common==&#39;tree of heaven&#39;)</span>
+    <span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bk_tree_df</span><span class="o">.</span><span class="n">tree_dbh</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">binwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">bk_tree_df</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="p">(</span><span class="n">results_df</span><span class="o">.</span><span class="n">boroname</span><span class="o">==</span><span class="s1">&#39;Brooklyn&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="o">&amp;</span> <span class="p">(</span><span class="n">results_df</span><span class="o">.</span><span class="n">tree_dbh</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">41</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="o">&amp;</span> <span class="p">(</span><span class="n">results_df</span><span class="o">.</span><span class="n">spc_common</span><span class="o">==</span><span class="s1">&#39;London planetree&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="o">&amp;</span> <span class="p">(</span><span class="n">results_df</span><span class="o">.</span><span class="n">guards</span><span class="o">==</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="c1"># &amp; (results_df.spc_common==&#39;tree of heaven&#39;)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bk_tree_df</span><span class="o">.</span><span class="n">tree_dbh</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">binwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;results_df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tree_id</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bk_tree_df</span><span class="o">.</span><span class="n">guards</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>guards
+None       12012
+Helpful      689
+Harmful      287
+Unsure       137
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">results_df</span><span class="o">.</span><span class="n">spc_common</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="c1"># spc_common</span>
+<span class="c1"># status</span>
+<span class="c1"># curb_loc</span>
+<span class="c1"># Diameter of the tree, measured at approximately 54&quot; / 137cm above the ground. </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>London planetree
+honeylocust
+pin oak
+Japanese zelkova
+Callery pear
+littleleaf linden
+Sophora
+ginkgo
+cherry
+Norway maple
+American linden
+green ash
+swamp white oak
+American elm
+northern red oak
+silver linden
+sweetgum
+red maple
+Chinese elm
+silver maple
+&#39;Schubert&#39; chokecherry
+Kentucky coffeetree
+purple-leaf plum
+dawn redwood
+golden raintree
+Japanese tree lilac
+crimson king maple
+sawtooth oak
+willow oak
+Amur maackia
+eastern redbud
+bald cypress
+crab apple
+English oak
+hedge maple
+scarlet oak
+Schumard&#39;s oak
+common hackberry
+white oak
+hawthorn
+sycamore maple
+sugar maple
+black oak
+European hornbeam
+Siberian elm
+black locust
+maple
+hardy rubber tree
+ash
+American hornbeam
+flowering dogwood
+serviceberry
+American hophornbeam
+white ash
+eastern redcedar
+shingle oak
+Amur maple
+tulip-poplar
+Cornelian cherry
+katsura tree
+mulberry
+tree of heaven
+black cherry
+bur oak
+horse chestnut
+Japanese hornbeam
+paper birch
+river birch
+blackgum
+silver birch
+Kentucky yellowwood
+Japanese maple
+black walnut
+Atlantic white cedar
+Chinese tree lilac
+Turkish hazelnut
+pagoda dogwood
+mimosa
+magnolia
+arborvitae
+pond cypress
+kousa dogwood
+crepe myrtle
+cockspur hawthorn
+Japanese snowbell
+American beech
+Persian ironwood
+Chinese chestnut
+Norway spruce
+catalpa
+Oklahoma redbud
+cucumber magnolia
+paperbark maple
+Chinese fringetree
+two-winged silverbell
+weeping willow
+sassafras
+Amur cork tree
+pine
+false cypress
+European beech
+Atlas cedar
+eastern cottonwood
+Douglas-fir
+empress tree
+red pine
+eastern hemlock
+southern magnolia
+white pine
+holly
+spruce
+black maple
+southern red oak
+quaking aspen
+bigtooth aspen
+Ohio buckeye
+pignut hickory
+tartar maple
+Shantung maple
+boxelder
+trident maple
+red horse chestnut
+smoketree
+pitch pine
+American larch
+European alder
+Himalayan cedar
+blue spruce
+Osage-orange
+black pine
+Scots pine
+Virginia pine
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span><span class="p">,</span> <span class="n">cycler</span>
+<span class="kn">from</span> <span class="nn">matplotlib.font_manager</span> <span class="kn">import</span> <span class="n">findfont</span><span class="p">,</span> <span class="n">FontProperties</span>
+
+<span class="n">font_stack</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;et-book&#39;</span><span class="p">,</span> <span class="s1">&#39;Palatino&#39;</span><span class="p">,</span> <span class="s1">&#39;Palatino Linotype&#39;</span><span class="p">,</span> <span class="s1">&#39;Palatino LT STD&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;Book Antiqua&#39;</span><span class="p">,</span> <span class="s1">&#39;Georgia&#39;</span><span class="p">,</span> <span class="s1">&#39;DejaVu Serif&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_available_font</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">font</span> <span class="ow">in</span> <span class="n">font_stack</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">findfont</span><span class="p">(</span><span class="n">FontProperties</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="n">font</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">font</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">continue</span>
+    <span class="k">return</span> <span class="s1">&#39;DejaVu Serif&#39;</span>
+
+<span class="n">selected_font</span> <span class="o">=</span> <span class="n">get_available_font</span><span class="p">()</span>
+
+<span class="c1"># Create a custom style dictionary with transparent elements</span>
+<span class="n">dark_theme</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Figure and background</span>
+    <span class="s1">&#39;figure.facecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;axes.facecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
+    
+    <span class="c1"># Save with transparent background</span>
+    <span class="s1">&#39;savefig.transparent&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    
+    <span class="c1"># Font settings</span>
+    <span class="s1">&#39;font.family&#39;</span><span class="p">:</span> <span class="s1">&#39;serif&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;font.serif&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">selected_font</span><span class="p">],</span>
+    <span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s1">&#39;font.weight&#39;</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+    
+    <span class="c1"># Grid settings</span>
+    <span class="s1">&#39;grid.color&#39;</span><span class="p">:</span> <span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;grid.alpha&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+    
+    <span class="c1"># Text colors</span>
+    <span class="s1">&#39;text.color&#39;</span><span class="p">:</span> <span class="s1">&#39;#ddd&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;axes.labelcolor&#39;</span><span class="p">:</span> <span class="s1">&#39;#ddd&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;xtick.color&#39;</span><span class="p">:</span> <span class="s1">&#39;#ddd&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ytick.color&#39;</span><span class="p">:</span> <span class="s1">&#39;#ddd&#39;</span><span class="p">,</span>
+    
+    <span class="c1"># Edge colors</span>
+    <span class="s1">&#39;axes.edgecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;#ddd&#39;</span><span class="p">,</span>
+    
+    <span class="c1"># Line colors</span>
+    <span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">:</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span>
+        <span class="s1">&#39;#93C5FD&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#D1B675&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#d1d1d1&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#B91C1C&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#C3FF5B&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;#FF88FF&#39;</span><span class="p">,</span>  
+        <span class="s1">&#39;#FFD700&#39;</span><span class="p">,</span>  
+        <span class="s1">&#39;#8BE9FD&#39;</span>   
+    <span class="p">])</span>
+<span class="p">}</span>
+
+<span class="c1"># Apply the custom style</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dark_theme</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1"># --- Simulate Uniform Data over [a, b] ---</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">data_range</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
+
+<span class="c1"># Expected statistics</span>
+<span class="n">expected_mean</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">expected_var</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_range</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expected Mean:&quot;</span><span class="p">,</span> <span class="n">expected_mean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expected Variance:&quot;</span><span class="p">,</span> <span class="n">expected_var</span><span class="p">)</span>
+
+<span class="c1"># --- Kolmogorov-Smirnov (KS) Test ---</span>
+<span class="c1"># When testing, note that scipy.stats.uniform is defined with parameters: loc=a, scale=b-a.</span>
+<span class="n">ks_stat</span><span class="p">,</span> <span class="n">ks_p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">data_range</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;KS Test Statistic:&quot;</span><span class="p">,</span> <span class="n">ks_stat</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;KS p-value:&quot;</span><span class="p">,</span> <span class="n">ks_p</span><span class="p">)</span>
+
+<span class="c1"># --- Chi-Square Test ---</span>
+<span class="c1"># Use a histogram to compare observed counts to the expected uniform counts.</span>
+<span class="n">hist</span><span class="p">,</span> <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<span class="n">chi2_stat</span><span class="p">,</span> <span class="n">chi2_p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chisquare</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Chi-Square Statistic:&quot;</span><span class="p">,</span> <span class="n">chi2_stat</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Chi-Square p-value:&quot;</span><span class="p">,</span> <span class="n">chi2_p</span><span class="p">)</span>
+
+<span class="c1"># --- Plotting: Histogram vs. Expected Uniform Density ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">data_range</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Expected Uniform Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram vs. Uniform Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># --- Plotting: Q-Q Plot ---</span>
+<span class="c1"># Compare the quantiles of the observed data to those of a uniform distribution.</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">probplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">data_range</span><span class="p">),</span> <span class="n">plot</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Q-Q Plot: Data vs. Uniform Distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Expected Mean: 5.0
+Expected Variance: 8.333333333333334
+KS Test Statistic: 0.02391253466587384
+KS p-value: 0.6080449188690945
+Chi-Square Statistic: 10.283999999999999
+Chi-Square p-value: 0.41594033172331346
+</pre></div>
+</div>
+<img alt="../../_images/a87596184671bb17cf1ff1b60b0b1df567ad80a4ae2d4671db8af165ca84968d.png" src="../../_images/a87596184671bb17cf1ff1b60b0b1df567ad80a4ae2d4671db8af165ca84968d.png" />
+<img alt="../../_images/03b2689a67707395a2185f3a5a0b6cd7e668481d2f939d9f299743bbabb335b3.png" src="../../_images/03b2689a67707395a2185f3a5a0b6cd7e668481d2f939d9f299743bbabb335b3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">estimate_uniform_parameters</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;mle&#39;</span><span class="p">,</span> <span class="n">trim_quantile</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Estimate parameters for a uniform distribution.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        data (array-like): Observations.</span>
+<span class="sd">        method (str): &#39;mle&#39; (default), &#39;robust&#39;, or &#39;bayesian&#39;.</span>
+<span class="sd">        trim_quantile (float): Quantile for trimming in robust estimation.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: (a, b) estimates.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;mle&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;robust&#39;</span><span class="p">:</span>
+        <span class="n">lower</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">trim_quantile</span><span class="p">)</span>
+        <span class="n">upper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">trim_quantile</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;bayesian&#39;</span><span class="p">:</span>
+        <span class="c1"># A simplistic Bayesian approach with an uninformative prior.</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Method must be &#39;mle&#39;, &#39;robust&#39;, or &#39;bayesian&#39;&quot;</span><span class="p">)</span>
+
+<span class="n">a_est</span><span class="p">,</span> <span class="n">b_est</span> <span class="o">=</span> <span class="n">estimate_uniform_parameters</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;mle&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimated parameters: a =&quot;</span><span class="p">,</span> <span class="n">a_est</span><span class="p">,</span> <span class="s2">&quot;, b =&quot;</span><span class="p">,</span> <span class="n">b_est</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated parameters: a = 0.00855965570862205 , b = 9.992375777355868
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_uniformity</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Tests the hypothesis that data come from a uniform distribution.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        data (array-like): Observations.</span>
+<span class="sd">        alpha (float): Significance level.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Test statistics and a boolean flag for uniformity.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">data_range</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
+    <span class="c1"># Scale data to [0,1]</span>
+    <span class="n">scaled_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">data_range</span>
+    
+    <span class="c1"># KS Test for uniformity on [0,1]</span>
+    <span class="n">ks_stat</span><span class="p">,</span> <span class="n">ks_p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">scaled_data</span><span class="p">,</span> <span class="s1">&#39;uniform&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Chi-square Test using histogram counts</span>
+    <span class="n">hist</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">scaled_data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+    <span class="n">chi2_stat</span><span class="p">,</span> <span class="n">chi2_p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chisquare</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;ks_test&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;statistic&#39;</span><span class="p">:</span> <span class="n">ks_stat</span><span class="p">,</span> <span class="s1">&#39;p_value&#39;</span><span class="p">:</span> <span class="n">ks_p</span><span class="p">},</span>
+        <span class="s1">&#39;chi_square&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;statistic&#39;</span><span class="p">:</span> <span class="n">chi2_stat</span><span class="p">,</span> <span class="s1">&#39;p_value&#39;</span><span class="p">:</span> <span class="n">chi2_p</span><span class="p">},</span>
+        <span class="s1">&#39;is_uniform&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">ks_p</span> <span class="o">&gt;</span> <span class="n">alpha</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">chi2_p</span> <span class="o">&gt;</span> <span class="n">alpha</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">test_uniformity</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Uniformity Test Results:&quot;</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Uniformity Test Results: {&#39;ks_test&#39;: {&#39;statistic&#39;: 0.024413447218922024, &#39;p_value&#39;: 0.5816025419125916}, &#39;chi_square&#39;: {&#39;statistic&#39;: 10.283999999999999, &#39;p_value&#39;: 0.41594033172331346}, &#39;is_uniform&#39;: True}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_plot</span><span class="p">():</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+    
+    <span class="c1"># Generate some sample data</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sin(x)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cos(x)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tan(x)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;2*Cos(x)&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Demonstrate various text elements</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Typography Example with &#39;</span> <span class="o">+</span> <span class="n">selected_font</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (τ)&#39;</span><span class="p">)</span>  <span class="c1"># Using Greek letter</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude (α)&#39;</span><span class="p">)</span>  <span class="c1"># Using Greek letter</span>
+    
+    <span class="c1"># Add some mathematical notation</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$f(x) = \sin(x) + \cos(x)$&#39;</span><span class="p">,</span> 
+            <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> 
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
+            <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.12</span><span class="p">,</span> <span class="mf">1.18</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">framealpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">create_plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/98b1c318ed634a0ec743c0de52bb2d3c0c7d36ff4bb11c4371287dc2bbf62c95.png" src="../../_images/98b1c318ed634a0ec743c0de52bb2d3c0c7d36ff4bb11c4371287dc2bbf62c95.png" />
+</div>
+</div>
+<p><a class="reference external" href="https://medium.com/nycwater/the-big-flush-on-super-bowl-sunday-e0050699fa1b">https://medium.com/nycwater/the-big-flush-on-super-bowl-sunday-e0050699fa1b</a></p>
+<p>We’ll begin our journey in New York</p>
+<p>Why start with distributions? Generally, they’re the truth that descriptive statistics is trying to describe. Before simply looking at a mean, median, or 95th percentile of a dataset, we should know a few things about the underlying distribution that it’s likely coming from. <br><br>
+The goal here is to understand what these distributions are, and how to apply them in the context of cities. We’ll cover some of the math, but long proofs are not the main focus of this book.</p>
+<p>Power Law Distribution</p>
+<p>City size distributions (Zipf’s Law)
+Income distributions within cities
+Business size distributions
+Social network connections in urban areas</p>
+<p>Poisson Distribution</p>
+<p>Traffic arrivals at intersections
+Public transit passenger arrivals
+Service requests to city agencies
+Crime incidents in neighborhoods
+Emergency service calls</p>
+<p>Normal Distribution</p>
+<p>Housing prices (often log-normal)
+Building heights
+Commute times
+Environmental measurements (air quality, noise levels)
+Demographics (age distributions)</p>
+<p>Exponential Distribution</p>
+<p>Wait times (public services, transit)
+Building age
+Distance between urban amenities
+Duration of parking occupancy</p>
+<p>Weibull Distribution</p>
+<p>Infrastructure failure rates
+Building lifetime/deterioration
+Peak energy demand patterns
+Extreme weather events affecting urban systems</p>
+<p>Beta Distribution</p>
+<p>Proportions of land use types
+Demographic ratios
+Satisfaction scores with urban services
+Environmental quality indices</p>
+<p>Gamma Distribution</p>
+<p>Rainfall patterns affecting urban drainage
+Travel time reliability
+Energy consumption patterns
+Property values</p>
+<p>Negative Binomial Distribution</p>
+<p>Clustering of urban phenomena (retail locations)
+Repeat service calls from same address
+Traffic accidents at specific intersections
+Multiple trips to same destination
+More flexible than Poisson for “overdispersed” count data</p>
+<p>Log-logistic Distribution</p>
+<p>Property sale times
+Infrastructure project completion times
+Innovation diffusion through cities
+Urban-rural migration patterns</p>
+<p>Multinomial Distribution</p>
+<p>Modal split in transportation
+Housing type distributions
+Land use classification
+Occupation distributions across neighborhoods
+Voting patterns by district</p>
+<p>Student’s t-Distribution</p>
+<p>Small sample urban indicators
+Neighborhood-level statistics
+Quality of life measurements
+Air quality sampling with limited sensors</p>
+<p>Geometric Distribution</p>
+<p>Number of attempts until successful housing match
+Bus bunching patterns
+Sequential vacancy fillings
+Time until infrastructure failure</p>
+<p>Zero-Inflated Distribution (modification of count distributions)</p>
+<p>Bike-share usage at stations
+Parking violations
+Business complaints
+Many urban phenomena with excess zeros</p>
+<p>Hypergeometric Distribution</p>
+<p>Sampling without replacement in urban audits
+Demographic representation in city services
+School assignment processes
+Resource allocation across districts</p>
+<p>Burr Distribution (versatile for skewed data)</p>
+<p>Income inequality within neighborhoods
+Property size distributions
+Urban-rural wealth gradients
+Business revenue distributions
+More flexible than log-normal for heavy tails</p>
+<p>Discrete Uniform Distribution</p>
+<p>Floor numbers in buildings
+Public transit route numbers
+Administrative district numbering
+Parking space assignments
+Random sampling in urban audits</p>
+<p>Gumbel Distribution (extreme value type I)</p>
+<p>Maximum daily traffic flows
+Extreme temperature events
+Peak urban flooding levels
+Maximum daily energy demand
+Urban heat island extremes</p>
+<p>Bivariate Normal Distribution</p>
+<p>Spatial distribution of urban amenities
+Crime hotspot analysis
+Pedestrian movement patterns
+Air pollution dispersion
+Spatial correlation in housing prices</p>
+<p>Log-Normal Distribution</p>
+<p>House prices and real estate values (one of the most classic applications)
+City sizes (alternative to power law/Zipf’s - ongoing debate in urban scaling literature)
+Income distributions within cities (especially when looking at smaller geographic units)
+Business sizes (number of employees, revenue)
+Building heights
+Commute distances (due to multiplicative effects of choices)
+Rent prices
+Land parcel sizes
+Population density variations</p>
+</section>
+</section>
+</section>
+<section id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/StatFile/statdistns.htm">Statistical Distributions</a></p></li>
+<li><p><a class="reference external" href="https://gregorygundersen.com/blog/2020/04/11/moments/">Understanding Moments</a></p></li>
+<li><p><a class="reference external" href="https://gestalt.ink/gaussians">Gaussians</a></p></li>
+<li><p><a class="reference external" href="https://gregorygundersen.com/blog/2023/12/17/lognormal/">Lognormal Distribution</a></p></li>
+</ul>
+</section>
+<section id="chapter-1-distributions-in-the-city">
+<h2>Chapter 1: Distributions in the City<a class="headerlink" href="#chapter-1-distributions-in-the-city" title="Link to this heading">#</a></h2>
+<section id="understanding-statistical-distributions">
+<h3>1.1 Understanding Statistical Distributions<a class="headerlink" href="#understanding-statistical-distributions" title="Link to this heading">#</a></h3>
+<p>A statistical distribution describes how values of a variable are distributed. It provides a function that shows the possible values for a variable and how often they occur. Understanding the underlying distribution of data is crucial for:</p>
+<ul class="simple">
+<li><p>Modeling and Prediction: Choosing the right distribution improves the accuracy of models.</p></li>
+<li><p>Hypothesis Testing: Many statistical tests assume specific distributions.</p></li>
+<li><p>Risk Assessment: Knowing the distribution helps in estimating probabilities of extreme events.</p></li>
+</ul>
+<p>In urban contexts, distributions help us answer questions like:</p>
+<ul class="simple">
+<li><p>What is the probability that a taxi will have more than 10 rides in an hour?</p></li>
+<li><p>How likely is it for a building to exceed a certain height?</p></li>
+<li><p>What is the expected number of emergency calls during peak hours?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
+
+<span class="c1"># Average number of emergency calls per hour</span>
+<span class="n">lambda_rate</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># Possible number of calls</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># PMF</span>
+<span class="n">pmf</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">lambda_rate</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">pmf</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Poisson Distribution of Emergency Calls per Hour&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Calls&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/6f2d1059a4db54ae6eac446df509de2854f3e252ef314263602f6ab773181441.png" src="../../_images/6f2d1059a4db54ae6eac446df509de2854f3e252ef314263602f6ab773181441.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+
+<span class="c1"># Number of trials (sample size)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="c1"># Probability of success (taking the subway)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.7</span>
+
+<span class="c1"># Possible number of successes</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># PMF</span>
+<span class="n">pmf</span> <span class="o">=</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">pmf</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Binomial Distribution of Subway Commuters&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of People Taking the Subway&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f9ca682c07a8816ed76dc570aa65daf948a16e453796e17302a76f95901b5b65.png" src="../../_images/f9ca682c07a8816ed76dc570aa65daf948a16e453796e17302a76f95901b5b65.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+<span class="c1"># Sample data: Building heights (in meters)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">building_heights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Plotting the histogram and PDF</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">building_heights</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the PDF</span>
+<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">building_heights</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">building_heights</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Normal Distribution of Building Heights&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Height (meters)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f7cf6d114b46940b8c07721bb9338d8149a6cf53169e145ed1d0bd6ee61ea632.png" src="../../_images/f7cf6d114b46940b8c07721bb9338d8149a6cf53169e145ed1d0bd6ee61ea632.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">lognorm</span>
+
+<span class="c1"># Sample data: Individual incomes (in thousands of dollars)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">incomes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">lognormal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Plotting the histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">incomes</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the PDF</span>
+<span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">lognorm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">incomes</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">incomes</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">incomes</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">lognorm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Log-Normal Distribution of Individual Incomes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Income (thousands of dollars)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/96170132cefa4054807e0dc8ec5f53cda02f4d0d4a74e121cf2f3572cbc7d805.png" src="../../_images/96170132cefa4054807e0dc8ec5f53cda02f4d0d4a74e121cf2f3572cbc7d805.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">expon</span>
+
+<span class="c1"># Sample data: Time between bus arrivals (in minutes)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">interarrival_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Plotting the histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">interarrival_times</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the PDF</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">interarrival_times</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">expon</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">interarrival_times</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Exponential Distribution of Bus Interarrival Times&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (minutes)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9e1e5e2f1154ebb97fdff5456ebb9d29fcc62c94f3a95566cb38a09742193467.png" src="../../_images/9e1e5e2f1154ebb97fdff5456ebb9d29fcc62c94f3a95566cb38a09742193467.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">weibull_min</span>
+
+<span class="c1"># Sample data: Wind speeds (in m/s)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">wind_speeds</span> <span class="o">=</span> <span class="n">weibull_min</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Plotting the histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">wind_speeds</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the PDF</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">wind_speeds</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">weibull_min</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Weibull Distribution of Wind Speeds in NYC&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wind Speed (m/s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c2d3f4b7c86d9c63a901ee3a74308d23e738965494f99224568bede526e31b67.png" src="../../_images/c2d3f4b7c86d9c63a901ee3a74308d23e738965494f99224568bede526e31b67.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">beta</span>
+
+<span class="c1"># Sample data: Proportion of green space</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">green_space</span> <span class="o">=</span> <span class="n">beta</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Plotting the histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">green_space</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the PDF</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">beta</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Beta Distribution of Green Space Proportions&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Proportion of Green Space&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c24c6b699716e5b7630cdb535098557d4d5488c968110cd1de5d65c5d8c37f94.png" src="../../_images/c24c6b699716e5b7630cdb535098557d4d5488c968110cd1de5d65c5d8c37f94.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gamma</span>
+
+<span class="c1"># Sample data: Taxi trip durations (in minutes)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">trip_durations</span> <span class="o">=</span> <span class="n">gamma</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Plotting the histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the PDF</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">gamma</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">params</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gamma Distribution of Taxi Trip Durations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Duration (minutes)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/0a455b69dac966ce9aa1479db6df2d43d6e4c51725410fd9d30659c694a0e0a7.png" src="../../_images/0a455b69dac966ce9aa1479db6df2d43d6e4c51725410fd9d30659c694a0e0a7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sample data: City block sizes (in square meters)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">block_sizes</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">pareto</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span>  <span class="c1"># Shift and scale</span>
+
+<span class="c1"># Plotting the histogram</span>
+<span class="n">counts</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">block_sizes</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">100000</span><span class="p">),</span> <span class="mi">50</span><span class="p">),</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Power Law Distribution of City Block Sizes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Block Size (square meters)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/4eb68349b9867570a5212c40fa7ed4e1bea1c39eeae6ac7a81fc26fd7a364549.png" src="../../_images/4eb68349b9867570a5212c40fa7ed4e1bea1c39eeae6ac7a81fc26fd7a364549.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+
+<span class="c1"># Sample data: Taxi trip durations (in minutes)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">trip_durations</span> <span class="o">=</span> <span class="n">gamma</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># QQ Plot against a gamma distribution</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">probplot</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="s2">&quot;gamma&quot;</span><span class="p">,</span> <span class="n">sparams</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,),</span> <span class="n">plot</span><span class="o">=</span><span class="n">plt</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;QQ Plot of Trip Durations vs. Gamma Distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/0b128b6ada70b728ecf59b672bcbc636a7b252029bf1234246296b53374e2ced.png" src="../../_images/0b128b6ada70b728ecf59b672bcbc636a7b252029bf1234246296b53374e2ced.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">kstest</span><span class="p">,</span> <span class="n">gamma</span>
+
+<span class="c1"># Test if trip durations follow a gamma distribution</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ks_statistic</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">kstest</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;K-S Statistic: </span><span class="si">{</span><span class="n">ks_statistic</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P-Value: </span><span class="si">{</span><span class="n">p_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K-S Statistic: 0.015411635016448266
+P-Value: 0.9685428012852954
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit different distributions</span>
+<span class="n">params_gamma</span> <span class="o">=</span> <span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">params_lognorm</span> <span class="o">=</span> <span class="n">lognorm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">params_weibull</span> <span class="o">=</span> <span class="n">weibull_min</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">params_expon</span> <span class="o">=</span> <span class="n">expon</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Calculate log-likelihood</span>
+<span class="n">ll_gamma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">gamma</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="o">*</span><span class="n">params_gamma</span><span class="p">))</span>
+<span class="n">ll_lognorm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">lognorm</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="o">*</span><span class="n">params_lognorm</span><span class="p">))</span>
+<span class="n">ll_weibull</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">weibull_min</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="o">*</span><span class="n">params_weibull</span><span class="p">))</span>
+<span class="n">ll_expon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">expon</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="o">*</span><span class="n">params_expon</span><span class="p">))</span>
+
+<span class="c1"># Calculate AIC</span>
+<span class="n">aic_gamma</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">params_gamma</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">ll_gamma</span>
+<span class="n">aic_lognorm</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">params_lognorm</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">ll_lognorm</span>
+<span class="n">aic_weibull</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">params_weibull</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">ll_weibull</span>
+<span class="n">aic_expon</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">params_expon</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">ll_expon</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AIC (Gamma): </span><span class="si">{</span><span class="n">aic_gamma</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AIC (Log-Normal): </span><span class="si">{</span><span class="n">aic_lognorm</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AIC (Weibull): </span><span class="si">{</span><span class="n">aic_weibull</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AIC (Exponential): </span><span class="si">{</span><span class="n">aic_expon</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AIC (Gamma): 6303.959436803516
+AIC (Log-Normal): 6382.132524209535
+AIC (Weibull): 6321.537562684305
+AIC (Exponential): 6574.443081580004
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;trip_duration&#39;</span><span class="p">])</span>
+<span class="n">trip_durations</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;trip_duration&#39;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of NYC Taxi Trip Durations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Duration (minutes)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/93b6676d5669c0c35e6a2c01b249db4da1ef1b91862cc7b807367c876d6e1422.png" src="../../_images/93b6676d5669c0c35e6a2c01b249db4da1ef1b91862cc7b807367c876d6e1422.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_duration</span> <span class="o">=</span> <span class="n">trip_durations</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">variance_duration</span> <span class="o">=</span> <span class="n">trip_durations</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<span class="n">skewness_duration</span> <span class="o">=</span> <span class="n">trip_durations</span><span class="o">.</span><span class="n">skew</span><span class="p">()</span>
+<span class="n">kurtosis_duration</span> <span class="o">=</span> <span class="n">trip_durations</span><span class="o">.</span><span class="n">kurtosis</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean: </span><span class="si">{</span><span class="n">mean_duration</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Variance: </span><span class="si">{</span><span class="n">variance_duration</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Skewness: </span><span class="si">{</span><span class="n">skewness_duration</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kurtosis: </span><span class="si">{</span><span class="n">kurtosis_duration</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean: 9.827863255447474
+Variance: 45.45494635184176
+Skewness: 1.3603737061808123
+Kurtosis: 2.42602524275726
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">lognorm</span><span class="p">,</span> <span class="n">weibull_min</span><span class="p">,</span> <span class="n">expon</span>
+
+<span class="c1"># Fit Gamma</span>
+<span class="n">params_gamma</span> <span class="o">=</span> <span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ll_gamma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">gamma</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="o">*</span><span class="n">params_gamma</span><span class="p">))</span>
+<span class="n">aic_gamma</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">params_gamma</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">ll_gamma</span>
+
+<span class="c1"># Fit Log-Normal</span>
+<span class="n">params_lognorm</span> <span class="o">=</span> <span class="n">lognorm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ll_lognorm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">lognorm</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="o">*</span><span class="n">params_lognorm</span><span class="p">))</span>
+<span class="n">aic_lognorm</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">params_lognorm</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">ll_lognorm</span>
+
+<span class="c1"># Fit Weibull</span>
+<span class="n">params_weibull</span> <span class="o">=</span> <span class="n">weibull_min</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ll_weibull</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">weibull_min</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="o">*</span><span class="n">params_weibull</span><span class="p">))</span>
+<span class="n">aic_weibull</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">params_weibull</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">ll_weibull</span>
+
+<span class="c1"># Fit Exponential</span>
+<span class="n">params_expon</span> <span class="o">=</span> <span class="n">expon</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ll_expon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">expon</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="o">*</span><span class="n">params_expon</span><span class="p">))</span>
+<span class="n">aic_expon</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">params_expon</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">ll_expon</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AIC (Gamma): </span><span class="si">{</span><span class="n">aic_gamma</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AIC (Log-Normal): </span><span class="si">{</span><span class="n">aic_lognorm</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AIC (Weibull): </span><span class="si">{</span><span class="n">aic_weibull</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AIC (Exponential): </span><span class="si">{</span><span class="n">aic_expon</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AIC (Gamma): 6303.959436803516
+AIC (Log-Normal): 6382.132524209535
+AIC (Weibull): 6321.537562684305
+AIC (Exponential): 6574.443081580004
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># K-S test for Gamma</span>
+<span class="n">ks_statistic</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">kstest</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">params_gamma</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;K-S Statistic (Gamma): </span><span class="si">{</span><span class="n">ks_statistic</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P-Value: </span><span class="si">{</span><span class="n">p_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># QQ Plot</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+
+<span class="n">stats</span><span class="o">.</span><span class="n">probplot</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="s2">&quot;gamma&quot;</span><span class="p">,</span> <span class="n">sparams</span><span class="o">=</span><span class="p">(</span><span class="n">params_gamma</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="n">plot</span><span class="o">=</span><span class="n">plt</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;QQ Plot of Trip Durations vs. Gamma Distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K-S Statistic (Gamma): 0.015411635016448266
+P-Value: 0.9685428012852954
+</pre></div>
+</div>
+<img alt="../../_images/fd42d7c73f19cd7973142db7cd430f785e7e24d2073fa7b6f79e76c5c80fe21e.png" src="../../_images/fd42d7c73f19cd7973142db7cd430f785e7e24d2073fa7b6f79e76c5c80fe21e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># K-S test for Normal distribution</span>
+<span class="n">ks_statistic</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="s1">&#39;norm&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;K-S Statistic (Normal): </span><span class="si">{</span><span class="n">ks_statistic</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P-Value: </span><span class="si">{</span><span class="n">p_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># QQ Plot for Normal distribution</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">probplot</span><span class="p">(</span><span class="n">trip_durations</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">plt</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;QQ Plot of Trip Durations vs. Normal Distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K-S Statistic (Normal): 0.91884317007884
+P-Value: 0.0
+</pre></div>
+</div>
+<img alt="../../_images/c940b360ddf55aa0c42abd3c789612cb711f14eb38ffd7c8383ab7098de73d5b.png" src="../../_images/c940b360ddf55aa0c42abd3c789612cb711f14eb38ffd7c8383ab7098de73d5b.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h2>Chapter 1: Distributions in the City<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<!-- Introduction to the Chapter -->
+</section>
+<section id="id2">
+<h2>1.1 Understanding Statistical Distributions<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="introduction">
+<h3>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h3>
+<p>In urban data science, statistical distributions are fundamental tools for understanding and modeling the variability inherent in city-related data. Whether we’re analyzing the number of taxi rides in New York City on a given day, the distribution of building heights, or the frequency of subway arrivals, statistical distributions help us make sense of complex urban phenomena.</p>
+<p>This chapter introduces the concept of statistical distributions, explores their key characteristics through distribution moments, and provides guidance on identifying the appropriate distribution for a given dataset. We will use examples from New York City to illustrate these concepts, along with Python code to demonstrate practical applications.</p>
+<!-- What is a Statistical Distribution Section -->
+</section>
+<section id="what-is-a-statistical-distribution">
+<h3>1.1.1 What Is a Statistical Distribution?<a class="headerlink" href="#what-is-a-statistical-distribution" title="Link to this heading">#</a></h3>
+<p>A statistical distribution describes how values of a variable are distributed. It provides a function that shows the possible values for a variable and how often they occur. Understanding the underlying distribution of data is crucial for:</p>
+<ul class="simple">
+<li><p><strong>Modeling and Prediction</strong>: Choosing the right distribution improves the accuracy of models.</p></li>
+<li><p><strong>Hypothesis Testing</strong>: Many statistical tests assume specific distributions.</p></li>
+<li><p><strong>Risk Assessment</strong>: Knowing the distribution helps in estimating probabilities of extreme events.</p></li>
+</ul>
+<p>In urban contexts, distributions help us answer questions like:</p>
+<ul class="simple">
+<li><p>What is the probability that a taxi will have more than 10 rides in an hour?</p></li>
+<li><p>How likely is it for a building to exceed a certain height?</p></li>
+<li><p>What is the expected number of emergency calls during peak hours?</p></li>
+</ul>
+<!-- Distribution Moments Section -->
+</section>
+<section id="distribution-moments-the-building-blocks">
+<h3>1.1.2 Distribution Moments: The Building Blocks<a class="headerlink" href="#distribution-moments-the-building-blocks" title="Link to this heading">#</a></h3>
+<p>Distribution moments are quantitative measures that capture key characteristics of a distribution. The most commonly used moments are:</p>
+<ol class="arabic simple">
+<li><p><strong>Mean (First Moment)</strong>: Measures the central tendency.</p></li>
+<li><p><strong>Variance (Second Moment)</strong>: Measures the dispersion or spread.</p></li>
+<li><p><strong>Skewness (Third Moment)</strong>: Measures the asymmetry.</p></li>
+<li><p><strong>Kurtosis (Fourth Moment)</strong>: Measures the “tailedness” or peak sharpness.</p></li>
+</ol>
+<p>Understanding these moments provides insights into the data’s behavior and aids in selecting appropriate statistical models.</p>
+<section id="mean">
+<h4>Mean<a class="headerlink" href="#mean" title="Link to this heading">#</a></h4>
+<p>The mean is the average value of the dataset.</p>
+<div class="math notranslate nohighlight">
+\[
+\mu = \frac{1}{n} \sum_{i=1}^{n} x_i
+\]</div>
+</section>
+<section id="variance">
+<h4>Variance<a class="headerlink" href="#variance" title="Link to this heading">#</a></h4>
+<p>Variance quantifies how much the values deviate from the mean.</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma^2 = \frac{1}{n} \sum_{i=1}^{n} (x_i - \mu)^2
+\]</div>
+</section>
+<section id="skewness">
+<h4>Skewness<a class="headerlink" href="#skewness" title="Link to this heading">#</a></h4>
+<p>Skewness indicates the degree of asymmetry.</p>
+<ul class="simple">
+<li><p><strong>Positive Skew</strong>: Tail on the right side.</p></li>
+<li><p><strong>Negative Skew</strong>: Tail on the left side.</p></li>
+</ul>
+</section>
+<section id="kurtosis">
+<h4>Kurtosis<a class="headerlink" href="#kurtosis" title="Link to this heading">#</a></h4>
+<p>Kurtosis measures the heaviness of the tails.</p>
+<ul class="simple">
+<li><p><strong>Leptokurtic</strong>: Heavy tails (positive kurtosis).</p></li>
+<li><p><strong>Platykurtic</strong>: Light tails (negative kurtosis).</p></li>
+<li><p><strong>Mesokurtic</strong>: Normal tails (zero kurtosis, as in the normal distribution).</p></li>
+</ul>
+<!-- Common Distributions Section -->
+</section>
+</section>
+<section id="common-distributions-in-urban-data">
+<h3>1.1.3 Common Distributions in Urban Data<a class="headerlink" href="#common-distributions-in-urban-data" title="Link to this heading">#</a></h3>
+<p>Urban phenomena often follow specific statistical distributions. Here we present common distributions in an order that progresses from discrete to continuous, and from simple to more complex distributions.</p>
+<!-- Poisson Distribution -->
+<section id="poisson-distribution">
+<h4>Poisson Distribution<a class="headerlink" href="#poisson-distribution" title="Link to this heading">#</a></h4>
+<p><strong>Type</strong>: Discrete</p>
+<p><strong>Use Case</strong>: Modeling the number of times an event occurs in a fixed interval of time or space.</p>
+<p><strong>Example</strong>: Number of emergency calls received by NYC’s 911 system per hour.</p>
+<p>The probability mass function (PMF) is:</p>
+<div class="math notranslate nohighlight">
+\[
+P(k; \lambda) = \frac{e^{-\lambda} \lambda^k}{k!}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p>( \lambda ) is the average rate (mean number of occurrences in the interval).</p></li>
+<li><p>( k ) is the actual number of occurrences.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
+
+<span class="c1"># Average number of emergency calls per hour</span>
+<span class="n">lambda_rate</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># Possible number of calls</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># PMF</span>
+<span class="n">pmf</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">lambda_rate</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">pmf</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Poisson Distribution of Emergency Calls per Hour&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Calls&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/6f2d1059a4db54ae6eac446df509de2854f3e252ef314263602f6ab773181441.png" src="../../_images/6f2d1059a4db54ae6eac446df509de2854f3e252ef314263602f6ab773181441.png" />
+</div>
+</div>
+<!-- Binomial Distribution -->
+</section>
+<section id="binomial-distribution">
+<h4>Binomial Distribution<a class="headerlink" href="#binomial-distribution" title="Link to this heading">#</a></h4>
+<p><strong>Type</strong>: Discrete</p>
+<p><strong>Use Case</strong>: Modeling the number of successes in a fixed number of independent Bernoulli trials.</p>
+<p><strong>Example</strong>: Number of commuters who choose to take the subway out of a random sample of people.</p>
+<p>The probability mass function is:</p>
+<div class="math notranslate nohighlight">
+\[
+P(k; n, p) = \binom{n}{k} p^k (1 - p)^{n - k}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p>( n ) is the number of trials.</p></li>
+<li><p>( k ) is the number of successes.</p></li>
+<li><p>( p ) is the probability of success on a single trial.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Poisson, simple exponential, stretched exponential, and power law distributions. The remaining distributions in Table 4.2 are occasionally used to fit the degrees of some networks, despite the fact that we lack theoretical basis for their relevance for networks.&quot;</span>
+<span class="o">-</span> <span class="n">Barabasi</span><span class="p">,</span> <span class="n">Ch</span><span class="mf">.4</span> <span class="n">on</span> <span class="n">network</span> <span class="n">science</span> <span class="n">related</span> <span class="n">distributions</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+    <span class="o">-</span> <span class="n">Barabasi</span><span class="p">,</span> <span class="n">Ch</span><span class="mf">.4</span> <span class="n">on</span>
+                  <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+
+<span class="c1"># Number of trials (sample size)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="c1"># Probability of success (taking the subway)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.7</span>
+
+<span class="c1"># Possible number of successes</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># PMF</span>
+<span class="n">pmf</span> <span class="o">=</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">pmf</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Binomial Distribution of Subway Commuters&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of People Taking the Subway&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f9ca682c07a8816ed76dc570aa65daf948a16e453796e17302a76f95901b5b65.png" src="../../_images/f9ca682c07a8816ed76dc570aa65daf948a16e453796e17302a76f95901b5b65.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./sections/1_statistical_foundations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../0_introduction/0_3_data_and_tooling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data &amp; Tooling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="1_2_descriptive_stats.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Descriptive Statistics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-distributions-tell-us-about-cities">What Do Distributions Tell Us About Cities?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tour-of-common-distributions">A Tour of Common Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distributions">Uniform Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-foundations-assumptions">Mathematical Foundations &amp; Assumptions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#in-urban-systems">In Urban Systems</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-distributions">Normal Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-foundations-and-assumptions">Mathematical Foundations and Assumptions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#emergence-in-urban-systems">Emergence in Urban Systems</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-1-distributions-in-the-city">Chapter 1: Distributions in the City</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-statistical-distributions">1.1 Understanding Statistical Distributions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Chapter 1: Distributions in the City</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1 Understanding Statistical Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-statistical-distribution">1.1.1 What Is a Statistical Distribution?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-moments-the-building-blocks">1.1.2 Distribution Moments: The Building Blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">Mean</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#skewness">Skewness</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kurtosis">Kurtosis</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-distributions-in-urban-data">1.1.3 Common Distributions in Urban Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#poisson-distribution">Poisson Distribution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#binomial-distribution">Binomial Distribution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By A.C. Shannon-Ding
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
