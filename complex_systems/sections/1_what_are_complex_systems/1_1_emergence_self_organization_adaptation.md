@@ -1,14 +1,8 @@
-# What Are Complex Systems?
-
-*In 1900, Henri Bénard heated a thin layer of melted spermaceti — a waxy substance from the head cavities of sperm whales — from below and watched something strange happen. Below a critical temperature difference, the fluid sat still — heat moved through it by conduction alone, molecule jostling molecule, nothing to see. But past a threshold, the liquid spontaneously organized itself into a lattice of hexagonal convection cells, each one a few millimeters across, warm fluid rising at the center and cool fluid sinking at the edges. No one told the molecules to form hexagons. No blueprint specified the pattern. The fluid simply... did it.*
-
-*More than a century later, we still don't have a single, universally accepted definition of "complex system." But we know one when we see one, and Bénard's convection cells exhibit the signature: a system of many interacting components whose collective behavior cannot be straightforwardly deduced from the behavior of any individual component. This chapter is about learning to see that signature — and developing the vocabulary to talk about it precisely.*
-
-## 1.1 Emergence, Self-Organization, and Adaptation
+# Emergence, Self-Organization, and Adaptation
 
 Three concepts form the backbone of complex systems science. They are distinct but deeply entangled, and much confusion in the field comes from conflating them. Let's take them one at a time.
 
-### Emergence
+## Emergence
 
 Philip Anderson, a Nobel laureate in condensed matter physics and one of the founders of the Santa Fe Institute, crystallized the idea in a 1972 essay whose title has become a mantra: "More Is Different" {cite}`anderson1972more`. His argument was aimed squarely at the physics establishment. Yes, he said, the fundamental laws of physics are real and important. But knowing those laws does not mean you can *derive* the behavior of large assemblies of particles from them. Superconductivity follows from quantum mechanics in principle, but it took thirty years after the formulation of quantum theory for anyone to figure out how. The whole, Anderson insisted, is not *greater* than the sum of its parts — it is *different*.
 
@@ -45,7 +39,7 @@ def step(grid):
 
 Conway's Game of Life is perhaps the purest example of weak emergence. The rules fit in a few lines of Python. The behavior — gliders, oscillators, Turing-complete computation — cannot be predicted without running them. We'll return to cellular automata in Chapter 7.
 
-### Self-Organization
+## Self-Organization
 
 If emergence is *what* happens, self-organization is *how* it happens. Self-organization is the process by which a system's components, interacting through local rules and without any external directing agent, produce large-scale order.
 
@@ -89,7 +83,7 @@ The termite mound is self-organization's cathedral — sometimes literally, sinc
 
 This is a pattern we'll encounter repeatedly throughout this book: local rules, global order, no master plan. It appears in the synchronized flashing of fireflies, the spiral waves of aggregating slime molds, the formation of city neighborhoods, the self-assembly of lipid membranes, and the emergence of conventions in human language. The details vary enormously. The architecture is the same.
 
-### Adaptation
+## Adaptation
 
 Now for the concept that separates a whirlpool from an immune system, a convection cell from a city.
 

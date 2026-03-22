@@ -5,9 +5,10 @@ title: Complex Systems
 author: A.C. Shannon-Ding
 # logo: images/logo.png
 
-# Do not execute notebooks until content exists
+# Execute notebooks so charts render in the built book
 execute:
-  execute_notebooks: 'off'
+  execute_notebooks: force
+  timeout: 30
 
 # Define the name of the latex output file for PDF builds
 latex:
