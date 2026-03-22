@@ -1,0 +1,219 @@
+format: jb-book
+root: sections/0_frontmatter/0_1_introduction
+parts:
+- caption: "I. Foundations"
+  chapters:
+    - file: sections/1_what_are_complex_systems/1_1_emergence_self_organization_adaptation
+      sections:
+        - file: sections/1_what_are_complex_systems/1_2_reductionism_and_its_limits
+        - file: sections/1_what_are_complex_systems/1_3_near_decomposability
+        - file: sections/1_what_are_complex_systems/1_4_taxonomy_of_modeling_approaches
+        - file: sections/1_what_are_complex_systems/1_5_why_model
+        - file: sections/1_what_are_complex_systems/1_6_history_of_complexity
+    - file: sections/2_mathematical_preliminaries/2_1_linear_algebra_essentials
+      sections:
+        - file: sections/2_mathematical_preliminaries/2_2_multivariable_calculus
+        - file: sections/2_mathematical_preliminaries/2_3_ordinary_differential_equations
+        - file: sections/2_mathematical_preliminaries/2_4_probability_foundations
+        - file: sections/2_mathematical_preliminaries/2_5_stochastic_processes
+        - file: sections/2_mathematical_preliminaries/2_6_numerical_methods
+        - file: sections/2_mathematical_preliminaries/2_7_lab_scientific_python
+    - file: sections/3_information_and_entropy/3_1_shannon_entropy
+      sections:
+        - file: sections/3_information_and_entropy/3_2_joint_conditional_mutual_information
+        - file: sections/3_information_and_entropy/3_3_kl_divergence_maximum_entropy
+        - file: sections/3_information_and_entropy/3_4_entropy_rate
+        - file: sections/3_information_and_entropy/3_5_fisher_information
+        - file: sections/3_information_and_entropy/3_6_connections_to_statistical_mechanics
+        - file: sections/3_information_and_entropy/3_7_lab_entropy_and_information
+- caption: "II. Dynamical Systems"
+  chapters:
+    - file: sections/4_one_dimensional_flows/4_1_phase_portraits_on_the_line
+      sections:
+        - file: sections/4_one_dimensional_flows/4_2_fixed_points_and_stability
+        - file: sections/4_one_dimensional_flows/4_3_bifurcations
+        - file: sections/4_one_dimensional_flows/4_4_imperfect_bifurcations
+        - file: sections/4_one_dimensional_flows/4_5_flows_on_the_circle
+        - file: sections/4_one_dimensional_flows/4_6_lab_bifurcation_diagrams
+    - file: sections/5_two_dimensional_flows/5_1_phase_plane_and_nullclines
+      sections:
+        - file: sections/5_two_dimensional_flows/5_2_classification_of_fixed_points
+        - file: sections/5_two_dimensional_flows/5_3_limit_cycles
+        - file: sections/5_two_dimensional_flows/5_4_hopf_bifurcation
+        - file: sections/5_two_dimensional_flows/5_5_relaxation_oscillations
+        - file: sections/5_two_dimensional_flows/5_6_conservative_and_gradient_systems
+        - file: sections/5_two_dimensional_flows/5_7_lab_phase_portraits
+    - file: sections/6_chaos_and_strange_attractors/6_1_lorenz_system
+      sections:
+        - file: sections/6_chaos_and_strange_attractors/6_2_lyapunov_exponents
+        - file: sections/6_chaos_and_strange_attractors/6_3_fractal_dimension
+        - file: sections/6_chaos_and_strange_attractors/6_4_routes_to_chaos
+        - file: sections/6_chaos_and_strange_attractors/6_5_logistic_map
+        - file: sections/6_chaos_and_strange_attractors/6_6_takens_embedding
+        - file: sections/6_chaos_and_strange_attractors/6_7_lab_lyapunov_and_embedding
+    - file: sections/7_discrete_dynamical_systems/7_1_iterated_maps
+      sections:
+        - file: sections/7_discrete_dynamical_systems/7_2_logistic_map_universality
+        - file: sections/7_discrete_dynamical_systems/7_3_symbolic_dynamics
+        - file: sections/7_discrete_dynamical_systems/7_4_cellular_automata
+        - file: sections/7_discrete_dynamical_systems/7_5_edge_of_chaos
+        - file: sections/7_discrete_dynamical_systems/7_6_lab_maps_and_automata
+    - file: sections/8_stability_resilience_critical_transitions/8_1_basins_of_attraction
+      sections:
+        - file: sections/8_stability_resilience_critical_transitions/8_2_tipping_points
+        - file: sections/8_stability_resilience_critical_transitions/8_3_early_warning_signals
+        - file: sections/8_stability_resilience_critical_transitions/8_4_noise_induced_transitions
+        - file: sections/8_stability_resilience_critical_transitions/8_5_resilience_thinking
+        - file: sections/8_stability_resilience_critical_transitions/8_6_applications
+        - file: sections/8_stability_resilience_critical_transitions/8_7_lab_early_warnings
+- caption: "III. Spatial and Network Systems"
+  chapters:
+    - file: sections/9_network_structure/9_1_graphs_adjacency_degree
+      sections:
+        - file: sections/9_network_structure/9_2_paths_components_connectivity
+        - file: sections/9_network_structure/9_3_centrality_measures
+        - file: sections/9_network_structure/9_4_clustering_transitivity_community
+        - file: sections/9_network_structure/9_5_spectral_properties
+        - file: sections/9_network_structure/9_6_bipartite_multilayer_temporal
+        - file: sections/9_network_structure/9_7_lab_network_analysis
+    - file: sections/10_network_models_and_mechanisms/10_1_erdos_renyi
+      sections:
+        - file: sections/10_network_models_and_mechanisms/10_2_watts_strogatz
+        - file: sections/10_network_models_and_mechanisms/10_3_barabasi_albert
+        - file: sections/10_network_models_and_mechanisms/10_4_configuration_models
+        - file: sections/10_network_models_and_mechanisms/10_5_ergms
+        - file: sections/10_network_models_and_mechanisms/10_6_stochastic_block_models
+        - file: sections/10_network_models_and_mechanisms/10_7_model_selection
+        - file: sections/10_network_models_and_mechanisms/10_8_lab_generative_models
+    - file: sections/11_dynamics_on_networks/11_1_diffusion_and_random_walks
+      sections:
+        - file: sections/11_dynamics_on_networks/11_2_epidemic_spreading
+        - file: sections/11_dynamics_on_networks/11_3_percolation_and_robustness
+        - file: sections/11_dynamics_on_networks/11_4_opinion_dynamics
+        - file: sections/11_dynamics_on_networks/11_5_synchronization_on_networks
+        - file: sections/11_dynamics_on_networks/11_6_cascading_failures
+        - file: sections/11_dynamics_on_networks/11_7_lab_epidemics_percolation_kuramoto
+    - file: sections/12_spatial_systems/12_1_reaction_diffusion
+      sections:
+        - file: sections/12_spatial_systems/12_2_spatial_point_processes
+        - file: sections/12_spatial_systems/12_3_spatial_autocorrelation
+        - file: sections/12_spatial_systems/12_4_gravity_models
+        - file: sections/12_spatial_systems/12_5_fractal_geometry
+        - file: sections/12_spatial_systems/12_6_movement_and_mobility
+        - file: sections/12_spatial_systems/12_7_lab_spatial_patterns
+- caption: "IV. Statistical Mechanics and Scaling"
+  chapters:
+    - file: sections/13_statistical_mechanics/13_1_microstates_macrostates_boltzmann
+      sections:
+        - file: sections/13_statistical_mechanics/13_2_partition_function_free_energy
+        - file: sections/13_statistical_mechanics/13_3_ising_model
+        - file: sections/13_statistical_mechanics/13_4_phase_transitions
+        - file: sections/13_statistical_mechanics/13_5_critical_phenomena
+        - file: sections/13_statistical_mechanics/13_6_renormalization_group
+        - file: sections/13_statistical_mechanics/13_7_lab_ising_model
+    - file: sections/14_scaling_laws_and_universality/14_1_dimensional_analysis
+      sections:
+        - file: sections/14_scaling_laws_and_universality/14_2_power_laws_in_nature
+        - file: sections/14_scaling_laws_and_universality/14_3_rigorous_power_law_fitting
+        - file: sections/14_scaling_laws_and_universality/14_4_allometric_scaling
+        - file: sections/14_scaling_laws_and_universality/14_5_urban_scaling
+        - file: sections/14_scaling_laws_and_universality/14_6_zipf_gibrat_size_distributions
+        - file: sections/14_scaling_laws_and_universality/14_7_when_scaling_breaks
+        - file: sections/14_scaling_laws_and_universality/14_8_lab_power_law_fitting
+    - file: sections/15_self_organized_criticality/15_1_btw_sandpile
+      sections:
+        - file: sections/15_self_organized_criticality/15_2_avalanche_statistics
+        - file: sections/15_self_organized_criticality/15_3_soc_debate
+        - file: sections/15_self_organized_criticality/15_4_extreme_value_theory
+        - file: sections/15_self_organized_criticality/15_5_fat_tails
+        - file: sections/15_self_organized_criticality/15_6_applications
+        - file: sections/15_self_organized_criticality/15_7_lab_sandpile
+- caption: "V. Adaptive and Evolutionary Systems"
+  chapters:
+    - file: sections/16_evolutionary_dynamics/16_1_fitness_landscapes
+      sections:
+        - file: sections/16_evolutionary_dynamics/16_2_replicator_dynamics
+        - file: sections/16_evolutionary_dynamics/16_3_prisoners_dilemma_cooperation
+        - file: sections/16_evolutionary_dynamics/16_4_neutral_theory_genetic_drift
+        - file: sections/16_evolutionary_dynamics/16_5_coevolution
+        - file: sections/16_evolutionary_dynamics/16_6_cultural_evolution
+        - file: sections/16_evolutionary_dynamics/16_7_lab_evolutionary_games
+    - file: sections/17_agent_based_models/17_1_design_principles
+      sections:
+        - file: sections/17_agent_based_models/17_2_schelling_segregation
+        - file: sections/17_agent_based_models/17_3_sugarscape
+        - file: sections/17_agent_based_models/17_4_flocking_swarming
+        - file: sections/17_agent_based_models/17_5_abm_software
+        - file: sections/17_agent_based_models/17_6_verification_validation
+        - file: sections/17_agent_based_models/17_7_sensitivity_analysis
+        - file: sections/17_agent_based_models/17_8_lab_schelling_vicsek
+    - file: sections/18_learning_and_adaptation/18_1_reinforcement_learning
+      sections:
+        - file: sections/18_learning_and_adaptation/18_2_multi_agent_rl
+        - file: sections/18_learning_and_adaptation/18_3_genetic_algorithms
+        - file: sections/18_learning_and_adaptation/18_4_neural_networks_as_dynamical_systems
+        - file: sections/18_learning_and_adaptation/18_5_reservoir_computing
+        - file: sections/18_learning_and_adaptation/18_6_ml_for_dynamical_systems
+        - file: sections/18_learning_and_adaptation/18_7_lab_learning_agents
+- caption: "VI. Inference and Methodology"
+  chapters:
+    - file: sections/19_parameter_estimation/19_1_mle_bayesian_refresher
+      sections:
+        - file: sections/19_parameter_estimation/19_2_mcmc_methods
+        - file: sections/19_parameter_estimation/19_3_approximate_bayesian_computation
+        - file: sections/19_parameter_estimation/19_4_fitting_dynamical_systems
+        - file: sections/19_parameter_estimation/19_5_state_space_models
+        - file: sections/19_parameter_estimation/19_6_bayesian_workflow_pymc
+        - file: sections/19_parameter_estimation/19_7_lab_abc_ode_kalman
+    - file: sections/20_model_selection_validation/20_1_bias_variance_tradeoff
+      sections:
+        - file: sections/20_model_selection_validation/20_2_information_criteria
+        - file: sections/20_model_selection_validation/20_3_cross_validation
+        - file: sections/20_model_selection_validation/20_4_global_sensitivity_analysis
+        - file: sections/20_model_selection_validation/20_5_uncertainty_quantification
+        - file: sections/20_model_selection_validation/20_6_pattern_oriented_modeling
+        - file: sections/20_model_selection_validation/20_7_lab_sensitivity_validation
+    - file: sections/21_data_driven_approaches/21_1_time_series_embeddings
+      sections:
+        - file: sections/21_data_driven_approaches/21_2_causal_inference
+        - file: sections/21_data_driven_approaches/21_3_dimensionality_reduction
+        - file: sections/21_data_driven_approaches/21_4_equation_free_methods
+        - file: sections/21_data_driven_approaches/21_5_physics_informed_ml
+        - file: sections/21_data_driven_approaches/21_6_data_driven_vs_mechanistic
+        - file: sections/21_data_driven_approaches/21_7_lab_ccm_diffusion_pinn
+- caption: "VII. Case Studies and Synthesis"
+  chapters:
+    - file: sections/22_urban_systems/22_1_cities_as_complex_adaptive_systems
+      sections:
+        - file: sections/22_urban_systems/22_2_urban_scaling_laws
+        - file: sections/22_urban_systems/22_3_land_use_transportation
+        - file: sections/22_urban_systems/22_4_segregation
+        - file: sections/22_urban_systems/22_5_urban_mobility_networks
+        - file: sections/22_urban_systems/22_6_lab_urban_scaling_transit
+    - file: sections/23_ecological_systems/23_1_food_webs_stability
+      sections:
+        - file: sections/23_ecological_systems/23_2_regime_shifts
+        - file: sections/23_ecological_systems/23_3_spatial_ecology
+        - file: sections/23_ecological_systems/23_4_biodiversity_neutral_theory
+    - file: sections/24_economic_financial_systems/24_1_agent_based_computational_economics
+      sections:
+        - file: sections/24_economic_financial_systems/24_2_financial_contagion
+        - file: sections/24_economic_financial_systems/24_3_market_microstructure
+        - file: sections/24_economic_financial_systems/24_4_inequality_dynamics
+    - file: sections/25_biological_social_networks/25_1_gene_regulatory_networks
+      sections:
+        - file: sections/25_biological_social_networks/25_2_neural_networks_in_the_brain
+        - file: sections/25_biological_social_networks/25_3_social_contagion
+        - file: sections/25_biological_social_networks/25_4_epidemiology
+    - file: sections/26_frontiers/26_1_higher_order_interactions
+      sections:
+        - file: sections/26_frontiers/26_2_coarse_graining_multiscale
+        - file: sections/26_frontiers/26_3_causal_emergence
+        - file: sections/26_frontiers/26_4_foundation_models
+        - file: sections/26_frontiers/26_5_open_problems
+- caption: "Appendices"
+  chapters:
+    - file: sections/appendices/appendix_a_python_toolbox
+    - file: sections/appendices/appendix_b_mathematical_notation
+    - file: sections/appendices/appendix_c_datasets
+    - file: sections/appendices/appendix_d_research_literature

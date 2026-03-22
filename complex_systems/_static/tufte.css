@@ -1,0 +1,642 @@
+@charset "UTF-8";
+
+/* ===================================================
+   Mostly Based on Tufte CSS Styles for JupyterBook
+   =================================================== */
+
+/* Base styles */
+body {
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD",
+               "Book Antiqua", Georgia, serif;
+  font-size: 19px;
+  font-weight: 250;
+  background-color: #192738;
+  color: #ddd;
+}
+
+tbody {
+  font-family: monospace;
+  color: #ddd;
+}
+
+/* Headings */
+h1, h2, h3, h4, aside {
+  font-family: inherit;
+  font-style: italic;
+}
+
+h1, h2 {
+  font-weight: 700;
+  color: #d09937 !important;
+}
+
+h1 {
+  padding-top: 10px;
+  font-size: 34px;
+}
+
+h2 {
+  font-size: 26px;
+}
+
+h3 {
+  font-weight: 300;
+  color: #29A8AB !important;
+  font-size: 24px;
+}
+
+h4 {
+  font-weight: 300;
+  color: #ddd !important;
+  font-size: 20px;
+}
+
+aside {
+  font-weight: 200 !important;
+  color: #d09937 !important;
+  font-size: 16px !important;
+}
+
+.bd-main h3,
+.cell_markdown h3,
+article h3 {
+  font-weight: 300;
+  color: #29A8AB !important;
+  font-size: 24px;
+}
+
+.bd-main h4,
+.cell_markdown h4,
+article h4 {
+  font-weight: 300;
+  color: #ddd !important;
+  font-size: 20px;
+}
+
+.markdown-rendered h3 {
+  color: #29A8AB !important;
+}
+
+/* ============================================
+   Navigation and Sidebar
+   ============================================ */
+
+/* Background and text colors */
+#bd-toc-nav,
+.bd-sidebar,
+#site-navigation,
+.topbar,
+.scrolled .topbar,
+.bd-toc,
+.tocsection {
+  background-color: #192738 !important;
+}
+
+#bd-toc-nav,
+.bd-sidebar,
+.bd-sidebar-primary .caption {
+  color: #c0c6dc;
+}
+
+/* Sidebar styles */
+.bd-sidebar {
+  max-width: 335px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: #c0c6dc #192738;
+}
+
+/* Sidebar scrollbar styles */
+.bd-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.bd-sidebar::-webkit-scrollbar-track {
+  background: #192738;
+}
+
+.bd-sidebar::-webkit-scrollbar-thumb {
+  background-color: #c0c6dc;
+  border-radius: 2px;
+  border: 2px solid #192738;
+}
+
+/* Sidebar captions */
+.bd-sidebar-primary .caption {
+  font-weight: normal !important;
+  padding: 5px 0;
+}
+
+/* Header */
+.bd-header-article {
+  background-color: #660000 !important;
+}
+
+/* Main content area */
+.bd-main {
+  max-width: 2800px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Table of contents */
+.bd-toc {
+  max-width: 220px;
+}
+
+/* ============================================
+   Code Cells and Syntax Highlighting
+   ============================================ */
+
+/* Code cell container */
+div.highlight {
+  background-color: #16202d !important;
+  border-radius: 4px;
+  margin: 8px 0;
+}
+
+div.highlight pre {
+  background-color: #16202d !important;
+  margin: 0;
+  padding: 10px 0 10px 24px; /* Increased left padding */
+}
+
+/* Code input styling */
+.cell_input {
+  padding: 0px 0px;
+  margin: 0;
+  background-color: #192738 !important;
+  border-radius: 4px;
+  border: none !important;
+}
+
+/* Remove borders from code cell inputs */
+.cell_input {
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* Ensure consistent background colors */
+div.highlight,
+div.highlight pre,
+.cell,
+.highlight .hll,
+.highlight .nn,
+.jp-RenderedText,
+.jp-OutputArea-output {
+  background-color: #16202d !important;
+}
+
+div.highlight-python {
+  background-color: #192738 !important;
+  margin: 0;
+}
+
+/* Code font settings */
+div.highlight pre,
+.cell_output pre {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #e6e6e6;
+}
+
+/* Input prompt */
+.prompt {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  color: #d09937 !important;
+  margin-right: 10px;
+  user-select: none;
+}
+
+/* Output text */
+.cell_output pre {
+  color: #c0c6dc;
+  margin: 0;
+}
+
+/* Copy button for code cells */
+.copybtn {
+  background-color: #16202d;
+  border: none;
+  border-radius: 3px;
+  color: #c0c6dc;
+  padding: 4px 8px;
+  font-size: 12px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.copybtn:hover {
+  opacity: 1;
+  background-color: #16202d;
+}
+
+/* Fix output corners */
+.cell_output {
+  padding: 4px !important;
+  background-color: #192738 !important;
+  border-radius: 2px;
+  margin-top: 0px;
+  overflow: hidden;
+}
+
+/* Remove rounded corners from cell output children */
+.cell_output * {
+  background-color: #192738 !important;
+  border-radius: 0 !important;
+}
+
+/* ============================================
+   Syntax Highlighting Colors
+   ============================================ */
+
+/* Standardize syntax highlighting */
+.highlight .k,
+.highlight .si,
+.highlight .sa,
+.highlight .ni,
+.highlight .nb,
+.highlight .ne,
+.highlight .ow,
+.highlight .kn {
+  color: #29A8AB !important; /* Keywords and built-ins */
+}
+
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sd,
+.highlight .se {
+  color: #e1a53c !important; /* Strings */
+}
+
+.highlight .vm,
+.highlight .nf,
+.highlight .nc,
+.highlight .fm {
+  color: #e44949 !important; /* Functions, class names */
+}
+
+.highlight .n {
+  color: #E5E7EB !important; /* Names */
+}
+
+.highlight .c,
+.highlight .c1,
+.highlight .o {
+  color: #b0b0b0 !important; /* Comments and operators */
+}
+
+.highlight .mi,
+.highlight .mf,
+.highlight .kc,
+.highlight .bp {
+  color: #93C5FD !important; /* Numbers and constants */
+}
+
+/* ============================================
+   Code Output Styling
+   ============================================ */
+
+/* Remove borders and backgrounds from outputs */
+.cell_output *,
+.cell_output img,
+.output_png img,
+.output_wrapper,
+.cell_output .output_png,
+.output_html,
+.output_png::before {
+  background: none !important;
+  border: none !important;
+}
+
+/* Adjust output frames */
+.cell_output .output.stream {
+  margin-top: 0em;
+  margin-bottom: 0em;
+  box-shadow: none;
+}
+
+/* Ensure consistent spacing between cells */
+.cell + .cell {
+  margin-top: 0em;
+}
+
+/* Remove any residual borders or backgrounds */
+.cell_output * {
+  border: none !important;
+}
+
+/* Remove borders from matplotlib outputs */
+.output_png img {
+  background: none !important;
+  border: none !important;
+}
+
+/* Ensure matplotlib figures blend with background */
+.cell_output .output_png {
+  background: none !important;
+}
+
+/* Additional matplotlib output styling */
+.output_wrapper {
+  background: none !important;
+}
+
+/* ============================================
+   Hide Input and Toggle Buttons
+   ============================================ */
+
+/* General toggle styling */
+.cell-output-toggle,
+.cell-input-toggle,
+.toggle-hidden-code,
+.toggle-input,
+summary.headerlink,
+summary.toggle-input-visibility,
+.toggle-input-visibility,
+.cell details.hide-input > summary,
+button.hide-input,
+.tag_hide-input.docutils.container details.hide.above-input summary {
+  background-color: #16202d !important;
+  color: #FFFFFF !important;
+  padding: 8px 16px !important;
+  border: none !important;
+  border-left: 2px solid #d09937 !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+  font-size: 0.8em !important;
+  width: 100% !important;
+  text-align: left !important;
+  transition: all 0.2s ease !important;
+  display: block !important;
+  outline: none !important;
+  position: relative !important;
+  list-style: none !important;
+}
+
+/* Hover state when details are not open */
+details:not([open]) summary:hover,
+.cell-output-toggle:hover,
+.cell-input-toggle:hover,
+.toggle-hidden-code:hover,
+.toggle-input:hover,
+summary.headerlink:hover,
+summary.toggle-input-visibility:hover,
+.cell details.hide-input > summary:hover,
+button.hide-input:hover,
+.tag_hide-input.docutils.container details.hide.above-input summary:hover {
+  background-color: #2a3b4d !important;
+  color: #d09937 !important;
+}
+
+/* Open state styling */
+details[open] summary,
+details[open] .cell-output-toggle,
+details[open] .cell-input-toggle,
+details[open] .toggle-hidden-code,
+details[open] .toggle-input,
+details[open] summary.headerlink,
+details[open] summary.toggle-input-visibility,
+.cell details.hide-input[open] > summary,
+button.hide-input[open],
+.tag_hide-input.docutils.container details.hide.above-input[open] summary {
+  background-color: #16202d !important;
+  color: #d09937 !important;
+}
+
+/* Hover over summary when details are open */
+details[open] summary:hover,
+details[open] .cell-output-toggle:hover,
+details[open] .cell-input-toggle:hover,
+details[open] .toggle-hidden-code:hover,
+details[open] .toggle-input:hover,
+details[open] summary.headerlink:hover,
+details[open] summary.toggle-input-visibility:hover,
+.cell details.hide-input[open] > summary:hover,
+button.hide-input[open]:hover,
+.tag_hide-input.docutils.container details.hide.above-input[open] summary:hover {
+  background-color: #2a3b4d !important;
+  color: #FFFFFF !important;
+}
+
+/* Custom arrow indicators */
+.cell-output-toggle::before,
+.cell-input-toggle::before,
+.toggle-hidden-code::before,
+.toggle-input::before,
+summary.headerlink::before,
+summary.toggle-input-visibility::before,
+.cell details.hide-input > summary::before,
+button.hide-input::before,
+.tag_hide-input.docutils.container details.hide.above-input summary::before {
+  content: "▶" !important;
+  color: #d09937 !important;
+  margin-right: 8px !important;
+  display: inline-block !important;
+  transition: transform 0.2s ease !important;
+}
+
+/* Open state arrow */
+details[open] summary::before,
+details[open] .cell-output-toggle::before,
+details[open] .cell-input-toggle::before,
+details[open] .toggle-hidden-code::before,
+details[open] .toggle-input::before,
+details[open] summary.headerlink::before,
+details[open] summary.toggle-input-visibility::before,
+.cell details.hide-input[open] > summary::before,
+[data-input-collapsed="true"] button.hide-input::before,
+.tag_hide-input.docutils.container details[open].hide.above-input summary::before {
+  content: "▼" !important;
+}
+
+/* Remove default markers */
+.cell-output-toggle::-webkit-details-marker,
+.cell-input-toggle::-webkit-details-marker,
+.toggle-hidden-code::-webkit-details-marker,
+.toggle-input::-webkit-details-marker,
+summary.headerlink::-webkit-details-marker,
+summary.toggle-input-visibility::-webkit-details-marker,
+.cell details.hide-input > summary::-webkit-details-marker,
+button.hide-input::-webkit-details-marker,
+.tag_hide-input.docutils.container details.hide.above-input summary::-webkit-details-marker {
+  display: none !important;
+}
+
+/* Hide input content */
+.cell.tag_hide-input > .cell_input {
+  display: none;
+}
+
+/* Hide-input container */
+.tag_hide-input.docutils.container details.hide.above-input {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0px 0 !important;
+}
+
+/* Styling for the collapsed/expanded text spans */
+.tag_hide-input.docutils.container details.hide.above-input .collapsed,
+.tag_hide-input.docutils.container details.hide.above-input .expanded {
+  color: #FFFFFF !important;
+}
+
+/* Ensure proper spacing */
+.tag_hide-input.docutils.container details.hide.above-input + .cell_input {
+  margin-top: 0em !important;
+}
+
+/* Additional hide input styles */
+.cell details.hide-input {
+  background-color: #192738 !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Jupyter hide-input button */
+button.hide-input {
+  background-color: #1e2a3a !important;
+  color: #FFFFFF !important;
+  padding: 8px 16px !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+  font-size: 0.9em !important;
+  width: 100% !important;
+  text-align: left !important;
+  transition: all 0.2s ease !important;
+  border-left: 2px solid #d09937 !important;
+}
+
+/* Hover state for Jupyter hide-input button */
+button.hide-input:hover {
+  background-color: #2a3b4d !important;
+  color: #d09937 !important;
+}
+
+/* Open state styling for Jupyter hide-input button */
+button.hide-input[open] {
+  background-color: #2a3b4d !important;
+  color: #d09937 !important;
+}
+
+/* Hover over Jupyter hide-input button when open */
+button.hide-input[open]:hover {
+  background-color: #16202d !important;
+  color: #FFFFFF !important;
+}
+
+/* ============================================
+   Details Toggle (e.g., for hidden code)
+   ============================================ */
+
+/* Details container */
+details.toggle-hidden-code {
+  background-color: #192738;
+  border: none;
+  padding: 0;
+  margin: 8px 0;
+}
+
+/* Summary styling */
+details.toggle-hidden-code summary {
+  background-color: #16202d !important;
+  color: #FFFFFF;
+  padding: 8px 12px;
+  font-size: 0.9em !important;
+  font-family: inherit;
+  border-left: 2px solid #d09937;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover state when closed */
+details.toggle-hidden-code:not([open]) summary:hover {
+  background-color: #2a3b4d !important;
+  color: #d09937 !important;
+}
+
+/* Open state styling */
+details.toggle-hidden-code[open] summary {
+  background-color: #2a3b4d !important;
+  color: #d09937 !important;
+  border-bottom: 1px solid #2a3b4d;
+  margin-bottom: 8px;
+}
+
+/* Hover over summary when open */
+details.toggle-hidden-code[open] summary:hover {
+  background-color: #16202d !important;
+  color: #FFFFFF !important;
+}
+
+/* Remove default disclosure triangle */
+details.toggle-hidden-code summary::-webkit-details-marker,
+details.toggle-hidden-code summary::marker {
+  display: none;
+}
+
+/* Custom indicator */
+details.toggle-hidden-code summary:before {
+  content: "▶";
+  color: #d09937;
+  margin-right: 8px;
+  font-size: 0.7em;
+  transition: transform 0.2s ease;
+}
+
+details.toggle-hidden-code[open] summary:before {
+  content: "▼";
+}
+
+/* ============================================
+   Miscellaneous Fixes
+   ============================================ */
+
+/* Ensure consistent spacing between cells */
+.cell + .cell {
+  margin-top: 0em;
+}
+
+/* Ensure consistent background color */
+.jp-RenderedText {
+  background-color: #192738 !important;
+}
+
+/* Remove borders from outputs */
+.jp-OutputArea-output {
+  background-color: #192738 !important;
+}
+
+/* Output text styling */
+.cell_output pre {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  font-size: 14px;
+  color: #c0c6dc;
+  margin: 0;
+}
+
+/* Code text styling */
+.highlight pre {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #E5E7EB !important;
+}
+
+/* Input prompt styling */
+.prompt {
+  color: #d09937 !important;
+}
