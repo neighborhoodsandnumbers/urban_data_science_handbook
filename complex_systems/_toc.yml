@@ -1,8 +1,31 @@
 format: jb-book
 root: sections/0_frontmatter/0_1_introduction
 parts:
-- caption: "I. Single Systems"
-  chapters: []
+- caption: "I. Foundations"
+  chapters:
+    - file: sections/1_what_are_complex_systems/1_1_emergence_self_organization_adaptation
+      sections:
+        - file: sections/1_what_are_complex_systems/1_2_reductionism_and_its_limits
+        - file: sections/1_what_are_complex_systems/1_3_near_decomposability
+        - file: sections/1_what_are_complex_systems/1_4_taxonomy_of_modeling_approaches
+        - file: sections/1_what_are_complex_systems/1_5_why_model
+        - file: sections/1_what_are_complex_systems/1_6_history_of_complexity
+    - file: sections/2_mathematical_preliminaries/2_1_linear_algebra_essentials
+      sections:
+        - file: sections/2_mathematical_preliminaries/2_2_multivariable_calculus
+        - file: sections/2_mathematical_preliminaries/2_3_ordinary_differential_equations
+        - file: sections/2_mathematical_preliminaries/2_4_probability_foundations
+        - file: sections/2_mathematical_preliminaries/2_5_stochastic_processes
+        - file: sections/2_mathematical_preliminaries/2_6_numerical_methods
+        - file: sections/2_mathematical_preliminaries/2_7_lab_scientific_python
+    - file: sections/3_information_and_entropy/3_1_shannon_entropy
+      sections:
+        - file: sections/3_information_and_entropy/3_2_joint_conditional_mutual_information
+        - file: sections/3_information_and_entropy/3_3_kl_divergence_maximum_entropy
+        - file: sections/3_information_and_entropy/3_4_entropy_rate
+        - file: sections/3_information_and_entropy/3_5_fisher_information
+        - file: sections/3_information_and_entropy/3_6_connections_to_statistical_mechanics
+        - file: sections/3_information_and_entropy/3_7_lab_entropy_and_information
 - caption: "II. Interacting Systems"
   chapters: []
 - caption: "III. Adaptive Systems"
