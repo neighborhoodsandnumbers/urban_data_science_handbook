@@ -18,6 +18,10 @@ latex:
 bibtex_bibfiles:
   - references.bib
 
+repository:
+  url: https://github.com/neighborhoodsandnumbers/urban_data_science_handbook
+  path_to_book: complex_systems
+
 html:
   extra_css:
     - _static/tufte.css
