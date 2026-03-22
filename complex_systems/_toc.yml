@@ -181,3 +181,33 @@ parts:
         - file: sections/21_data_driven_approaches/21_5_physics_informed_ml
         - file: sections/21_data_driven_approaches/21_6_data_driven_vs_mechanistic
         - file: sections/21_data_driven_approaches/21_7_lab_ccm_diffusion_pinn
+- caption: "VII. Case Studies and Synthesis"
+  chapters:
+    - file: sections/22_urban_systems/22_1_cities_as_complex_adaptive_systems
+      sections:
+        - file: sections/22_urban_systems/22_2_urban_scaling_laws
+        - file: sections/22_urban_systems/22_3_land_use_transportation
+        - file: sections/22_urban_systems/22_4_segregation
+        - file: sections/22_urban_systems/22_5_urban_mobility_networks
+        - file: sections/22_urban_systems/22_6_lab_urban_scaling_transit
+    - file: sections/23_ecological_systems/23_1_food_webs_stability
+      sections:
+        - file: sections/23_ecological_systems/23_2_regime_shifts
+        - file: sections/23_ecological_systems/23_3_spatial_ecology
+        - file: sections/23_ecological_systems/23_4_biodiversity_neutral_theory
+    - file: sections/24_economic_financial_systems/24_1_agent_based_computational_economics
+      sections:
+        - file: sections/24_economic_financial_systems/24_2_financial_contagion
+        - file: sections/24_economic_financial_systems/24_3_market_microstructure
+        - file: sections/24_economic_financial_systems/24_4_inequality_dynamics
+    - file: sections/25_biological_social_networks/25_1_gene_regulatory_networks
+      sections:
+        - file: sections/25_biological_social_networks/25_2_neural_networks_in_the_brain
+        - file: sections/25_biological_social_networks/25_3_social_contagion
+        - file: sections/25_biological_social_networks/25_4_epidemiology
+    - file: sections/26_frontiers/26_1_higher_order_interactions
+      sections:
+        - file: sections/26_frontiers/26_2_coarse_graining_multiscale
+        - file: sections/26_frontiers/26_3_causal_emergence
+        - file: sections/26_frontiers/26_4_foundation_models
+        - file: sections/26_frontiers/26_5_open_problems
