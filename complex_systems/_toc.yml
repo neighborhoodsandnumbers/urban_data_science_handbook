@@ -128,5 +128,30 @@ parts:
         - file: sections/15_self_organized_criticality/15_5_fat_tails
         - file: sections/15_self_organized_criticality/15_6_applications
         - file: sections/15_self_organized_criticality/15_7_lab_sandpile
-- caption: "V. Adaptive Systems"
-  chapters: []
+- caption: "V. Adaptive and Evolutionary Systems"
+  chapters:
+    - file: sections/16_evolutionary_dynamics/16_1_fitness_landscapes
+      sections:
+        - file: sections/16_evolutionary_dynamics/16_2_replicator_dynamics
+        - file: sections/16_evolutionary_dynamics/16_3_prisoners_dilemma_cooperation
+        - file: sections/16_evolutionary_dynamics/16_4_neutral_theory_genetic_drift
+        - file: sections/16_evolutionary_dynamics/16_5_coevolution
+        - file: sections/16_evolutionary_dynamics/16_6_cultural_evolution
+        - file: sections/16_evolutionary_dynamics/16_7_lab_evolutionary_games
+    - file: sections/17_agent_based_models/17_1_design_principles
+      sections:
+        - file: sections/17_agent_based_models/17_2_schelling_segregation
+        - file: sections/17_agent_based_models/17_3_sugarscape
+        - file: sections/17_agent_based_models/17_4_flocking_swarming
+        - file: sections/17_agent_based_models/17_5_abm_software
+        - file: sections/17_agent_based_models/17_6_verification_validation
+        - file: sections/17_agent_based_models/17_7_sensitivity_analysis
+        - file: sections/17_agent_based_models/17_8_lab_schelling_vicsek
+    - file: sections/18_learning_and_adaptation/18_1_reinforcement_learning
+      sections:
+        - file: sections/18_learning_and_adaptation/18_2_multi_agent_rl
+        - file: sections/18_learning_and_adaptation/18_3_genetic_algorithms
+        - file: sections/18_learning_and_adaptation/18_4_neural_networks_as_dynamical_systems
+        - file: sections/18_learning_and_adaptation/18_5_reservoir_computing
+        - file: sections/18_learning_and_adaptation/18_6_ml_for_dynamical_systems
+        - file: sections/18_learning_and_adaptation/18_7_lab_learning_agents
