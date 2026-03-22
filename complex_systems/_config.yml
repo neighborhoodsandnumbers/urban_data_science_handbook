@@ -1,0 +1,29 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Complex Systems
+author: A.C. Shannon-Ding
+# logo: images/logo.png
+
+# Do not execute notebooks until content exists
+execute:
+  execute_notebooks: 'off'
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+html:
+  extra_css:
+    - _static/tufte.css
+  use_issues_button: true
+  use_repository_button: true
+  home_page_in_navbar: true
+  use_fullscreen_button: false
+  comments:
+    hypothesis: false

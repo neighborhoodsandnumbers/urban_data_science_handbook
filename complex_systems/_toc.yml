@@ -1,0 +1,9 @@
+format: jb-book
+root: sections/0_frontmatter/0_1_introduction
+parts:
+- caption: "I. Single Systems"
+  chapters: []
+- caption: "II. Interacting Systems"
+  chapters: []
+- caption: "III. Adaptive Systems"
+  chapters: []
