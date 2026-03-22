@@ -26,7 +26,47 @@ parts:
         - file: sections/3_information_and_entropy/3_5_fisher_information
         - file: sections/3_information_and_entropy/3_6_connections_to_statistical_mechanics
         - file: sections/3_information_and_entropy/3_7_lab_entropy_and_information
-- caption: "II. Interacting Systems"
+- caption: "II. Dynamical Systems"
+  chapters:
+    - file: sections/4_one_dimensional_flows/4_1_phase_portraits_on_the_line
+      sections:
+        - file: sections/4_one_dimensional_flows/4_2_fixed_points_and_stability
+        - file: sections/4_one_dimensional_flows/4_3_bifurcations
+        - file: sections/4_one_dimensional_flows/4_4_imperfect_bifurcations
+        - file: sections/4_one_dimensional_flows/4_5_flows_on_the_circle
+        - file: sections/4_one_dimensional_flows/4_6_lab_bifurcation_diagrams
+    - file: sections/5_two_dimensional_flows/5_1_phase_plane_and_nullclines
+      sections:
+        - file: sections/5_two_dimensional_flows/5_2_classification_of_fixed_points
+        - file: sections/5_two_dimensional_flows/5_3_limit_cycles
+        - file: sections/5_two_dimensional_flows/5_4_hopf_bifurcation
+        - file: sections/5_two_dimensional_flows/5_5_relaxation_oscillations
+        - file: sections/5_two_dimensional_flows/5_6_conservative_and_gradient_systems
+        - file: sections/5_two_dimensional_flows/5_7_lab_phase_portraits
+    - file: sections/6_chaos_and_strange_attractors/6_1_lorenz_system
+      sections:
+        - file: sections/6_chaos_and_strange_attractors/6_2_lyapunov_exponents
+        - file: sections/6_chaos_and_strange_attractors/6_3_fractal_dimension
+        - file: sections/6_chaos_and_strange_attractors/6_4_routes_to_chaos
+        - file: sections/6_chaos_and_strange_attractors/6_5_logistic_map
+        - file: sections/6_chaos_and_strange_attractors/6_6_takens_embedding
+        - file: sections/6_chaos_and_strange_attractors/6_7_lab_lyapunov_and_embedding
+    - file: sections/7_discrete_dynamical_systems/7_1_iterated_maps
+      sections:
+        - file: sections/7_discrete_dynamical_systems/7_2_logistic_map_universality
+        - file: sections/7_discrete_dynamical_systems/7_3_symbolic_dynamics
+        - file: sections/7_discrete_dynamical_systems/7_4_cellular_automata
+        - file: sections/7_discrete_dynamical_systems/7_5_edge_of_chaos
+        - file: sections/7_discrete_dynamical_systems/7_6_lab_maps_and_automata
+    - file: sections/8_stability_resilience_critical_transitions/8_1_basins_of_attraction
+      sections:
+        - file: sections/8_stability_resilience_critical_transitions/8_2_tipping_points
+        - file: sections/8_stability_resilience_critical_transitions/8_3_early_warning_signals
+        - file: sections/8_stability_resilience_critical_transitions/8_4_noise_induced_transitions
+        - file: sections/8_stability_resilience_critical_transitions/8_5_resilience_thinking
+        - file: sections/8_stability_resilience_critical_transitions/8_6_applications
+        - file: sections/8_stability_resilience_critical_transitions/8_7_lab_early_warnings
+- caption: "III. Interacting Systems"
   chapters: []
-- caption: "III. Adaptive Systems"
+- caption: "IV. Adaptive Systems"
   chapters: []
