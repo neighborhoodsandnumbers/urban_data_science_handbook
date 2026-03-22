@@ -101,5 +101,32 @@ parts:
         - file: sections/12_spatial_systems/12_5_fractal_geometry
         - file: sections/12_spatial_systems/12_6_movement_and_mobility
         - file: sections/12_spatial_systems/12_7_lab_spatial_patterns
-- caption: "IV. Adaptive Systems"
+- caption: "IV. Statistical Mechanics and Scaling"
+  chapters:
+    - file: sections/13_statistical_mechanics/13_1_microstates_macrostates_boltzmann
+      sections:
+        - file: sections/13_statistical_mechanics/13_2_partition_function_free_energy
+        - file: sections/13_statistical_mechanics/13_3_ising_model
+        - file: sections/13_statistical_mechanics/13_4_phase_transitions
+        - file: sections/13_statistical_mechanics/13_5_critical_phenomena
+        - file: sections/13_statistical_mechanics/13_6_renormalization_group
+        - file: sections/13_statistical_mechanics/13_7_lab_ising_model
+    - file: sections/14_scaling_laws_and_universality/14_1_dimensional_analysis
+      sections:
+        - file: sections/14_scaling_laws_and_universality/14_2_power_laws_in_nature
+        - file: sections/14_scaling_laws_and_universality/14_3_rigorous_power_law_fitting
+        - file: sections/14_scaling_laws_and_universality/14_4_allometric_scaling
+        - file: sections/14_scaling_laws_and_universality/14_5_urban_scaling
+        - file: sections/14_scaling_laws_and_universality/14_6_zipf_gibrat_size_distributions
+        - file: sections/14_scaling_laws_and_universality/14_7_when_scaling_breaks
+        - file: sections/14_scaling_laws_and_universality/14_8_lab_power_law_fitting
+    - file: sections/15_self_organized_criticality/15_1_btw_sandpile
+      sections:
+        - file: sections/15_self_organized_criticality/15_2_avalanche_statistics
+        - file: sections/15_self_organized_criticality/15_3_soc_debate
+        - file: sections/15_self_organized_criticality/15_4_extreme_value_theory
+        - file: sections/15_self_organized_criticality/15_5_fat_tails
+        - file: sections/15_self_organized_criticality/15_6_applications
+        - file: sections/15_self_organized_criticality/15_7_lab_sandpile
+- caption: "V. Adaptive Systems"
   chapters: []
