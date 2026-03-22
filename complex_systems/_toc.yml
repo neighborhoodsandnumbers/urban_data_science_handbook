@@ -155,3 +155,29 @@ parts:
         - file: sections/18_learning_and_adaptation/18_5_reservoir_computing
         - file: sections/18_learning_and_adaptation/18_6_ml_for_dynamical_systems
         - file: sections/18_learning_and_adaptation/18_7_lab_learning_agents
+- caption: "VI. Inference and Methodology"
+  chapters:
+    - file: sections/19_parameter_estimation/19_1_mle_bayesian_refresher
+      sections:
+        - file: sections/19_parameter_estimation/19_2_mcmc_methods
+        - file: sections/19_parameter_estimation/19_3_approximate_bayesian_computation
+        - file: sections/19_parameter_estimation/19_4_fitting_dynamical_systems
+        - file: sections/19_parameter_estimation/19_5_state_space_models
+        - file: sections/19_parameter_estimation/19_6_bayesian_workflow_pymc
+        - file: sections/19_parameter_estimation/19_7_lab_abc_ode_kalman
+    - file: sections/20_model_selection_validation/20_1_bias_variance_tradeoff
+      sections:
+        - file: sections/20_model_selection_validation/20_2_information_criteria
+        - file: sections/20_model_selection_validation/20_3_cross_validation
+        - file: sections/20_model_selection_validation/20_4_global_sensitivity_analysis
+        - file: sections/20_model_selection_validation/20_5_uncertainty_quantification
+        - file: sections/20_model_selection_validation/20_6_pattern_oriented_modeling
+        - file: sections/20_model_selection_validation/20_7_lab_sensitivity_validation
+    - file: sections/21_data_driven_approaches/21_1_time_series_embeddings
+      sections:
+        - file: sections/21_data_driven_approaches/21_2_causal_inference
+        - file: sections/21_data_driven_approaches/21_3_dimensionality_reduction
+        - file: sections/21_data_driven_approaches/21_4_equation_free_methods
+        - file: sections/21_data_driven_approaches/21_5_physics_informed_ml
+        - file: sections/21_data_driven_approaches/21_6_data_driven_vs_mechanistic
+        - file: sections/21_data_driven_approaches/21_7_lab_ccm_diffusion_pinn
