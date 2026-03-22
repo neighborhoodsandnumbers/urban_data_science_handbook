@@ -211,3 +211,9 @@ parts:
         - file: sections/26_frontiers/26_3_causal_emergence
         - file: sections/26_frontiers/26_4_foundation_models
         - file: sections/26_frontiers/26_5_open_problems
+- caption: "Appendices"
+  chapters:
+    - file: sections/appendices/appendix_a_python_toolbox
+    - file: sections/appendices/appendix_b_mathematical_notation
+    - file: sections/appendices/appendix_c_datasets
+    - file: sections/appendices/appendix_d_research_literature
