@@ -66,7 +66,40 @@ parts:
         - file: sections/8_stability_resilience_critical_transitions/8_5_resilience_thinking
         - file: sections/8_stability_resilience_critical_transitions/8_6_applications
         - file: sections/8_stability_resilience_critical_transitions/8_7_lab_early_warnings
-- caption: "III. Interacting Systems"
-  chapters: []
+- caption: "III. Spatial and Network Systems"
+  chapters:
+    - file: sections/9_network_structure/9_1_graphs_adjacency_degree
+      sections:
+        - file: sections/9_network_structure/9_2_paths_components_connectivity
+        - file: sections/9_network_structure/9_3_centrality_measures
+        - file: sections/9_network_structure/9_4_clustering_transitivity_community
+        - file: sections/9_network_structure/9_5_spectral_properties
+        - file: sections/9_network_structure/9_6_bipartite_multilayer_temporal
+        - file: sections/9_network_structure/9_7_lab_network_analysis
+    - file: sections/10_network_models_and_mechanisms/10_1_erdos_renyi
+      sections:
+        - file: sections/10_network_models_and_mechanisms/10_2_watts_strogatz
+        - file: sections/10_network_models_and_mechanisms/10_3_barabasi_albert
+        - file: sections/10_network_models_and_mechanisms/10_4_configuration_models
+        - file: sections/10_network_models_and_mechanisms/10_5_ergms
+        - file: sections/10_network_models_and_mechanisms/10_6_stochastic_block_models
+        - file: sections/10_network_models_and_mechanisms/10_7_model_selection
+        - file: sections/10_network_models_and_mechanisms/10_8_lab_generative_models
+    - file: sections/11_dynamics_on_networks/11_1_diffusion_and_random_walks
+      sections:
+        - file: sections/11_dynamics_on_networks/11_2_epidemic_spreading
+        - file: sections/11_dynamics_on_networks/11_3_percolation_and_robustness
+        - file: sections/11_dynamics_on_networks/11_4_opinion_dynamics
+        - file: sections/11_dynamics_on_networks/11_5_synchronization_on_networks
+        - file: sections/11_dynamics_on_networks/11_6_cascading_failures
+        - file: sections/11_dynamics_on_networks/11_7_lab_epidemics_percolation_kuramoto
+    - file: sections/12_spatial_systems/12_1_reaction_diffusion
+      sections:
+        - file: sections/12_spatial_systems/12_2_spatial_point_processes
+        - file: sections/12_spatial_systems/12_3_spatial_autocorrelation
+        - file: sections/12_spatial_systems/12_4_gravity_models
+        - file: sections/12_spatial_systems/12_5_fractal_geometry
+        - file: sections/12_spatial_systems/12_6_movement_and_mobility
+        - file: sections/12_spatial_systems/12_7_lab_spatial_patterns
 - caption: "IV. Adaptive Systems"
   chapters: []
