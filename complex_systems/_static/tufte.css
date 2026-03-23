@@ -81,6 +81,11 @@ article h4 {
    Navigation and Sidebar
    ============================================ */
 
+/* Hide the dropdown chevron/triangle in the sidebar TOC */
+.toctree-toggle {
+  display: none !important;
+}
+
 /* Background and text colors */
 #bd-toc-nav,
 .bd-sidebar,
