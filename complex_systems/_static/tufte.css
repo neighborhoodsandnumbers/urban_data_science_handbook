@@ -85,6 +85,8 @@ article h4 {
    (keep the chevron icon from .toctree-toggle) */
 .bd-sidebar summary {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 .bd-sidebar summary::-webkit-details-marker {
   display: none;
@@ -92,6 +94,16 @@ article h4 {
 .bd-sidebar summary::marker {
   display: none;
   content: "";
+}
+
+/* Compact sidebar TOC spacing */
+.bd-sidebar .nav.bd-sidenav li {
+  margin: 0;
+  padding: 0;
+}
+.bd-sidebar .nav.bd-sidenav {
+  margin: 0;
+  padding: 0;
 }
 
 /* Background and text colors */
@@ -399,7 +411,7 @@ button.hide-input,
 }
 
 /* Hover state when details are not open */
-details:not([open]) summary:hover,
+.bd-article details:not([open]) summary:hover,
 .cell-output-toggle:hover,
 .cell-input-toggle:hover,
 .toggle-hidden-code:hover,
@@ -414,7 +426,7 @@ button.hide-input:hover,
 }
 
 /* Open state styling */
-details[open] summary,
+.bd-article details[open] summary,
 details[open] .cell-output-toggle,
 details[open] .cell-input-toggle,
 details[open] .toggle-hidden-code,
@@ -429,7 +441,7 @@ button.hide-input[open],
 }
 
 /* Hover over summary when details are open */
-details[open] summary:hover,
+.bd-article details[open] summary:hover,
 details[open] .cell-output-toggle:hover,
 details[open] .cell-input-toggle:hover,
 details[open] .toggle-hidden-code:hover,
@@ -461,7 +473,7 @@ button.hide-input::before,
 }
 
 /* Open state arrow */
-details[open] summary::before,
+.bd-article details[open] summary::before,
 details[open] .cell-output-toggle::before,
 details[open] .cell-input-toggle::before,
 details[open] .toggle-hidden-code::before,
