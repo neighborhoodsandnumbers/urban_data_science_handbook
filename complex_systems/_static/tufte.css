@@ -81,9 +81,17 @@ article h4 {
    Navigation and Sidebar
    ============================================ */
 
-/* Hide the dropdown chevron/triangle in the sidebar TOC */
-.toctree-toggle {
-  display: none !important;
+/* Hide the native disclosure triangle on sidebar TOC dropdowns
+   (keep the chevron icon from .toctree-toggle) */
+.bd-sidebar summary {
+  list-style: none;
+}
+.bd-sidebar summary::-webkit-details-marker {
+  display: none;
+}
+.bd-sidebar summary::marker {
+  display: none;
+  content: "";
 }
 
 /* Background and text colors */
