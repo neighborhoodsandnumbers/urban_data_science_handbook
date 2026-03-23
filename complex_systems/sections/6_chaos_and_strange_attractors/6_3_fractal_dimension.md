@@ -1,1 +1,1 @@
-# Fractal Dimension and the Geometry of Attractors
+# Fractal Dimension

@@ -1,1 +1,3 @@
-# Fitness Landscapes and the NK Model
+# Fitness Landscapes
+
+<!-- Subsections: the NK model -->

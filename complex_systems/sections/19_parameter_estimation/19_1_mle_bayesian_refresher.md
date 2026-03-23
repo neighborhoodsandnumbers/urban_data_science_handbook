@@ -1,1 +1,1 @@
-# Maximum Likelihood and Bayesian Inference Refresher
+# MLE and Bayesian Refresher

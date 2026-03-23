@@ -1,1 +1,3 @@
-# Prisoner's Dilemma, Cooperation, and the Evolution of Social Norms
+# Cooperation and Social Norms
+
+<!-- Subsections: prisoner's dilemma, evolution of cooperation -->

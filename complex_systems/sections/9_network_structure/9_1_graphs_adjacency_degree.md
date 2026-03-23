@@ -1,1 +1,3 @@
-# Graphs, Adjacency Matrices, and Degree Distributions
+# Graphs and Degree Distributions
+
+<!-- Subsections: adjacency matrices, degree sequences -->

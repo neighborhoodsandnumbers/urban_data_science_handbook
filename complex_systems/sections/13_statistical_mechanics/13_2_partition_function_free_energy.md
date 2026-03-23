@@ -1,1 +1,1 @@
-# The Partition Function and Free Energy
+# Partition Functions and Free Energy

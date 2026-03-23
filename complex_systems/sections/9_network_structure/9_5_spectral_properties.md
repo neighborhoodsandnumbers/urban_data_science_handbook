@@ -1,1 +1,3 @@
-# Spectral Properties of Networks: The Graph Laplacian
+# Spectral Properties
+
+<!-- Subsections: the graph Laplacian -->

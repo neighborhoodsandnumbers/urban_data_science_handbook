@@ -1,1 +1,3 @@
-# Joint Entropy, Conditional Entropy, and Mutual Information
+# Joint and Conditional Entropy
+
+<!-- Subsections: mutual information -->

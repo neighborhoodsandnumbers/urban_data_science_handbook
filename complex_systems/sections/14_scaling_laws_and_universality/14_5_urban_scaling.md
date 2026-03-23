@@ -1,1 +1,3 @@
-# Urban Scaling: Bettencourt's Framework for Cities
+# Urban Scaling
+
+<!-- Subsections: Bettencourt's framework for cities -->

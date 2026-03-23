@@ -1,1 +1,1 @@
-# Reaction-Diffusion Equations: Turing Patterns, Traveling Waves
+# Reaction-Diffusion and Turing Patterns

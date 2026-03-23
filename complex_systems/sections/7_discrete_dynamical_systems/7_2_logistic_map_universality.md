@@ -1,1 +1,3 @@
-# The Logistic Map in Detail: Universality and Feigenbaum Constants
+# Universality and Feigenbaum Constants
+
+<!-- Subsections: the logistic map in detail -->

@@ -1,1 +1,3 @@
-# Design Principles: Agents, Environments, Interaction Rules, Scheduling
+# Design Principles
+
+<!-- Subsections: agents, environments, interaction rules, scheduling -->

@@ -1,1 +1,1 @@
-# Model Selection and Goodness-of-Fit for Networks
+# Network Model Selection

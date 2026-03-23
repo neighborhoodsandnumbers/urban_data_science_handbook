@@ -1,1 +1,3 @@
-# Bipartite, Multilayer, and Temporal Networks
+# Beyond Simple Graphs
+
+<!-- Subsections: bipartite, multilayer, and temporal networks -->

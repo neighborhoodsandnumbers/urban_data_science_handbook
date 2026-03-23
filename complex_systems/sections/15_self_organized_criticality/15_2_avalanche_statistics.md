@@ -1,1 +1,1 @@
-# Avalanche Statistics and Scale-Free Distributions
+# Avalanche Statistics

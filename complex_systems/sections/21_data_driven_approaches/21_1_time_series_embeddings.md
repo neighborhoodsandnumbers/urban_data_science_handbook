@@ -1,1 +1,1 @@
-# Time Series Embeddings and Nonlinear Forecasting
+# Time Series Embeddings

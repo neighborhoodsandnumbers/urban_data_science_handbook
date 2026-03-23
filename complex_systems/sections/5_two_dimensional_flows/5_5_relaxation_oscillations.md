@@ -1,1 +1,1 @@
-# Relaxation Oscillations and Multiple Timescales
+# Relaxation Oscillations

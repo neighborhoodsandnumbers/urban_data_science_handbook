@@ -1,1 +1,3 @@
-# Resilience Thinking: Holling's Adaptive Cycle
+# Resilience and the Adaptive Cycle
+
+<!-- Subsections: Holling's panarchy framework -->

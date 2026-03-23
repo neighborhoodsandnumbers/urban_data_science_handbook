@@ -1,1 +1,3 @@
-# The Watts-Strogatz Small-World Model
+# Small-World Networks
+
+<!-- Subsections: the Watts-Strogatz model -->

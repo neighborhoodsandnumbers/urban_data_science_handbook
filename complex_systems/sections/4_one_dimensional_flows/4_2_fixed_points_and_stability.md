@@ -1,1 +1,1 @@
-# Fixed Points and Linear Stability Analysis
+# Fixed Points and Stability

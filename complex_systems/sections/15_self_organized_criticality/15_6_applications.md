@@ -1,1 +1,3 @@
-# Applications: Earthquakes, Forest Fires, Financial Crashes
+# Applications
+
+<!-- Subsections: earthquakes, forest fires, financial crashes -->

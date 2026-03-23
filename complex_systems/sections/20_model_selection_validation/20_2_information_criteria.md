@@ -1,1 +1,3 @@
-# Information Criteria: AIC, BIC, WAIC, and Their Assumptions
+# Information Criteria
+
+<!-- Subsections: AIC, BIC, WAIC -->

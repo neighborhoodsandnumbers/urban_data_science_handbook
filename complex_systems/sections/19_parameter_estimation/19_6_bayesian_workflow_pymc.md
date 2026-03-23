@@ -1,1 +1,3 @@
-# Practical Bayesian Workflow with PyMC
+# Bayesian Workflow
+
+<!-- Subsections: practical workflow with PyMC -->

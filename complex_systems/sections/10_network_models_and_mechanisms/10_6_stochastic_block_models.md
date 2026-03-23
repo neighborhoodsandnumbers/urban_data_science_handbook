@@ -1,1 +1,1 @@
-# Stochastic Block Models and Latent Space Models
+# Stochastic Block Models

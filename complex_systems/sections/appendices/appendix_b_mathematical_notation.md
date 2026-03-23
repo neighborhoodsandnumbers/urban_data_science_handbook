@@ -1,1 +1,1 @@
-# Appendix B: Mathematical Notation and Reference
+# Appendix B: Mathematical Notation

@@ -1,1 +1,3 @@
-# Flocking, Swarming, and Collective Motion
+# Collective Motion
+
+<!-- Subsections: flocking, swarming, Vicsek model -->

@@ -1,1 +1,1 @@
-# Clustering, Transitivity, and Community Structure
+# Clustering and Community Structure

@@ -1,1 +1,1 @@
-# Microstates, Macrostates, and the Boltzmann Distribution
+# Microstates and the Boltzmann Distribution

@@ -1,1 +1,1 @@
-# Imperfect Bifurcations and Structural Stability
+# Imperfect Bifurcations

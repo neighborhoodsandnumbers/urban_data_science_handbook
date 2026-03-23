@@ -1,1 +1,1 @@
-# Kullback-Leibler Divergence and Maximum Entropy
+# KL Divergence and Maximum Entropy

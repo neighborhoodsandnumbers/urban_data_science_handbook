@@ -1,1 +1,1 @@
-# Synchronization on Networks
+# Synchronization

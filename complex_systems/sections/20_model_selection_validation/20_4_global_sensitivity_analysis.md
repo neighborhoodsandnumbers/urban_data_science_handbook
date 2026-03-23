@@ -1,1 +1,3 @@
-# Global Sensitivity Analysis: Sobol Indices, Morris Screening
+# Global Sensitivity Analysis
+
+<!-- Subsections: Sobol indices, Morris screening -->

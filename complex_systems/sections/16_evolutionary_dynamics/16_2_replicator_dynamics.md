@@ -1,1 +1,1 @@
-# Replicator Dynamics and Evolutionary Game Theory
+# Replicator Dynamics

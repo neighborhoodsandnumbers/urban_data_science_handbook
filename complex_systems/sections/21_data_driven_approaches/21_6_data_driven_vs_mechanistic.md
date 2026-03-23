@@ -1,1 +1,1 @@
-# When to Use Data-Driven vs. Mechanistic Models
+# Data-Driven vs. Mechanistic Models

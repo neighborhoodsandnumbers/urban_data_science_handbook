@@ -1,1 +1,1 @@
-# Gravity Models and Spatial Interaction
+# Gravity Models

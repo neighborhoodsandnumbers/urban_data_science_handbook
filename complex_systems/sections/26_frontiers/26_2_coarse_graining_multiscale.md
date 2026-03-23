@@ -1,1 +1,1 @@
-# Coarse-Graining, Multiscale Modeling, and the Renormalization Group in Complex Networks
+# Coarse-Graining and Multiscale Modeling

@@ -1,1 +1,3 @@
-# The Bak-Tang-Wiesenfeld Sandpile Model
+# The BTW Sandpile
+
+<!-- Subsections: the Bak-Tang-Wiesenfeld model -->

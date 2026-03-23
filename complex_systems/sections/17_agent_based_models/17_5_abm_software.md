@@ -1,1 +1,3 @@
-# ABM Software: Mesa, NetLogo, and Framework Comparison
+# ABM Software
+
+<!-- Subsections: Mesa, NetLogo, framework comparison -->

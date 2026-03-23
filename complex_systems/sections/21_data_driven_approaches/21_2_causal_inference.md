@@ -1,1 +1,1 @@
-# Causal Inference from Observational Data
+# Causal Inference

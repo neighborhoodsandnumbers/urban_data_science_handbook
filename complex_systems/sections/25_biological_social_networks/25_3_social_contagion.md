@@ -1,1 +1,1 @@
-# Social Contagion: Information Diffusion, Behavior Change
+# Social Contagion

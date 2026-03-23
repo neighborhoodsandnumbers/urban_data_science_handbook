@@ -1,1 +1,1 @@
-# Equation-Free Methods: Coarse Projective Integration
+# Equation-Free Methods

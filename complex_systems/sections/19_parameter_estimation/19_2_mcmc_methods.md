@@ -1,1 +1,3 @@
-# MCMC Methods: Metropolis-Hastings, Hamiltonian Monte Carlo
+# MCMC Methods
+
+<!-- Subsections: Metropolis-Hastings, Hamiltonian Monte Carlo -->
