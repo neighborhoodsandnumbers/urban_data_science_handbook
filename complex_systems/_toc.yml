@@ -251,3 +251,4 @@ parts:
     - file: sections/appendices/appendix_b_mathematical_notation
     - file: sections/appendices/appendix_c_datasets
     - file: sections/appendices/appendix_d_research_literature
+    - file: sections/appendices/references
