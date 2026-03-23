@@ -1,0 +1,5 @@
+# What Are Complex Systems?
+
+*In 1900, Henri Bénard heated a thin layer of melted spermaceti — a waxy substance from the head cavities of sperm whales — from below and watched something strange happen. Below a critical temperature difference, the fluid sat still — heat moved through it by conduction alone, molecule jostling molecule, nothing to see. But past a threshold, the liquid spontaneously organized itself into a lattice of hexagonal convection cells, each one a few millimeters across, warm fluid rising at the center and cool fluid sinking at the edges. No one told the molecules to form hexagons. No blueprint specified the pattern. The fluid simply... did it.*
+
+*More than a century later, we still don't have a single, universally accepted definition of "complex system." But we know one when we see one, and Bénard's convection cells exhibit the signature: a system of many interacting components whose collective behavior cannot be straightforwardly deduced from the behavior of any individual component. This chapter is about learning to see that signature — and developing the vocabulary to talk about it precisely.*

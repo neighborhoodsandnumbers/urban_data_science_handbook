@@ -2,9 +2,11 @@ format: jb-book
 root: sections/0_frontmatter/0_1_introduction
 parts:
 - caption: "I. Foundations"
+  numbered: true
   chapters:
-    - file: sections/1_what_are_complex_systems/1_1_emergence_self_organization_adaptation
+    - file: sections/1_what_are_complex_systems/1_0_chapter_intro
       sections:
+        - file: sections/1_what_are_complex_systems/1_1_emergence_self_organization_adaptation
         - file: sections/1_what_are_complex_systems/1_2_reductionism_and_its_limits
         - file: sections/1_what_are_complex_systems/1_3_near_decomposability
         - file: sections/1_what_are_complex_systems/1_4_taxonomy_of_modeling_approaches
@@ -27,6 +29,7 @@ parts:
         - file: sections/3_information_and_entropy/3_6_connections_to_statistical_mechanics
         - file: sections/3_information_and_entropy/3_7_lab_entropy_and_information
 - caption: "II. Dynamical Systems"
+  numbered: true
   chapters:
     - file: sections/4_one_dimensional_flows/4_1_phase_portraits_on_the_line
       sections:
@@ -67,6 +70,7 @@ parts:
         - file: sections/8_stability_resilience_critical_transitions/8_6_applications
         - file: sections/8_stability_resilience_critical_transitions/8_7_lab_early_warnings
 - caption: "III. Spatial and Network Systems"
+  numbered: true
   chapters:
     - file: sections/9_network_structure/9_1_graphs_adjacency_degree
       sections:
@@ -102,6 +106,7 @@ parts:
         - file: sections/12_spatial_systems/12_6_movement_and_mobility
         - file: sections/12_spatial_systems/12_7_lab_spatial_patterns
 - caption: "IV. Statistical Mechanics and Scaling"
+  numbered: true
   chapters:
     - file: sections/13_statistical_mechanics/13_1_microstates_macrostates_boltzmann
       sections:
@@ -129,6 +134,7 @@ parts:
         - file: sections/15_self_organized_criticality/15_6_applications
         - file: sections/15_self_organized_criticality/15_7_lab_sandpile
 - caption: "V. Adaptive and Evolutionary Systems"
+  numbered: true
   chapters:
     - file: sections/16_evolutionary_dynamics/16_1_fitness_landscapes
       sections:
@@ -156,6 +162,7 @@ parts:
         - file: sections/18_learning_and_adaptation/18_6_ml_for_dynamical_systems
         - file: sections/18_learning_and_adaptation/18_7_lab_learning_agents
 - caption: "VI. Inference and Methodology"
+  numbered: true
   chapters:
     - file: sections/19_parameter_estimation/19_1_mle_bayesian_refresher
       sections:
@@ -182,6 +189,7 @@ parts:
         - file: sections/21_data_driven_approaches/21_6_data_driven_vs_mechanistic
         - file: sections/21_data_driven_approaches/21_7_lab_ccm_diffusion_pinn
 - caption: "VII. Case Studies and Synthesis"
+  numbered: true
   chapters:
     - file: sections/22_urban_systems/22_1_cities_as_complex_adaptive_systems
       sections:
@@ -212,6 +220,7 @@ parts:
         - file: sections/26_frontiers/26_4_foundation_models
         - file: sections/26_frontiers/26_5_open_problems
 - caption: "Appendices"
+  numbered: false
   chapters:
     - file: sections/appendices/appendix_a_python_toolbox
     - file: sections/appendices/appendix_b_mathematical_notation

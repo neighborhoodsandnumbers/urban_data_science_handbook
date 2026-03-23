@@ -1,4 +1,4 @@
-## 1.2 Reductionism and Its Limits
+# Reductionism and Its Limits
 
 In 1637, René Descartes laid down four rules for the proper conduct of reason. The second was the one that mattered most: "Divide each of the difficulties under examination into as many parts as possible, and as might be necessary for its adequate solution." This is the reductionist program in a sentence. Take the thing apart. Understand the pieces. The whole will follow.
 
