@@ -87,6 +87,7 @@ article h4 {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: inline;
 }
 .bd-sidebar summary::-webkit-details-marker {
   display: none;
@@ -97,6 +98,9 @@ article h4 {
 }
 
 /* Compact sidebar TOC spacing */
+.bd-sidebar details {
+  display: inline;
+}
 .bd-sidebar .nav.bd-sidenav li {
   margin: 0;
   padding: 0;
@@ -104,6 +108,10 @@ article h4 {
 .bd-sidebar .nav.bd-sidenav {
   margin: 0;
   padding: 0;
+}
+.bd-sidebar details > ul {
+  margin-top: 0;
+  padding-top: 0;
 }
 
 /* Background and text colors */
