@@ -1,1 +1,3 @@
-# Applications: Ecosystems, Climate, Financial Systems
+# Applications
+
+<!-- Subsections: ecosystems, climate, financial systems -->

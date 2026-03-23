@@ -1,1 +1,1 @@
-# Configuration Models and Degree-Preserving Randomization
+# Configuration Models

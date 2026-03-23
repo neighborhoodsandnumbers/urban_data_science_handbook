@@ -1,1 +1,3 @@
-# Multi-Agent Reinforcement Learning and Emergent Coordination
+# Multi-Agent Learning
+
+<!-- Subsections: emergent coordination -->

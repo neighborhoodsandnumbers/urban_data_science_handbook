@@ -1,1 +1,1 @@
-# The Logistic Map as a Paradigm
+# The Logistic Map

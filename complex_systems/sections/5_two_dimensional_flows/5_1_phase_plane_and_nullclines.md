@@ -1,1 +1,1 @@
-# Phase Plane Analysis and Nullclines
+# Phase Planes and Nullclines

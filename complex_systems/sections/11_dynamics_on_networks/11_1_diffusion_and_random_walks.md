@@ -1,1 +1,1 @@
-# Diffusion and Random Walks on Graphs
+# Diffusion and Random Walks

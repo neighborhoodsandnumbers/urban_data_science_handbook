@@ -1,1 +1,3 @@
-# Critical Phenomena: Diverging Correlations, Power Laws, Universality
+# Critical Phenomena
+
+<!-- Subsections: diverging correlations, power laws, universality -->

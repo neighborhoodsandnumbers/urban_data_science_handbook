@@ -1,1 +1,3 @@
-# Langton's Lambda Parameter and the Edge of Chaos
+# The Edge of Chaos
+
+<!-- Subsections: Langton'\''s lambda parameter -->

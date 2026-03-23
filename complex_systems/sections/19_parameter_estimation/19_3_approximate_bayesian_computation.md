@@ -1,1 +1,1 @@
-# Approximate Bayesian Computation (ABC) for Simulation Models
+# Approximate Bayesian Computation

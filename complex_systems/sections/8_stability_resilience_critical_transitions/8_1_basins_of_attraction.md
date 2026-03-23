@@ -1,1 +1,1 @@
-# Basins of Attraction and Multistability
+# Basins of Attraction

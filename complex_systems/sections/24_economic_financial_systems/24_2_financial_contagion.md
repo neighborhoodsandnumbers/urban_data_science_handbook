@@ -1,1 +1,1 @@
-# Network Models of Financial Contagion
+# Financial Contagion

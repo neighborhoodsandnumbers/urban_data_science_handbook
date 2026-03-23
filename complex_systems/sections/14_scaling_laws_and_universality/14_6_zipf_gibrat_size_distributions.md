@@ -1,1 +1,3 @@
-# Zipf's Law, Gibrat's Law, and Size Distributions
+# Size Distributions
+
+<!-- Subsections: Zipf'\''s law, Gibrat'\''s law -->

@@ -1,1 +1,1 @@
-# A Taxonomy of Modeling Approaches
+# Taxonomy of Modeling Approaches

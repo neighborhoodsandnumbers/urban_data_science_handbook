@@ -1,1 +1,3 @@
-# Segregation: From Schelling to Empirical Measurement
+# Segregation
+
+<!-- Subsections: from Schelling to empirical measurement -->

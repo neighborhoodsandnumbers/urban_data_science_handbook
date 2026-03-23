@@ -1,1 +1,1 @@
-# Erdos-Renyi Random Graphs
+# Erdős–Rényi Random Graphs

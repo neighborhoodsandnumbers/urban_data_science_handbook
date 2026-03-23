@@ -1,1 +1,1 @@
-# Spatial Ecology: Metapopulations and Landscape Connectivity
+# Spatial Ecology

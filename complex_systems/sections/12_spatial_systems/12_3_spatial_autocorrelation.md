@@ -1,1 +1,3 @@
-# Spatial Autocorrelation: Moran's I, Variograms, and Geostatistics
+# Spatial Autocorrelation
+
+<!-- Subsections: Moran's I, variograms, geostatistics -->

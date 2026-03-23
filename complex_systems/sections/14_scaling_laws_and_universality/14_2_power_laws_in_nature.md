@@ -1,1 +1,1 @@
-# Power Laws in Nature and Society
+# Power Laws

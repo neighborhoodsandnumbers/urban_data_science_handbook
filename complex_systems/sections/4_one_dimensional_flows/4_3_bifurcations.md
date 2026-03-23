@@ -1,1 +1,3 @@
-# Bifurcations: Saddle-Node, Transcritical, Pitchfork
+# Bifurcations
+
+<!-- Subsections: saddle-node, transcritical, pitchfork bifurcations -->

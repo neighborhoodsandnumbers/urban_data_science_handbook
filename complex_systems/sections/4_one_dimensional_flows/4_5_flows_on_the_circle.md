@@ -1,1 +1,3 @@
-# Flows on the Circle: Oscillators and Synchronization Preview
+# Flows on the Circle
+
+<!-- Subsections: oscillators, synchronization preview -->

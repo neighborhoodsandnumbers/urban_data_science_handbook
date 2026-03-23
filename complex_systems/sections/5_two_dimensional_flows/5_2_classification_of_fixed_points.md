@@ -1,1 +1,1 @@
-# Classification of Fixed Points via the Jacobian
+# Classification of Fixed Points

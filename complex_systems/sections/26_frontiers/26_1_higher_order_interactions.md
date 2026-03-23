@@ -1,1 +1,3 @@
-# Higher-Order Interactions: Simplicial Complexes and Hypergraphs
+# Higher-Order Interactions
+
+<!-- Subsections: simplicial complexes, hypergraphs -->

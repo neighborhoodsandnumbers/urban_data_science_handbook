@@ -1,1 +1,1 @@
-# Pattern-Oriented Modeling and Multi-Criteria Validation
+# Pattern-Oriented Modeling

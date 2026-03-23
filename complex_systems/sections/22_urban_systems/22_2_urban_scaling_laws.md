@@ -1,1 +1,1 @@
-# Urban Scaling Laws and Deviations from Scaling
+# Urban Scaling Laws

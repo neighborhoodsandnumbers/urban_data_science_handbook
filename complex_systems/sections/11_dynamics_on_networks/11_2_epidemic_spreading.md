@@ -1,1 +1,3 @@
-# Epidemic Spreading: SIR, SIS on Networks
+# Epidemic Spreading
+
+<!-- Subsections: SIR, SIS on networks -->

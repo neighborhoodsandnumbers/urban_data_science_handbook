@@ -1,1 +1,3 @@
-# Takens' Embedding Theorem and Attractor Reconstruction
+# Attractor Reconstruction
+
+<!-- Subsections: Takens' embedding theorem, delay coordinates -->

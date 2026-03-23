@@ -1,1 +1,1 @@
-# Reservoir Computing and Echo State Networks
+# Reservoir Computing

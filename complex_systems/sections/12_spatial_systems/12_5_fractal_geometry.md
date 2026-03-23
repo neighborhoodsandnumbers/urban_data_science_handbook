@@ -1,1 +1,1 @@
-# Fractal Geometry of Natural and Urban Forms
+# Fractal Geometry

@@ -1,1 +1,3 @@
-# Tipping Points: Catastrophe Theory and Fold Bifurcations Under Slow Drift
+# Tipping Points
+
+<!-- Subsections: catastrophe theory, fold bifurcations under slow drift -->

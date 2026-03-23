@@ -1,1 +1,3 @@
-# Genetic Algorithms and Evolutionary Computation
+# Evolutionary Computation
+
+<!-- Subsections: genetic algorithms -->

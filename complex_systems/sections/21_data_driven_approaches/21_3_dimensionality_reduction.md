@@ -1,1 +1,1 @@
-# Dimensionality Reduction for Dynamical Systems
+# Dimensionality Reduction

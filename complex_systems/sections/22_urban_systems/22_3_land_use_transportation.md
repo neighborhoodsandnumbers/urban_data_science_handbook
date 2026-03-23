@@ -1,1 +1,1 @@
-# Land Use, Transportation, and Spatial Self-Organization
+# Land Use and Transportation

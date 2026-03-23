@@ -1,1 +1,1 @@
-# Cultural Evolution and Meme Dynamics
+# Cultural Evolution
