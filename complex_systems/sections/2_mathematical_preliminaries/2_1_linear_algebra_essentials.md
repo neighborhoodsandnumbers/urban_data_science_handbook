@@ -8,9 +8,9 @@ This section is not a first course in linear algebra. We assume you have seen ve
 
 Forget for a moment the mechanical rules of row reduction and matrix multiplication. Instead, think of a matrix as a *description of a system* — a compact encoding of who affects whom, and how strongly.
 
-**Adjacency matrices** encode network structure. If $n$ agents (neurons, people, websites) interact, the adjacency matrix $A$ is the $n \times n$ grid where $a_{ij} = 1$ if there is a connection from $i$ to $j$, and $a_{ij} = 0$ otherwise. For undirected networks, $A$ is symmetric. For directed networks, it need not be. We will live with adjacency matrices from Chapter 9 onward.
+**Adjacency matrices** encode network structure. If $n$ agents (neurons, people, websites) interact, the adjacency matrix $A$ is the $n \times n$ grid where $a_{ij} = 1$ if there is a connection from $i$ to $j$, and $a_{ij} = 0$ otherwise. For undirected networks, $A$ is symmetric. For directed networks, it need not be. We will live with adjacency matrices from Chapter 8 onward.
 
-**Jacobian matrices** encode local dynamics. Given a dynamical system $\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x})$ with a fixed point at $\mathbf{x}^*$, the Jacobian $J_{ij} = \partial f_i / \partial x_j \big|_{\mathbf{x}^*}$ captures how each variable responds to small perturbations in every other variable. It is the linearized portrait of the system near equilibrium, and it determines whether the fixed point is stable or unstable — a question we will ask relentlessly in Chapters 4 and 5.
+**Jacobian matrices** encode local dynamics. Given a dynamical system $\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x})$ with a fixed point at $\mathbf{x}^*$, the Jacobian $J_{ij} = \partial f_i / \partial x_j \big|_{\mathbf{x}^*}$ captures how each variable responds to small perturbations in every other variable. It is the linearized portrait of the system near equilibrium, and it determines whether the fixed point is stable or unstable — a question we will ask relentlessly in Chapters 3 and 4.
 
 **Covariance matrices** encode statistical structure. Given $n$ measured variables, the covariance matrix $\Sigma_{ij} = \text{Cov}(x_i, x_j)$ tells you how each pair co-varies. It is always symmetric and positive semidefinite — meaning $\mathbf{v}^T \Sigma \mathbf{v} \geq 0$ for every vector $\mathbf{v}$, which is equivalent to saying all its eigenvalues are nonnegative. Covariance matrices are the foundation of PCA and the Kalman filter, both of which we develop in Part VI.
 
@@ -55,7 +55,7 @@ Why do eigenvalues dominate this book? Because they answer the question that dri
 - Complex eigenvalues $\lambda = \alpha \pm i\beta$: the system **spirals**. The real part $\alpha$ controls growth or decay; the imaginary part $\beta$ controls the frequency of oscillation. This is how spiral sinks, spiral sources, and centers are classified.
 - Purely real eigenvalues: the system moves along straight lines — a **node** (same sign) or **saddle** (opposite signs).
 
-We will use this classification exhaustively in Chapters 4 and 5. Three facts about eigenvalues are worth stating precisely before we move on.
+We will use this classification exhaustively in Chapters 3 and 4. Three facts about eigenvalues are worth stating precisely before we move on.
 
 **Trace-determinant relations.** For any $n \times n$ matrix, $\text{tr}(A) = \sum_i \lambda_i$ and $\det(A) = \prod_i \lambda_i$. For a $2 \times 2$ matrix, these two numbers are all you need: the eigenvalues are $\lambda = \frac{1}{2}\big(\text{tr}(A) \pm \sqrt{\text{tr}(A)^2 - 4\det(A)}\big)$. When $\text{tr}(A)^2 - 4\det(A) < 0$, the eigenvalues are complex. This is not a trick — it's the quadratic formula applied to the characteristic polynomial, and it turns the entire stability classification of 2D fixed points into a question about two scalar quantities.
 
@@ -98,9 +98,9 @@ print(f"Eigenvalues: {eigs.round(4)}")
 
 Diagonalization makes matrix powers trivial. If $A = PDP^{-1}$, then $A^k = PD^kP^{-1}$, because the inner $P^{-1}P$ pairs cancel when you multiply $A$ by itself $k$ times. Raising a diagonal matrix to a power just raises each entry: the $i$th diagonal element of $D^k$ is $\lambda_i^k$. This is why eigenvalues control long-run behavior: if $|\lambda_i| < 1$, the corresponding component decays geometrically; if $|\lambda_i| > 1$, it explodes.
 
-The connection to **Markov chains** is immediate. If $T$ is a row-stochastic transition matrix (nonnegative entries, rows summing to 1), then $T^k$ gives $k$-step transition probabilities. The eigenvalue structure of $T$ tells you whether the chain converges to a stationary distribution. Stochastic matrices always have an eigenvalue equal to 1, and all other eigenvalues satisfy $|\lambda| \leq 1$. Under mild conditions — irreducibility and aperiodicity — the powers $T^k$ converge to a rank-1 matrix whose rows are the unique **stationary distribution**. This is the **Perron-Frobenius theorem**, and it is why PageRank works, why Markov chains converge, and why the dominant eigenvalue of a nonnegative matrix controls its asymptotic behavior. We will use it extensively when studying random walks and diffusion on networks in Chapter 11.
+The connection to **Markov chains** is immediate. If $T$ is a row-stochastic transition matrix (nonnegative entries, rows summing to 1), then $T^k$ gives $k$-step transition probabilities. The eigenvalue structure of $T$ tells you whether the chain converges to a stationary distribution. Stochastic matrices always have an eigenvalue equal to 1, and all other eigenvalues satisfy $|\lambda| \leq 1$. Under mild conditions — irreducibility and aperiodicity — the powers $T^k$ converge to a rank-1 matrix whose rows are the unique **stationary distribution**. This is the **Perron-Frobenius theorem**, and it is why PageRank works, why Markov chains converge, and why the dominant eigenvalue of a nonnegative matrix controls its asymptotic behavior. We will use it extensively when studying random walks and diffusion on networks in Chapter 10.
 
-The **matrix exponential** $e^{At}$ extends the same idea from discrete to continuous time. The system $\dot{\mathbf{x}} = A\mathbf{x}$ has the solution $\mathbf{x}(t) = e^{At}\mathbf{x}(0)$, defined by the power series $e^{At} = I + At + \frac{(At)^2}{2!} + \cdots$. If $A = PDP^{-1}$, then $e^{At} = P e^{Dt} P^{-1}$, where $e^{Dt}$ is the diagonal matrix with entries $e^{\lambda_i t}$. Now the connection to stability is explicit: if all eigenvalues have $\text{Re}(\lambda_i) < 0$, every $e^{\lambda_i t} \to 0$ as $t \to \infty$, so every solution decays to the origin. If any eigenvalue has positive real part, solutions blow up. We will formalize this machinery in Section 2.3 when we develop the theory of ordinary differential equations, and deploy it throughout Chapters 4 and 5.
+The **matrix exponential** $e^{At}$ extends the same idea from discrete to continuous time. The system $\dot{\mathbf{x}} = A\mathbf{x}$ has the solution $\mathbf{x}(t) = e^{At}\mathbf{x}(0)$, defined by the power series $e^{At} = I + At + \frac{(At)^2}{2!} + \cdots$. If $A = PDP^{-1}$, then $e^{At} = P e^{Dt} P^{-1}$, where $e^{Dt}$ is the diagonal matrix with entries $e^{\lambda_i t}$. Now the connection to stability is explicit: if all eigenvalues have $\text{Re}(\lambda_i) < 0$, every $e^{\lambda_i t} \to 0$ as $t \to \infty$, so every solution decays to the origin. If any eigenvalue has positive real part, solutions blow up. We will formalize this machinery in Section 2.3 when we develop the theory of ordinary differential equations, and deploy it throughout Chapters 3 and 4.
 
 Matrix powers govern discrete dynamics. The matrix exponential governs continuous dynamics. The Perron-Frobenius theorem governs convergence. These three ideas connect linear algebra to the rest of the book more directly than any other results.
 
@@ -120,7 +120,7 @@ This quadratic form measures how much $\mathbf{v}$ varies across edges — it is
 
 The eigenvalues of $L$ encode the network's global structure. The smallest eigenvalue is always $\lambda_1 = 0$, with eigenvector $\mathbf{1} = (1, 1, \ldots, 1)^T$ — the constant vector, reflecting the fact that a uniform "signal" has zero variation across edges. The *multiplicity* of the zero eigenvalue equals the number of connected components: a disconnected graph with three components has $\lambda_1 = \lambda_2 = \lambda_3 = 0$.
 
-The second-smallest eigenvalue $\lambda_2$ is the **algebraic connectivity** (or Fiedler value), introduced by Miroslav Fiedler in 1973. It measures how well-connected the network is: a large $\lambda_2$ means the graph is hard to cut apart; $\lambda_2 = 0$ means it is already disconnected. The corresponding eigenvector — the **Fiedler vector** — does something remarkable. Its sign pattern partitions the nodes into two groups that are, in a precise spectral sense, the most natural bisection of the network {cite}`chung1997spectral`. This is the basis of **spectral clustering**, a technique we will encounter repeatedly in Chapters 9 and 10.
+The second-smallest eigenvalue $\lambda_2$ is the **algebraic connectivity** (or Fiedler value), introduced by Miroslav Fiedler in 1973. It measures how well-connected the network is: a large $\lambda_2$ means the graph is hard to cut apart; $\lambda_2 = 0$ means it is already disconnected. The corresponding eigenvector — the **Fiedler vector** — does something remarkable. Its sign pattern partitions the nodes into two groups that are, in a precise spectral sense, the most natural bisection of the network {cite}`chung1997spectral`. This is the basis of **spectral clustering**, a technique we will encounter repeatedly in Chapters 8 and 9.
 
 Let's see this in action on a "barbell" graph: two tightly connected cliques joined by a single bridge edge.
 
@@ -147,7 +147,7 @@ print(f"Fiedler vector: {np.round(eigenvectors[:, 1], 3)}")
 # negative for nodes {0,1,2}, positive for nodes {3,4,5}
 ```
 
-Notice what happens. The Fiedler value $\lambda_2$ is small — the bridge is a bottleneck — and the Fiedler vector assigns negative values to one clique and positive values to the other. The linear algebra has discovered the community structure without being told to look for it. No clustering algorithm, no distance metric, no optimization — just the second eigenvector of a matrix built from the network's wiring diagram. When we study diffusion on networks in Chapter 11 and synchronization of coupled oscillators in Chapter 12, the algebraic connectivity will be the critical parameter: it controls how quickly information spreads and how readily oscillators lock into phase {cite}`newman2018networks`.
+Notice what happens. The Fiedler value $\lambda_2$ is small — the bridge is a bottleneck — and the Fiedler vector assigns negative values to one clique and positive values to the other. The linear algebra has discovered the community structure without being told to look for it. No clustering algorithm, no distance metric, no optimization — just the second eigenvector of a matrix built from the network's wiring diagram. When we study diffusion on networks in Chapter 10 and synchronization of coupled oscillators in Chapter 11, the algebraic connectivity will be the critical parameter: it controls how quickly information spreads and how readily oscillators lock into phase {cite}`newman2018networks`.
 
 ## What We'll Need Later
 
@@ -155,13 +155,13 @@ Here is a roadmap connecting the tools in this section to the chapters that use 
 
 | Concept | Where it reappears |
 |---------|-------------------|
-| Eigenvalues of the Jacobian | Ch 4–5: stability classification of fixed points |
-| Complex eigenvalues | Ch 5: spiral nodes, limit cycles, Hopf bifurcation |
-| Matrix powers, $A^k = PD^kP^{-1}$ | Ch 7: iterated maps; Ch 11: Markov chains |
-| Perron-Frobenius theorem | Ch 11: random walks, stationary distributions |
-| Adjacency matrix, graph Laplacian | Ch 9–10: network structure, spectral clustering |
-| Algebraic connectivity $\lambda_2$ | Ch 11–12: diffusion, synchronization |
-| Matrix exponential $e^{At}$ | Ch 4–5: continuous-time linear systems |
+| Eigenvalues of the Jacobian | Ch 3–4: stability classification of fixed points |
+| Complex eigenvalues | Ch 4: spiral nodes, limit cycles, Hopf bifurcation |
+| Matrix powers, $A^k = PD^kP^{-1}$ | Ch 6: iterated maps; Ch 10: Markov chains |
+| Perron-Frobenius theorem | Ch 10: random walks, stationary distributions |
+| Adjacency matrix, graph Laplacian | Ch 8–9: network structure, spectral clustering |
+| Algebraic connectivity $\lambda_2$ | Ch 10–11: diffusion, synchronization |
+| Matrix exponential $e^{At}$ | Ch 3–4: continuous-time linear systems |
 | Positive definite matrices | Ch 19: covariance estimation, Kalman filter |
 | Covariance matrix eigenvectors | Ch 19–21: PCA, dimensionality reduction |
 | Singular value decomposition | Ch 21: truncated representations, data compression |

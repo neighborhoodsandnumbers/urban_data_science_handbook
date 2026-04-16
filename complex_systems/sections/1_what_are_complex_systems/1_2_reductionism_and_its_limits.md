@@ -84,7 +84,7 @@ We now know this is impossible for at least three reasons:
 
 2. **Deterministic chaos.** Even in classical systems, sensitivity to initial conditions means that any finite measurement precision is eventually overwhelmed by exponential divergence. Laplace's demon would need *infinite* precision — not just very good, but literally infinite.
 
-3. **Computational complexity.** Even if the demon had perfect information and unlimited precision, many problems (including predicting the behavior of cellular automata we'll meet in Chapter 7) are computationally irreducible: there is no shortcut faster than running the system itself {cite}`wolfram2002new`.
+3. **Computational complexity.** Even if the demon had perfect information and unlimited precision, many problems (including predicting the behavior of cellular automata we'll meet in Chapter 6) are computationally irreducible: there is no shortcut faster than running the system itself {cite}`wolfram2002new`.
 
 Laplace's demon is dead three times over. The universe is not, in any practical sense, reconstructable from its parts. This is not a failure of ambition or technique. It is a structural feature of the world, and understanding it is the first step toward a science of complexity.
 

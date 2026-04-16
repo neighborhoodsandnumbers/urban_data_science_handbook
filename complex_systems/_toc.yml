@@ -10,8 +10,6 @@ parts:
         - file: sections/1_what_are_complex_systems/1_2_reductionism_and_its_limits
         - file: sections/1_what_are_complex_systems/1_3_near_decomposability
         - file: sections/1_what_are_complex_systems/1_4_taxonomy_of_modeling_approaches
-        - file: sections/1_what_are_complex_systems/1_5_why_model
-        - file: sections/1_what_are_complex_systems/1_6_history_of_complexity
     - file: sections/2_mathematical_preliminaries/2_0_chapter_intro
       sections:
         - file: sections/2_mathematical_preliminaries/2_1_linear_algebra_essentials
@@ -21,15 +19,6 @@ parts:
         - file: sections/2_mathematical_preliminaries/2_5_stochastic_processes
         - file: sections/2_mathematical_preliminaries/2_6_numerical_methods
         - file: sections/2_mathematical_preliminaries/2_7_lab_scientific_python
-    - file: sections/3_information_and_entropy/3_0_chapter_intro
-      sections:
-        - file: sections/3_information_and_entropy/3_1_shannon_entropy
-        - file: sections/3_information_and_entropy/3_2_joint_conditional_mutual_information
-        - file: sections/3_information_and_entropy/3_3_kl_divergence_maximum_entropy
-        - file: sections/3_information_and_entropy/3_4_entropy_rate
-        - file: sections/3_information_and_entropy/3_5_fisher_information
-        - file: sections/3_information_and_entropy/3_6_connections_to_statistical_mechanics
-        - file: sections/3_information_and_entropy/3_7_lab_entropy_and_information
 - caption: "II. Dynamical Systems"
   numbered: true
   chapters:
@@ -56,7 +45,6 @@ parts:
         - file: sections/6_chaos_and_strange_attractors/6_2_lyapunov_exponents
         - file: sections/6_chaos_and_strange_attractors/6_3_fractal_dimension
         - file: sections/6_chaos_and_strange_attractors/6_4_routes_to_chaos
-        - file: sections/6_chaos_and_strange_attractors/6_5_logistic_map
         - file: sections/6_chaos_and_strange_attractors/6_6_takens_embedding
         - file: sections/6_chaos_and_strange_attractors/6_7_lab_lyapunov_and_embedding
     - file: sections/7_discrete_dynamical_systems/7_0_chapter_intro
@@ -106,6 +94,7 @@ parts:
         - file: sections/11_dynamics_on_networks/11_4_opinion_dynamics
         - file: sections/11_dynamics_on_networks/11_5_synchronization_on_networks
         - file: sections/11_dynamics_on_networks/11_6_cascading_failures
+        - file: sections/11_dynamics_on_networks/11_8_network_controllability
         - file: sections/11_dynamics_on_networks/11_7_lab_epidemics_percolation_kuramoto
     - file: sections/12_spatial_systems/12_0_chapter_intro
       sections:
@@ -116,9 +105,18 @@ parts:
         - file: sections/12_spatial_systems/12_5_fractal_geometry
         - file: sections/12_spatial_systems/12_6_movement_and_mobility
         - file: sections/12_spatial_systems/12_7_lab_spatial_patterns
-- caption: "IV. Statistical Mechanics and Scaling"
+- caption: "IV. Information, Statistical Mechanics, and Scaling"
   numbered: true
   chapters:
+    - file: sections/3_information_and_entropy/3_0_chapter_intro
+      sections:
+        - file: sections/3_information_and_entropy/3_1_shannon_entropy
+        - file: sections/3_information_and_entropy/3_2_joint_conditional_mutual_information
+        - file: sections/3_information_and_entropy/3_3_kl_divergence_maximum_entropy
+        - file: sections/3_information_and_entropy/3_4_entropy_rate
+        - file: sections/3_information_and_entropy/3_5_fisher_information
+        - file: sections/3_information_and_entropy/3_6_connections_to_statistical_mechanics
+        - file: sections/3_information_and_entropy/3_7_lab_entropy_and_information
     - file: sections/13_statistical_mechanics/13_0_chapter_intro
       sections:
         - file: sections/13_statistical_mechanics/13_1_microstates_macrostates_boltzmann
@@ -135,7 +133,6 @@ parts:
         - file: sections/14_scaling_laws_and_universality/14_3_rigorous_power_law_fitting
         - file: sections/14_scaling_laws_and_universality/14_4_allometric_scaling
         - file: sections/14_scaling_laws_and_universality/14_5_urban_scaling
-        - file: sections/14_scaling_laws_and_universality/14_6_zipf_gibrat_size_distributions
         - file: sections/14_scaling_laws_and_universality/14_7_when_scaling_breaks
         - file: sections/14_scaling_laws_and_universality/14_8_lab_power_law_fitting
     - file: sections/15_self_organized_criticality/15_0_chapter_intro
