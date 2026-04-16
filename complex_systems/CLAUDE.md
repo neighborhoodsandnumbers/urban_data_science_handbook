@@ -22,7 +22,7 @@
 - Part IV (Information, Statistical Mechanics, and Scaling): Ch 12–15
 - Parts V–VII: Ch 16–26
 
-Note: Folder names (e.g., `4_one_dimensional_flows`) no longer match displayed chapter numbers (that chapter displays as Ch 3). The TOC is the source of truth for ordering; folder names are organizational hints only.
+Note: Folder and file names now match displayed chapter numbers (e.g., `3_one_dimensional_flows` displays as Ch 3). The TOC is still the source of truth for ordering.
 
 ## Key Design Decisions
 - Part IV now opens with Information and Entropy (moved from Part I) — creates a tighter story: information → stat mech → scaling → SOC, all connected by entropy and distribution tails
