@@ -11,11 +11,21 @@
 
 ## Structure
 - 7 parts, 26 chapters, 4 appendices
-- 149 sections, 21 computational labs
+- ~145 sections, 21 computational labs
 - Each chapter: analytical exposition + worked examples + computational lab
 - Python is the medium of exploration, not an afterthought
 
+### Chapter numbering (after Session 6 restructure)
+- Part I (Foundations): Ch 1–2
+- Part II (Dynamical Systems): Ch 3–7
+- Part III (Spatial and Network Systems): Ch 8–11
+- Part IV (Information, Statistical Mechanics, and Scaling): Ch 12–15
+- Parts V–VII: Ch 16–26
+
+Note: Folder names (e.g., `4_one_dimensional_flows`) no longer match displayed chapter numbers (that chapter displays as Ch 3). The TOC is the source of truth for ordering; folder names are organizational hints only.
+
 ## Key Design Decisions
+- Part IV now opens with Information and Entropy (moved from Part I) — creates a tighter story: information → stat mech → scaling → SOC, all connected by entropy and distribution tails
 - Part VI (Inference and Methodology) sits alongside theory, not in a separate stats course — inference *is* complex systems science
 - Part VII case studies are capstone, not decoration — students learn to combine formalisms on messy real systems
 - Labs are `.ipynb` files; expository sections are `.md`
@@ -88,3 +98,19 @@
     - **CRITICAL WORKFLOW**: When a planning agent is running, WAIT for it to complete before beginning to write. Do not start writing in parallel with planning. The plan's structure and depth targets should guide the writing, not be reconciled after the fact.
     - Section depth should match the baseline set by earlier sections (1.1, 1.2 are ~2300-2500 words). A math section being noticeably thinner than narrative sections signals inadequate coverage.
     - The plan agent's detailed subsection word counts, topic orderings, and "what this section is NOT" guidance are essential inputs — they prevent scope creep and ensure deliberate omissions.
+- **Session 6**: Major outline restructure based on critical review, plus Chapter 1 review and tightening.
+  - **Outline changes** (5 structural improvements):
+    1. **Moved Information & Entropy (Ch 3) from Part I to Part IV** — renamed Part IV to "Information, Statistical Mechanics, and Scaling." Rationale: info theory's biggest payoffs are Lyapunov exponents, stat mech, and causal inference; placing it as the opener of Part IV creates a tighter information → stat mech → scaling → SOC narrative. Part I now has 2 chapters (What Are Complex Systems? + Math Preliminaries). All chapter references in written sections (1.1, 1.2, 2.1) updated to reflect the renumbering.
+    2. **Removed logistic map duplication** — deleted standalone section 6.5 (Logistic Map) from Chaos chapter. Period-doubling route to chaos noted in 6.4 (Routes to Chaos) with forward reference to Ch 7 (Discrete Dynamical Systems), which is the canonical home for the logistic map.
+    3. **Expanded synchronization coverage** — renamed section 11.5 from "Synchronization on Networks" to "Synchronization and Coupled Oscillators" with expanded scope: phase oscillators, coupling functions, Arnold tongues, Kuramoto model, chimera states, master stability function.
+    4. **Added network controllability** — new section 11.8 covering Liu-Slotine-Barabasi structural controllability, minimum driver nodes, observability, control profiles.
+    5. **Trimmed Ch 14 (Scaling Laws)** — folded Zipf/Gibrat/size distributions (was 14.6) into 14.2 (Power Laws in Nature). Chapter reduced from 8 to 7 sections.
+  - **Chapter 1 restructure** — tightened from 6 sections to 4:
+    - Kept: 1.1 (Emergence), 1.2 (Reductionism), 1.3 (Architecture of Complexity)
+    - Merged: old 1.4 (Taxonomy) + old 1.5 (Why Model?) → new 1.4 (Modeling Complex Systems)
+    - Removed: 1.6 (History of Complexity Science) — contradicts style guide rule that history belongs in chapter openings, not as standalone sections. Historical milestones to be woven into sections where relevant.
+    - New Ch 1 arc: phenomenon (1.1) → problem (1.2) → structure (1.3) → method (1.4)
+  - Added Simon (1962) "The Architecture of Complexity" to references.bib (19 total entries).
+  - **Chapter 1 content review**: Sections 1.1 and 1.2 are strong — correct voice, good code integration, well-curated citations, appropriate depth (~2300–2500 words each). No content changes needed to written sections beyond chapter number references.
+  - Wrote section 1.3 (The Architecture of Complexity). Covers Simon's watchmaker parable (Hora vs Tempus, ~1000-part watches, p≈0.01 interruption probability, ~4000x speed advantage for hierarchical assembly), evolutionary argument ("hierarchies are the ones that have time to evolve" — plausibility, not necessity), protein folding as hierarchy in action (callback to Levinthal's paradox in 1.2), near-decomposability ($A = A_0 + \epsilon C$, two properties: short-run independence + long-run aggregation), timescale separation (building thermal example from Simon's paper), hierarchy across domains (biological, social, engineered), limitations (scale-free networks violate neat hierarchy), and compressibility of hierarchical descriptions as bridge to 1.4. One code block: near-decomposable Markov chain demonstrating eigenvalue gap / timescale separation. Citations: Simon (1962), Anderson (1972). Fact-checked against Simon's original paper: "about" 1000 parts (Simon's deliberate phrasing), three levels of ~10, "four thousand times" is Simon's approximation. All claims verified.
+  - **Workflow note**: Planning agent completed first, then fact-checking agent, then writing — correct workflow followed per Session 5 lesson.

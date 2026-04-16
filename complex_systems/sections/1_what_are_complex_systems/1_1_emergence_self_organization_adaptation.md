@@ -37,7 +37,7 @@ def step(grid):
     return ((neighbors == 3) | (grid & (neighbors == 2))).astype(int)
 ```
 
-Conway's Game of Life is perhaps the purest example of weak emergence. The rules fit in a few lines of Python. The behavior — gliders, oscillators, Turing-complete computation — cannot be predicted without running them. We'll return to cellular automata in Chapter 7.
+Conway's Game of Life is perhaps the purest example of weak emergence. The rules fit in a few lines of Python. The behavior — gliders, oscillators, Turing-complete computation — cannot be predicted without running them. We'll return to cellular automata in Chapter 6.
 
 ## Self-Organization
 
