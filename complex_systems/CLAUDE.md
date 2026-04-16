@@ -37,7 +37,12 @@ As we write chapters, log the specific math each section requires here. This dri
 | Downstream section | Math concept needed | Target Ch 2 section |
 |---|---|---|
 | 2.1 (written) | Eigenvalues, spectral theorem, matrix exponential, graph Laplacian | 2.1 ✓ |
-| *To be filled as chapters are written* | | |
+| 3.1 (Phase Portraits) | What an ODE is, what a solution means, direction fields, continuity of functions | 2.3 (ODEs), 2.2 (Calculus) |
+| 3.2 (Fixed Points) | Taylor expansion around a point, $\dot{u} = au$ has solution $u(0)e^{at}$, existence/uniqueness theorem (Picard-Lindelöf), potential functions $\dot{x} = -dV/dx$ | 2.2 (Calculus), 2.3 (ODEs) |
+| 3.3 (Bifurcations) | Implicit function theorem (1D), Taylor expansion in two variables, normal forms / smooth change of variables | 2.2 (Calculus) |
+| 3.4 (Imperfect Bifurcations) | Discriminant of a cubic, two-parameter implicit function theorem, cusp geometry | 2.2 (Calculus) |
+| 3.5 (Flows on the Circle) | Trig identities, periodicity, $S^1$ as topological space, improper integrals for oscillation period | 2.2 (Calculus), 2.3 (ODEs) |
+| 3.6 (Lab) | Numerical ODE integration (`solve_ivp`), root finding, continuation methods | 2.6 (Numerical Methods) |
 
 ## Style Guide
 
@@ -125,3 +130,10 @@ As we write chapters, log the specific math each section requires here. This dri
   - **Workflow note**: Planning agent completed first, then fact-checking agent, then writing — correct workflow followed per Session 5 lesson.
   - Wrote section 1.4 (Modeling Complex Systems). Closes Chapter 1 by answering "how do we study complex systems?" Covers Epstein's "Why Model?" (2008) — 16 reasons beyond prediction, grouped as understanding/communication/design; "you are already a modeler" rhetorical move; explanation ≠ prediction. Box & Draper's "all models are wrong, but some are useful" (1987, NOT 1976 — fact-checked). Borges's 1:1 map as cultural reference. Taxonomy of five modeling paradigms (equation-based, agent-based, network, data-driven, hybrid) threaded through epidemic spreading as unifying example. SIR code block (~8 lines) as rhetorical device — "a deliberate act of omission." Connection back to near-decomposability: the choice of modeling paradigm is a choice of level. Roadmap of Parts II–VII keyed to paradigms. Closes with return to Bénard convection from chapter intro (1.0), full circle. Added Epstein (2008) and Box & Draper (1987) to references.bib (21 total entries).
   - **Chapter 1 complete** — all 4 sections written: phenomenon (1.1) → problem (1.2) → structure (1.3) → method (1.4). Total ~7500 words across 4 sections + chapter intro. 5 code blocks, 12 citations.
+  - Established **Chapter 2 hybrid backfill approach**: skip ahead to Part II, note math prerequisites as we write, backfill sections 2.2–2.7 with precision once downstream demand is clear. Added prerequisites tracker table to CLAUDE.md.
+  - Began **Chapter 3 (One-Dimensional Flows)** — first chapter of Part II: Dynamical Systems.
+    - Wrote chapter intro (4_0): Malthus (1798) → Verhulst (1838) vignette. The logistic equation as the simplest system where geometry tells you everything.
+    - Wrote section 3.1 (Phase Portraits on the Line). Core geometric method: read dynamics from the graph of $f(x)$. Covers: velocity function, fixed points, arrows/flow direction, phase portrait construction, sin(x) example, qualitative analysis (basins of attraction, no-oscillation theorem, finite-time blowup), x − x³ example with two attractors, logistic equation as real-world application, Pearl & Reed's 1920 fit and its failure. Two code blocks: (1) sin(x) trajectories from multiple ICs, (2) logistic convergence to K. Closes with what 1D cannot do (no oscillations → motivates Ch 4). Citation: Strogatz (2015).
+    - Chapter arc planned: geometry (3.1) → formalize stability (3.2) → parameter variation / bifurcations (3.3) → symmetry breaking (3.4) → circle topology (3.5).
+    - Populated Ch 2 prerequisites tracker with all Ch 3 section requirements.
+    - Added Strogatz (2015) to references.bib (22 total entries).
