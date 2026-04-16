@@ -29,6 +29,15 @@ Note: Folder names (e.g., `4_one_dimensional_flows`) no longer match displayed c
 - Part VI (Inference and Methodology) sits alongside theory, not in a separate stats course — inference *is* complex systems science
 - Part VII case studies are capstone, not decoration — students learn to combine formalisms on messy real systems
 - Labs are `.ipynb` files; expository sections are `.md`
+- **Chapter 2 (Math Preliminaries): hybrid backfill approach.** Section 2.1 (Linear Algebra) is written. Sections 2.2–2.7 will be backfilled AFTER writing Part II+ chapters, so coverage matches actual downstream demand. As each chapter is written, note specific math prerequisites below. Chapter 2 stays as a real chapter (not an appendix) — its pedagogical orientation ("here's the math and here's WHY you need it") earns its place. Appendix B is the pure notation reference.
+
+### Chapter 2 Prerequisites Tracker
+As we write chapters, log the specific math each section requires here. This drives the backfill of sections 2.2–2.7.
+
+| Downstream section | Math concept needed | Target Ch 2 section |
+|---|---|---|
+| 2.1 (written) | Eigenvalues, spectral theorem, matrix exponential, graph Laplacian | 2.1 ✓ |
+| *To be filled as chapters are written* | | |
 
 ## Style Guide
 
