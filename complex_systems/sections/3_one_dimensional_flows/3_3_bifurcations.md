@@ -1,107 +1,162 @@
 # Bifurcations
 
-Until now we have taken the velocity function $f(x)$ as given — a fixed rule for how $x$ changes. But the systems we care about are rarely so obliging. The growth rate of a population depends on rainfall; the stiffness of a beam depends on temperature; the infectivity of a pathogen depends on contact rates, seasonality, and whether schools are open. Real models come with **parameters**, and when those parameters change, the dynamics can change with them.
+Everything we have done so far treated $f(x)$ as given and fixed. But real dynamical systems come with parameters — a growth rate, a harvesting quota, a temperature, a coupling strength — and as those parameters change, the qualitative picture can transform completely. Fixed points can be born, collide, swap stability, or vanish. These qualitative changes in the phase portrait are called **bifurcations**, and they are the organizing principle of parameter-dependent dynamics.
 
-Usually the change is dull. A parameter shifts, a fixed point drifts a little, life carries on. But occasionally a parameter crosses a threshold where the *qualitative* structure of the phase portrait changes: a fixed point appears from nothing, two fixed points collide and annihilate, a single stable state splits into two. These qualitative changes are called **bifurcations**, and they are where one-dimensional dynamics starts to get interesting.
+The question is: how many essentially different ways can a one-dimensional phase portrait change? The answer is surprisingly small. There are three canonical forms, and every generic bifurcation in a 1D flow is equivalent to one of them.
 
-A bifurcation is the simplest signature of what systems researchers mean by a "tipping point." Hemingway's Mike Campbell, asked in *The Sun Also Rises* how he went bankrupt, answers, "Two ways. Gradually, then suddenly." That is the rhythm of a bifurcation. The parameter drifts for a long time with nothing much happening, and then in a single moment the fixed point structure reorganizes and the system behaves differently. We will meet gradual-then-sudden repeatedly over the next several chapters, most dramatically in Chapter 7 on critical transitions; this section is where the machinery begins.
+### The Saddle-Node Bifurcation
 
-### Normal Forms and Bifurcation Diagrams
+The most fundamental bifurcation, and the only one that is truly generic. Consider the normal form
 
-A remarkable fact about one-dimensional bifurcations is that there are essentially only three of them. Every way that fixed points can be born, die, or swap stability near a single parameter threshold reduces — by a smooth change of coordinates — to one of three **normal forms**: the saddle-node, the transcritical, and the pitchfork. Thousands of specific models turn out, when you zoom in on the transition, to be the same dynamical organism wearing different clothes. This is our first encounter with *universality*, a theme that will return with full force in the scaling-law chapters of Part IV.
+$$\dot{x} = r + x^2$$
 
-The standard way to visualize a bifurcation is the **bifurcation diagram**: a plot of the fixed points $x^*$ as a function of the parameter $r$ (or $\mu$, $\lambda$, whatever the system uses). Stable branches are drawn solid; unstable branches are dashed. A single diagram compresses the entire family of phase portraits — one portrait per vertical slice — into a single picture.
+For $r < 0$, the parabola dips below the $x$-axis, creating two fixed points at $x^* = \pm\sqrt{-r}$. Check stability using the tool from Section 3.2: $f'(x) = 2x$, so $f'(-\sqrt{-r}) = -2\sqrt{-r} < 0$ (stable) and $f'(+\sqrt{-r}) = +2\sqrt{-r} > 0$ (unstable). One stable fixed point, one unstable, separated by a gap that shrinks as $r$ increases toward zero.
 
-### Saddle-Node Bifurcation
+At $r = 0$, the two fixed points merge at the origin. The parabola just touches the axis: $f(0) = 0$ but $f'(0) = 0$, so linear stability analysis is inconclusive — this is the degenerate case we flagged in Section 3.2. The fixed point is **half-stable**: attracting from the left, repelling from the right.
 
-The saddle-node, sometimes called the **fold** or **tangent** bifurcation, is the mechanism by which two fixed points are born from empty space (or conversely, annihilate one another and vanish). Its normal form is
+For $r > 0$, the parabola has lifted entirely above the axis. No fixed points exist. The velocity is everywhere positive and the system flows rightward without rest.
 
-$$\dot{x} = r + x^2.$$
-
-The fixed points satisfy $x^2 = -r$, which has two real solutions $x^*_\pm = \pm\sqrt{-r}$ when $r < 0$, one degenerate solution $x^* = 0$ at $r = 0$, and no real solutions at all when $r > 0$. Linear stability comes from $f'(x^*) = 2x^*$: the negative root is stable, the positive root unstable. As $r$ climbs toward zero the two fixed points migrate toward each other, collide at the origin, and annihilate. On the bifurcation diagram the two branches form a sideways parabola opening to the left, with a stable lower arm and an unstable upper arm meeting tangentially at $r = 0$.
+This is the **saddle-node bifurcation** (also called a fold or tangent bifurcation): as $r$ increases through zero, a stable and an unstable fixed point approach each other, coalesce, and annihilate. The name anticipates higher dimensions, where the colliding fixed points are a saddle and a node.
 
 ```python
 import numpy as np
+import matplotlib.pyplot as plt
 
-# Saddle-node: x* = ±sqrt(-r) for r < 0, none for r > 0
-for r in [-1.0, -0.25, -0.01, 0.0, 0.25]:
-    if r <= 0:
-        x_star = np.sqrt(-r)
-        print(f"r = {r:+.2f}:  x* = ±{x_star:.3f}  (stable: -, unstable: +)")
-    else:
-        print(f"r = {r:+.2f}:  no fixed points")
-# r = -1.00:  x* = ±1.000  (two fixed points)
-# r = -0.25:  x* = ±0.500
-# r = -0.01:  x* = ±0.100  (about to collide)
-# r = +0.00:  x* = ±0.000  (collision)
-# r = +0.25:  no fixed points (annihilated)
+x = np.linspace(-2.5, 2.5, 300)
+fig, ax = plt.subplots(figsize=(7, 4))
+for r, color, label in [(-1, '#93C5FD', r'$r = -1$ (two fixed points)'),
+                         (0, '#D1B675', r'$r = 0$ (bifurcation)'),
+                         (1, '#B91C1C', r'$r = +1$ (no fixed points)')]:
+    ax.plot(x, r + x**2, color=color, lw=2, label=label)
+    if r < 0:
+        ax.plot(-np.sqrt(-r), 0, 'o', color=color, ms=8)            # stable
+        ax.plot(np.sqrt(-r), 0, 'o', color=color, ms=8,
+                mfc='none', mew=2)                                    # unstable
+    elif r == 0:
+        ax.plot(0, 0, 's', color=color, ms=8)                        # half-stable
+ax.axhline(0, color='gray', ls='--', alpha=0.3)
+ax.set(xlabel='$x$', ylabel=r'$f(x) = r + x^2$')
+ax.set_title('Saddle-Node Bifurcation: Phase Portraits')
+ax.legend(fontsize=9); plt.tight_layout(); plt.show()
 ```
 
-The saddle-node is the archetype of **catastrophic** change. Before the bifurcation, the system sits comfortably at its stable fixed point, responding smoothly to small perturbations. After the bifurcation the stable state simply does not exist — there is nowhere nearby for the system to rest, and the trajectory must leave the region entirely.
+The three curves show the parabola sinking, touching, and lifting past the axis. For $r = -1$ (blue), two intersections mark the stable (filled) and unstable (open) fixed points. At $r = 0$ (gold), the vertex just grazes the axis — the two fixed points have merged. For $r = +1$ (red), the parabola clears the axis entirely. The fixed points have vanished.
 
-A classic example is the **constant-harvest fishery**. Start with a logistic population under a steady extraction rate $h$:
+Why is the saddle-node the "default" bifurcation? Because it requires no special structure. Whenever two fixed points collide in a generic one-parameter family, the collision looks like this. The implicit function theorem tells us why: at a bifurcation point where $f(x^*, r^*) = 0$ and $\partial f / \partial x = 0$, if the second derivative $\partial^2 f / \partial x^2 \neq 0$ and $\partial f / \partial r \neq 0$, a smooth change of variables reduces the system to $r + x^2$ {cite}`strogatz2015nonlinear`. No symmetry required. No structural constraint. The saddle-node is, as one colleague put it, the cockroach of bifurcation theory — it survives everything.
 
-$$\dot{N} = rN\left(1 - \frac{N}{K}\right) - h.$$
+### The Transcritical Bifurcation
 
-Without harvesting, the stable fixed point sits at $N^* = K$. As $h$ grows, the parabola $rN(1 - N/K)$ is pushed downward by $h$, and the two roots of $f(N)$ move toward each other: the upper root (stable carrying capacity) drifts down, the lower root (unstable threshold) drifts up. When $h$ reaches $rK/4$ — the peak of the logistic's parabola — the two fixed points collide and annihilate. For any harvest rate above this critical value, $\dot{N} < 0$ for all positive $N$, and the population crashes to zero. The fishery does not gracefully announce its collapse; it simply runs out of stable equilibria. The Atlantic cod fishery off Newfoundland, closed in 1992 after decades of rising quotas, is a textbook example of a saddle-node played out in the real world — and of the corollary that recovery after a fold is much harder than decline, because restoring the parameter below its critical value is not enough if the population has already collapsed into the basin of zero.
+Sometimes a fixed point *must* exist for structural reasons. Zero population is always a fixed point of any population model — if nothing is alive, nothing can be born. In such cases, fixed points cannot simply appear or disappear. Instead, they **exchange stability**.
 
-### Transcritical Bifurcation
+The normal form is
 
-Some fixed points refuse to disappear. In population biology, $N = 0$ is always a fixed point — you cannot have negative population, and zero of anything stays zero regardless of rates. In epidemic models the disease-free state $I = 0$ is likewise fixed by construction. When such a permanent fixed point exists, the only available bifurcation is for a second fixed point to pass *through* it and exchange stability. This is the **transcritical** bifurcation, with normal form
+$$\dot{x} = rx - x^2 = x(r - x)$$
 
-$$\dot{x} = rx - x^2.$$
+Two fixed points exist for all $r$: $x^* = 0$ and $x^* = r$. Stability: $f'(x) = r - 2x$, so $f'(0) = r$ and $f'(r) = -r$.
 
-The fixed points are $x^* = 0$ and $x^* = r$. From $f'(x) = r - 2x$, the origin has stability exponent $r$ (stable for $r < 0$, unstable for $r > 0$), while the moving fixed point has exponent $-r$ (unstable for $r < 0$, stable for $r > 0$). As $r$ crosses zero the two fixed points cross, trade their stability labels, and continue on their separate ways. The bifurcation diagram is an "X": two straight lines intersecting at the origin, with stability alternating on each segment.
+For $r < 0$: the origin is stable ($f' = r < 0$) and $x^* = r < 0$ is unstable. For $r > 0$: the origin is unstable ($f' = r > 0$) and $x^* = r$ is now stable. At $r = 0$, both fixed points meet at the origin and swap roles. The stable branch passes through unstable territory and vice versa — a changing of the guard.
 
-The transcritical is the bifurcation of *thresholds*. The clearest example is the **SIS epidemic model**. Let $I$ be the fraction of a population infected with a non-immunizing pathogen:
+The transcritical bifurcation is **not generic**: it requires $f(0, r) = 0$ for all $r$, meaning the origin is always a fixed point. A small perturbation adding a constant term — $\dot{x} = \epsilon + rx - x^2$ — destroys the transcritical and replaces it with a nearby saddle-node. The transcritical persists only when there is a structural reason for a fixed point to exist at a particular location, as in population dynamics where extinction is a permanent state.
 
-$$\dot{I} = \beta I (1 - I) - \gamma I.$$
+### The Pitchfork Bifurcation
 
-Rearranged, $\dot{I} = (\beta - \gamma)I - \beta I^2$ — exactly the transcritical normal form with $r = \beta - \gamma$. The disease-free state $I^* = 0$ is always a fixed point. When the basic reproduction number $R_0 = \beta/\gamma$ is less than one (so $r < 0$), the disease-free state is stable and the endemic fixed point lies at negative prevalence, which is biologically meaningless. When $R_0$ crosses one, the disease-free state loses stability, and the endemic fixed point $I^* = 1 - 1/R_0$ emerges into the positive region as the new attractor. This is the transcritical signature of the epidemic threshold — the same mathematics that underlies the laser threshold in physics, where the "off" state of an optical cavity is always available but only becomes unstable once the pump rate exceeds a critical value {cite}`strogatz2015nonlinear`. We will return to epidemic thresholds with more structure in Chapter 10.
+The most visually dramatic of the three, and the one that embodies symmetry breaking.
 
-### Pitchfork Bifurcation
+**Supercritical pitchfork.** The normal form is $\dot{x} = rx - x^3$ — the very system from Sections 3.1 and 3.2, now parametrized by $r$. Factoring: $\dot{x} = x(r - x^2)$, giving fixed points at $x^* = 0$ and $x^* = \pm\sqrt{r}$ (the latter existing only for $r > 0$).
 
-The third and most interesting case arises in systems with a built-in symmetry — typically the reflection $x \to -x$. When the dynamics respect this symmetry, the velocity function must be an odd function of $x$, so only odd powers can appear in its Taylor expansion around $x = 0$. The lowest-order such expansion gives the **supercritical pitchfork**,
+For $r < 0$: the origin is the only fixed point, and it is stable ($f'(0) = r < 0$). For $r > 0$: the origin becomes unstable ($f'(0) = r > 0$), and two new stable fixed points are born at $\pm\sqrt{r}$ (check: $f'(\pm\sqrt{r}) = r - 3r = -2r < 0$). The bifurcation diagram looks like its namesake — a single prong splitting into two.
 
-$$\dot{x} = rx - x^3,$$
+**Subcritical pitchfork.** The dangerous cousin: $\dot{x} = rx + x^3$. For $r < 0$, three fixed points exist — $x^* = 0$ (stable) and $x^* = \pm\sqrt{-r}$ (both unstable). The unstable branches act as guardrails. At $r = 0$, the guardrails collapse onto the origin, and for $r > 0$ only the unstable origin remains. The system has lost all stable equilibria and trajectories escape to infinity. This is a **catastrophic** transition — the system doesn't gently shift to a nearby state; it jumps discontinuously to a distant one.
 
-whose fixed points are $x^* = 0$ for all $r$ and, additionally, $x^* = \pm\sqrt{r}$ for $r > 0$. Stability comes from $f'(x) = r - 3x^2$: the origin has exponent $r$ (stable below, unstable above), and the outer branches have exponent $-2r$ (stable wherever they exist). One fixed point becomes three. The bifurcation diagram looks exactly like its name — a trident handle extending through $r < 0$, splitting at $r = 0$ into two stable tines.
-
-This is **symmetry breaking**. The equation $\dot{x} = rx - x^3$ is unchanged under $x \to -x$, but its stable solutions for $r > 0$ are not. The system must choose — positive or negative, left or right — and whichever it picks, the mirror-image state is equally valid. The choice is determined by the initial condition or, in noisy settings, by chance. Frost's two roads that diverged in a wood are the pitchfork's tines: a single path becomes two, and taking one excludes the other.
+Both forms share a symmetry: $f(-x) = -f(x)$. The vector field is odd, so if $x^*$ is a fixed point, so is $-x^*$. The pitchfork is the generic bifurcation for systems with this $x \to -x$ symmetry, just as the saddle-node is generic for systems with no special structure. Break the symmetry — add a small $\epsilon$ term that destroys the oddness — and the pitchfork splits into a saddle-node plus an isolated branch. This is exactly the subject of Section 3.4.
 
 ```python
 import numpy as np
-from scipy.integrate import solve_ivp
+import matplotlib.pyplot as plt
 
-# Supercritical pitchfork: dx/dt = r*x - x^3
-# Above the bifurcation, tiny differences in initial condition pick a branch
-r = 1.0
-f = lambda t, x: [r * x[0] - x[0]**3]
-for x0 in [-1e-3, +1e-3, -0.5, +0.5]:
-    sol = solve_ivp(f, [0, 30], [x0], rtol=1e-10, atol=1e-12)
-    print(f"x(0) = {x0:+.4f}  →  x(30) = {sol.y[0,-1]:+.4f}")
-# x(0) = -0.0010  →  x(30) = -1.0000
-# x(0) = +0.0010  →  x(30) = +1.0000
-# x(0) = -0.5000  →  x(30) = -1.0000
-# x(0) = +0.5000  →  x(30) = +1.0000
+r = np.linspace(-2, 2, 500)
+fig, axes = plt.subplots(1, 3, figsize=(13, 4), sharey=True)
+
+# Saddle-node: x* = ±sqrt(-r) for r ≤ 0
+rn = r[r <= 0]
+axes[0].plot(rn, -np.sqrt(-rn), '-', color='#93C5FD', lw=2, label='stable')
+axes[0].plot(rn, np.sqrt(-rn), '--', color='#B91C1C', lw=2, label='unstable')
+axes[0].set(title='Saddle-Node\n' + r'$\dot{x} = r + x^2$', xlabel='$r$', ylabel='$x^*$')
+
+# Transcritical: x* = 0 (stable→unstable) and x* = r (unstable→stable)
+axes[1].plot(r[r <= 0], np.zeros(sum(r <= 0)), '-', color='#93C5FD', lw=2)
+axes[1].plot(r[r > 0], np.zeros(sum(r > 0)), '--', color='#B91C1C', lw=2)
+axes[1].plot(r[r <= 0], r[r <= 0], '--', color='#B91C1C', lw=2)
+axes[1].plot(r[r > 0], r[r > 0], '-', color='#93C5FD', lw=2)
+axes[1].set(title='Transcritical\n' + r'$\dot{x} = rx - x^2$', xlabel='$r$')
+
+# Supercritical pitchfork: x* = 0 and x* = ±sqrt(r) for r > 0
+rp = r[r >= 0]
+axes[2].plot(r[r <= 0], np.zeros(sum(r <= 0)), '-', color='#93C5FD', lw=2)
+axes[2].plot(r[r > 0], np.zeros(sum(r > 0)), '--', color='#B91C1C', lw=2)
+axes[2].plot(rp, np.sqrt(rp), '-', color='#93C5FD', lw=2)
+axes[2].plot(rp, -np.sqrt(rp), '-', color='#93C5FD', lw=2)
+axes[2].set(title='Supercritical Pitchfork\n' + r'$\dot{x} = rx - x^3$', xlabel='$r$')
+
+for ax in axes:
+    ax.axhline(0, color='gray', ls=':', alpha=0.3)
+    ax.axvline(0, color='gray', ls=':', alpha=0.3)
+    ax.legend(fontsize=8)
+plt.tight_layout(); plt.show()
 ```
 
-The supercritical pitchfork is sometimes called a **second-order** or **continuous** transition, because as $r$ crosses zero the distance from the chosen branch to the origin grows smoothly from zero: $|x^*| = \sqrt{r}$. There is no jump. The square-root scaling $|x^*| \sim r^{1/2}$ is our first brush with a critical exponent, and it is not a coincidence that precisely this exponent governs the magnetization near the Curie point of an Ising magnet in mean-field theory. Chapter 13 will close the loop on that correspondence; for now it is worth noticing that the same normal form is describing a one-variable ODE and, lurking underneath, the phase transition of a thermodynamic system.
+These three bifurcation diagrams are the visual signatures of the three canonical bifurcations. In the saddle-node (left), two branches meet and vanish. In the transcritical (center), two branches cross and exchange stability at the origin. In the pitchfork (right), a single stable branch becomes unstable and spawns two new stable branches symmetrically. Solid lines are stable equilibria; dashed lines are unstable. Every generic bifurcation in a one-dimensional flow looks like one of these three.
 
-If instead the cubic coefficient has the *opposite* sign, we get the **subcritical pitchfork**,
+### Normal Forms and Structural Stability
 
-$$\dot{x} = rx + x^3.$$
+Why exactly three? The answer comes from **normal form theory**: near a bifurcation point, a smooth change of coordinates can strip away all the inessential features of $f(x, r)$ and reduce it to the simplest equation exhibiting that qualitative behavior. The three normal forms — $r + x^2$, $rx - x^2$, $rx \mp x^3$ — are the canonical representatives. Higher-order terms can be added without changing the qualitative picture.
 
-Now the non-trivial fixed points exist only for $r < 0$ (at $x^* = \pm\sqrt{-r}$) and are unstable. When the origin loses stability at $r = 0$, there is no nearby stable fixed point to catch the trajectory — the system's amplitude explodes. Something else, further out in the state space, must eventually stabilize the dynamics. The standard fix is to add a stabilizing fifth-order term:
+The key concept is **codimension**: the number of conditions that must be simultaneously satisfied for the bifurcation to occur. All three have codimension 1 — a single parameter crossing a critical value. But they differ in **structural stability**:
 
-$$\dot{x} = rx + x^3 - x^5.$$
+| Bifurcation | Normal form | Mechanism | Requires |
+|---|---|---|---|
+| Saddle-node | $r + x^2$ | Two fixed points collide and annihilate | Nothing (generic) |
+| Transcritical | $rx - x^2$ | Two fixed points exchange stability | Persistent fixed point |
+| Pitchfork | $rx - x^3$ | Symmetric branching | Symmetry ($f$ odd in $x$) |
 
-This more realistic equation has five fixed points over part of its parameter range, and the resulting bifurcation diagram is the cleanest possible cartoon of **hysteresis**. As $r$ is increased past zero, the origin loses stability and the system jumps abruptly to a large-amplitude stable state. As $r$ is then *decreased*, the system does not return to zero at $r = 0$ — it stays locked onto the outer branch until $r$ falls well below zero, at which point the outer branch annihilates (via a saddle-node) with the middle unstable branch and the system jumps back. The forward and reverse jumps happen at different parameter values. The system remembers its history.
+The saddle-node is **structurally stable**: perturb $f$ slightly and you still get a saddle-node. The transcritical and pitchfork are structurally *unstable* — they require special structure that small perturbations can destroy. Add a constant $\epsilon$ to the transcritical and it splits into two saddle-nodes. Add a small $\epsilon x^2$ to the pitchfork and it unzips into a saddle-node plus an isolated branch. In the real world, perfect symmetry is an idealization. What actually happens when the symmetry is only approximate is the subject of Section 3.4.
 
-Hysteresis is a hallmark of **first-order** transitions — the sudden jumps, the history dependence, the possibility of bistability in a range of parameters. A buckled steel beam, pressed above its buckling load, snaps abruptly into one of two curved states and resists returning to straight even as the load is reduced. Shallow lakes that shift from clear to turbid as nutrient loading rises rarely recover when the loading is merely returned to its previous level {cite}`strogatz2015nonlinear`. We will build out the full theory of hysteresis and alternative stable states in Chapter 7, where it becomes the engine of regime shifts.
+### Tipping Points
 
-### The Three in One Picture
+Return to the logistic equation from Section 3.1, but now add a constant harvest rate $H$:
 
-The three normal forms are not three unrelated phenomena. They are three possible fates for a fixed point that has gone critical — that is, one where $f(x^*) = 0$ and $f'(x^*) = 0$ simultaneously. If the leading non-vanishing term is $x^2$ with a generic coefficient, you get a saddle-node. If the system's structure forces $f(0) = 0$ for all parameters, the quadratic becomes transcritical. If there is an additional symmetry that kills the quadratic, you fall through to the cubic and get a pitchfork. The classification is *structural*, determined by which terms in the Taylor expansion are allowed to vanish and which are not.
+$$\dot{N} = rN\left(1 - \frac{N}{K}\right) - H$$
 
-What all three share is **codimension one**: they happen on adjusting a single parameter. To get something qualitatively richer — say, two fixed points colliding simultaneously with a symmetry being broken — you need to tune two parameters at once, which is the subject of the next section. Section 3.4 begins by asking what happens to the perfect pitchfork when the symmetry is slightly violated, leading into the cusp catastrophe and codimension-two unfoldings. In Chapter 4, when we move from the real line to the plane, the saddle-node and pitchfork will reappear almost unchanged, but a genuinely new one-parameter bifurcation becomes available — the **Hopf**, which creates oscillations and cannot occur in one dimension for the reason we proved in Section 3.2. And in Chapter 13, the pitchfork will reappear yet again, this time as the mean-field portrait of a second-order phase transition. The same handful of normal forms keeps turning up because the mathematics of local failure is parsimonious: there are only so many ways a fixed point can go bad.
+This is a population under pressure. The growth term $rN(1 - N/K)$ pushes the population upward; the harvest $H$ pulls it down. For small $H$, two positive equilibria exist — a large, stable population and a small, unstable threshold below which the population collapses. As $H$ increases, the two equilibria approach each other. At the critical value $H_c = rK/4$, they collide and vanish in a saddle-node bifurcation. Beyond $H_c$, no positive equilibrium exists and the population crashes to zero.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+r, K = 1.0, 100
+H = np.linspace(0, 30, 500)
+H_crit = r * K / 4  # critical harvest rate
+
+# Fixed points: (K/2)(1 ± sqrt(1 - 4H/(rK)))
+disc = 1 - 4 * H / (r * K)
+mask = disc >= 0
+N_upper = (K / 2) * (1 + np.sqrt(disc[mask]))
+N_lower = (K / 2) * (1 - np.sqrt(disc[mask]))
+
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.plot(H[mask], N_upper, '-', color='#93C5FD', lw=2, label='stable equilibrium')
+ax.plot(H[mask], N_lower, '--', color='#B91C1C', lw=2, label='unstable threshold')
+ax.axvline(H_crit, color='#D1B675', ls=':', lw=1.5,
+           label=f'$H_c = rK/4 = {H_crit:.0f}$')
+ax.fill_between(H[~mask], 0, 100, color='#B91C1C', alpha=0.08)
+ax.annotate('collapse', xy=(27, 30), fontsize=11, color='#B91C1C', style='italic')
+ax.set(xlabel='Harvest rate $H$', ylabel='Population $N^*$',
+       title='Tipping Point: Harvested Population')
+ax.legend(fontsize=9); plt.tight_layout(); plt.show()
+```
+
+The plot shows the stable population (solid blue) and the unstable threshold (dashed red) converging as the harvest rate increases. At $H_c = 25$, they merge and the population has nowhere to go but zero. The shaded region beyond $H_c$ is the collapse zone.
+
+This is why bifurcation theory matters beyond the classroom. The saddle-node bifurcation is the mathematical skeleton of every **tipping point** — in ecology, in climate science, in financial systems. A parameter drifts slowly, nothing seems to change, and then the qualitative structure of the dynamics shifts in an instant. The system gives no gentle warning. The stable equilibrium exists right up until the moment it doesn't. We will study tipping points and the early warning signals that sometimes precede them in Chapter 7 {cite}`strogatz2015nonlinear`.
+
+We have classified the three canonical bifurcations and seen that only the saddle-node is truly generic — the transcritical requires a persistent fixed point, the pitchfork requires symmetry. But real systems are never perfectly symmetric. A beam buckling under compression exhibits a pitchfork bifurcation — but only if the beam is perfectly straight, which no beam ever is. What happens when the symmetry is *almost* satisfied? The next section takes up this question and finds that imperfection, far from being a nuisance, reveals additional structure.
