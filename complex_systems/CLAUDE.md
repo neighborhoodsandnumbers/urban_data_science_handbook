@@ -43,6 +43,13 @@ As we write chapters, log the specific math each section requires here. This dri
 | 3.4 (Imperfect Bifurcations) | Discriminant of a cubic, two-parameter implicit function theorem, cusp geometry | 2.2 (Calculus) |
 | 3.5 (Flows on the Circle) | Trig identities, periodicity, $S^1$ as topological space, improper integrals for oscillation period | 2.2 (Calculus), 2.3 (ODEs) |
 | 3.6 (Lab) | Numerical ODE integration (`solve_ivp`), root finding, continuation methods | 2.6 (Numerical Methods) |
+| 4.1 (Phase Planes) | Systems of ODEs, vector fields in $\mathbb{R}^2$, existence-uniqueness for systems, implicit curves $f(x,y)=0$ | 2.3 (ODEs), 2.2 (Calculus) |
+| 4.2 (Classification) | Jacobian $J_{ij} = \partial f_i/\partial x_j$, trace-det formula for 2×2 eigenvalues, complex eigenvalues, matrix exponential $e^{Jt}$ | 2.1 ✓, 2.3 (ODEs) |
+| 4.3 (Limit Cycles) | Jordan curve theorem (Poincaré-Bendixson), Green's/divergence theorem (Bendixson-Dulac), Poincaré maps | 2.2 (Calculus), 2.3 (ODEs) |
+| 4.4 (Hopf) | Eigenvalues crossing imaginary axis, polar coordinates, amplitude equations $\dot{r} = \mu r - r^3$ | 2.1 ✓, 2.2, 2.3 |
+| 4.5 (Relaxation) | Singular perturbation / slow-fast decomposition, fast/slow manifolds | 2.3 (ODEs) |
+| 4.6 (Conservative/Gradient) | Hamiltonian $H(x,y)$, gradient $\nabla V$, Lyapunov functions, conserved quantities | 2.2 (Calculus), 2.3 (ODEs) |
+| 4.7 (Lab) | `streamplot`, `contour` for nullclines, ODE system integration, event detection | 2.6 (Numerical Methods) |
 
 ## Style Guide
 
