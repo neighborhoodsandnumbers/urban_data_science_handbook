@@ -22,101 +22,101 @@ parts:
 - caption: "II. Dynamical Systems"
   numbered: true
   chapters:
-    - file: sections/4_one_dimensional_flows/4_0_chapter_intro
+    - file: sections/3_one_dimensional_flows/3_0_chapter_intro
       sections:
-        - file: sections/4_one_dimensional_flows/4_1_phase_portraits_on_the_line
-        - file: sections/4_one_dimensional_flows/4_2_fixed_points_and_stability
-        - file: sections/4_one_dimensional_flows/4_3_bifurcations
-        - file: sections/4_one_dimensional_flows/4_4_imperfect_bifurcations
-        - file: sections/4_one_dimensional_flows/4_5_flows_on_the_circle
-        - file: sections/4_one_dimensional_flows/4_6_lab_bifurcation_diagrams
-    - file: sections/5_two_dimensional_flows/5_0_chapter_intro
+        - file: sections/3_one_dimensional_flows/3_1_phase_portraits_on_the_line
+        - file: sections/3_one_dimensional_flows/3_2_fixed_points_and_stability
+        - file: sections/3_one_dimensional_flows/3_3_bifurcations
+        - file: sections/3_one_dimensional_flows/3_4_imperfect_bifurcations
+        - file: sections/3_one_dimensional_flows/3_5_flows_on_the_circle
+        - file: sections/3_one_dimensional_flows/3_6_lab_bifurcation_diagrams
+    - file: sections/4_two_dimensional_flows/4_0_chapter_intro
       sections:
-        - file: sections/5_two_dimensional_flows/5_1_phase_plane_and_nullclines
-        - file: sections/5_two_dimensional_flows/5_2_classification_of_fixed_points
-        - file: sections/5_two_dimensional_flows/5_3_limit_cycles
-        - file: sections/5_two_dimensional_flows/5_4_hopf_bifurcation
-        - file: sections/5_two_dimensional_flows/5_5_relaxation_oscillations
-        - file: sections/5_two_dimensional_flows/5_6_conservative_and_gradient_systems
-        - file: sections/5_two_dimensional_flows/5_7_lab_phase_portraits
-    - file: sections/6_chaos_and_strange_attractors/6_0_chapter_intro
+        - file: sections/4_two_dimensional_flows/4_1_phase_plane_and_nullclines
+        - file: sections/4_two_dimensional_flows/4_2_classification_of_fixed_points
+        - file: sections/4_two_dimensional_flows/4_3_limit_cycles
+        - file: sections/4_two_dimensional_flows/4_4_hopf_bifurcation
+        - file: sections/4_two_dimensional_flows/4_5_relaxation_oscillations
+        - file: sections/4_two_dimensional_flows/4_6_conservative_and_gradient_systems
+        - file: sections/4_two_dimensional_flows/4_7_lab_phase_portraits
+    - file: sections/5_chaos_and_strange_attractors/5_0_chapter_intro
       sections:
-        - file: sections/6_chaos_and_strange_attractors/6_1_lorenz_system
-        - file: sections/6_chaos_and_strange_attractors/6_2_lyapunov_exponents
-        - file: sections/6_chaos_and_strange_attractors/6_3_fractal_dimension
-        - file: sections/6_chaos_and_strange_attractors/6_4_routes_to_chaos
-        - file: sections/6_chaos_and_strange_attractors/6_6_takens_embedding
-        - file: sections/6_chaos_and_strange_attractors/6_7_lab_lyapunov_and_embedding
-    - file: sections/7_discrete_dynamical_systems/7_0_chapter_intro
+        - file: sections/5_chaos_and_strange_attractors/5_1_lorenz_system
+        - file: sections/5_chaos_and_strange_attractors/5_2_lyapunov_exponents
+        - file: sections/5_chaos_and_strange_attractors/5_3_fractal_dimension
+        - file: sections/5_chaos_and_strange_attractors/5_4_routes_to_chaos
+        - file: sections/5_chaos_and_strange_attractors/5_6_takens_embedding
+        - file: sections/5_chaos_and_strange_attractors/5_7_lab_lyapunov_and_embedding
+    - file: sections/6_discrete_dynamical_systems/6_0_chapter_intro
       sections:
-        - file: sections/7_discrete_dynamical_systems/7_1_iterated_maps
-        - file: sections/7_discrete_dynamical_systems/7_2_logistic_map_universality
-        - file: sections/7_discrete_dynamical_systems/7_3_symbolic_dynamics
-        - file: sections/7_discrete_dynamical_systems/7_4_cellular_automata
-        - file: sections/7_discrete_dynamical_systems/7_5_edge_of_chaos
-        - file: sections/7_discrete_dynamical_systems/7_6_lab_maps_and_automata
-    - file: sections/8_stability_resilience_critical_transitions/8_0_chapter_intro
+        - file: sections/6_discrete_dynamical_systems/6_1_iterated_maps
+        - file: sections/6_discrete_dynamical_systems/6_2_logistic_map_universality
+        - file: sections/6_discrete_dynamical_systems/6_3_symbolic_dynamics
+        - file: sections/6_discrete_dynamical_systems/6_4_cellular_automata
+        - file: sections/6_discrete_dynamical_systems/6_5_edge_of_chaos
+        - file: sections/6_discrete_dynamical_systems/6_6_lab_maps_and_automata
+    - file: sections/7_stability_resilience_critical_transitions/7_0_chapter_intro
       sections:
-        - file: sections/8_stability_resilience_critical_transitions/8_1_basins_of_attraction
-        - file: sections/8_stability_resilience_critical_transitions/8_2_tipping_points
-        - file: sections/8_stability_resilience_critical_transitions/8_3_early_warning_signals
-        - file: sections/8_stability_resilience_critical_transitions/8_4_noise_induced_transitions
-        - file: sections/8_stability_resilience_critical_transitions/8_5_resilience_thinking
-        - file: sections/8_stability_resilience_critical_transitions/8_6_applications
-        - file: sections/8_stability_resilience_critical_transitions/8_7_lab_early_warnings
+        - file: sections/7_stability_resilience_critical_transitions/7_1_basins_of_attraction
+        - file: sections/7_stability_resilience_critical_transitions/7_2_tipping_points
+        - file: sections/7_stability_resilience_critical_transitions/7_3_early_warning_signals
+        - file: sections/7_stability_resilience_critical_transitions/7_4_noise_induced_transitions
+        - file: sections/7_stability_resilience_critical_transitions/7_5_resilience_thinking
+        - file: sections/7_stability_resilience_critical_transitions/7_6_applications
+        - file: sections/7_stability_resilience_critical_transitions/7_7_lab_early_warnings
 - caption: "III. Spatial and Network Systems"
   numbered: true
   chapters:
-    - file: sections/9_network_structure/9_0_chapter_intro
+    - file: sections/8_network_structure/8_0_chapter_intro
       sections:
-        - file: sections/9_network_structure/9_1_graphs_adjacency_degree
-        - file: sections/9_network_structure/9_2_paths_components_connectivity
-        - file: sections/9_network_structure/9_3_centrality_measures
-        - file: sections/9_network_structure/9_4_clustering_transitivity_community
-        - file: sections/9_network_structure/9_5_spectral_properties
-        - file: sections/9_network_structure/9_6_bipartite_multilayer_temporal
-        - file: sections/9_network_structure/9_7_lab_network_analysis
-    - file: sections/10_network_models_and_mechanisms/10_0_chapter_intro
+        - file: sections/8_network_structure/8_1_graphs_adjacency_degree
+        - file: sections/8_network_structure/8_2_paths_components_connectivity
+        - file: sections/8_network_structure/8_3_centrality_measures
+        - file: sections/8_network_structure/8_4_clustering_transitivity_community
+        - file: sections/8_network_structure/8_5_spectral_properties
+        - file: sections/8_network_structure/8_6_bipartite_multilayer_temporal
+        - file: sections/8_network_structure/8_7_lab_network_analysis
+    - file: sections/9_network_models_and_mechanisms/9_0_chapter_intro
       sections:
-        - file: sections/10_network_models_and_mechanisms/10_1_erdos_renyi
-        - file: sections/10_network_models_and_mechanisms/10_2_watts_strogatz
-        - file: sections/10_network_models_and_mechanisms/10_3_barabasi_albert
-        - file: sections/10_network_models_and_mechanisms/10_4_configuration_models
-        - file: sections/10_network_models_and_mechanisms/10_5_ergms
-        - file: sections/10_network_models_and_mechanisms/10_6_stochastic_block_models
-        - file: sections/10_network_models_and_mechanisms/10_7_model_selection
-        - file: sections/10_network_models_and_mechanisms/10_8_lab_generative_models
-    - file: sections/11_dynamics_on_networks/11_0_chapter_intro
+        - file: sections/9_network_models_and_mechanisms/9_1_erdos_renyi
+        - file: sections/9_network_models_and_mechanisms/9_2_watts_strogatz
+        - file: sections/9_network_models_and_mechanisms/9_3_barabasi_albert
+        - file: sections/9_network_models_and_mechanisms/9_4_configuration_models
+        - file: sections/9_network_models_and_mechanisms/9_5_ergms
+        - file: sections/9_network_models_and_mechanisms/9_6_stochastic_block_models
+        - file: sections/9_network_models_and_mechanisms/9_7_model_selection
+        - file: sections/9_network_models_and_mechanisms/9_8_lab_generative_models
+    - file: sections/10_dynamics_on_networks/10_0_chapter_intro
       sections:
-        - file: sections/11_dynamics_on_networks/11_1_diffusion_and_random_walks
-        - file: sections/11_dynamics_on_networks/11_2_epidemic_spreading
-        - file: sections/11_dynamics_on_networks/11_3_percolation_and_robustness
-        - file: sections/11_dynamics_on_networks/11_4_opinion_dynamics
-        - file: sections/11_dynamics_on_networks/11_5_synchronization_on_networks
-        - file: sections/11_dynamics_on_networks/11_6_cascading_failures
-        - file: sections/11_dynamics_on_networks/11_8_network_controllability
-        - file: sections/11_dynamics_on_networks/11_7_lab_epidemics_percolation_kuramoto
-    - file: sections/12_spatial_systems/12_0_chapter_intro
+        - file: sections/10_dynamics_on_networks/10_1_diffusion_and_random_walks
+        - file: sections/10_dynamics_on_networks/10_2_epidemic_spreading
+        - file: sections/10_dynamics_on_networks/10_3_percolation_and_robustness
+        - file: sections/10_dynamics_on_networks/10_4_opinion_dynamics
+        - file: sections/10_dynamics_on_networks/10_5_synchronization_on_networks
+        - file: sections/10_dynamics_on_networks/10_6_cascading_failures
+        - file: sections/10_dynamics_on_networks/10_8_network_controllability
+        - file: sections/10_dynamics_on_networks/10_7_lab_epidemics_percolation_kuramoto
+    - file: sections/11_spatial_systems/11_0_chapter_intro
       sections:
-        - file: sections/12_spatial_systems/12_1_reaction_diffusion
-        - file: sections/12_spatial_systems/12_2_spatial_point_processes
-        - file: sections/12_spatial_systems/12_3_spatial_autocorrelation
-        - file: sections/12_spatial_systems/12_4_gravity_models
-        - file: sections/12_spatial_systems/12_5_fractal_geometry
-        - file: sections/12_spatial_systems/12_6_movement_and_mobility
-        - file: sections/12_spatial_systems/12_7_lab_spatial_patterns
+        - file: sections/11_spatial_systems/11_1_reaction_diffusion
+        - file: sections/11_spatial_systems/11_2_spatial_point_processes
+        - file: sections/11_spatial_systems/11_3_spatial_autocorrelation
+        - file: sections/11_spatial_systems/11_4_gravity_models
+        - file: sections/11_spatial_systems/11_5_fractal_geometry
+        - file: sections/11_spatial_systems/11_6_movement_and_mobility
+        - file: sections/11_spatial_systems/11_7_lab_spatial_patterns
 - caption: "IV. Information, Statistical Mechanics, and Scaling"
   numbered: true
   chapters:
-    - file: sections/3_information_and_entropy/3_0_chapter_intro
+    - file: sections/12_information_and_entropy/12_0_chapter_intro
       sections:
-        - file: sections/3_information_and_entropy/3_1_shannon_entropy
-        - file: sections/3_information_and_entropy/3_2_joint_conditional_mutual_information
-        - file: sections/3_information_and_entropy/3_3_kl_divergence_maximum_entropy
-        - file: sections/3_information_and_entropy/3_4_entropy_rate
-        - file: sections/3_information_and_entropy/3_5_fisher_information
-        - file: sections/3_information_and_entropy/3_6_connections_to_statistical_mechanics
-        - file: sections/3_information_and_entropy/3_7_lab_entropy_and_information
+        - file: sections/12_information_and_entropy/12_1_shannon_entropy
+        - file: sections/12_information_and_entropy/12_2_joint_conditional_mutual_information
+        - file: sections/12_information_and_entropy/12_3_kl_divergence_maximum_entropy
+        - file: sections/12_information_and_entropy/12_4_entropy_rate
+        - file: sections/12_information_and_entropy/12_5_fisher_information
+        - file: sections/12_information_and_entropy/12_6_connections_to_statistical_mechanics
+        - file: sections/12_information_and_entropy/12_7_lab_entropy_and_information
     - file: sections/13_statistical_mechanics/13_0_chapter_intro
       sections:
         - file: sections/13_statistical_mechanics/13_1_microstates_macrostates_boltzmann
